@@ -134,10 +134,10 @@ public class ViewLogic {
 	/**
 	 * Open Admin Main Window
 	 */
-	protected static void newAdminWindow() {
+	protected static void newAdminMainWindow() {
 		Stage stage = new Stage();
 
-		newWindow(ViewLogic.class.getResource("MainAdminScreen.fxml"),
+		newWindow(ViewLogic.class.getResource("AdminMain.fxml"),
 				stage,
 				null, null,	null, null,	null, null,
 				false,
