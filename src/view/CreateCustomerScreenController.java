@@ -38,8 +38,8 @@ public class CreateCustomerScreenController {
 	public void initialize() {
 		pane.setStyle("-fx-background-image: url(\"/rsc/create-customer-bg1.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
-		Label l = new Label("Login");
-		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
+		Label l = new Label("Register");
+		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #305e00 , 4 , 0.5 , 0 , 0 )");
 		loginBut.setGraphic(l);
 	}
 

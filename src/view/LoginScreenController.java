@@ -52,7 +52,7 @@ public class LoginScreenController {
 	//TODO
 	@FXML
 	private void createAccount() {
-
+		ViewLogic.createAccountWindow();
 	}
 
 	/**

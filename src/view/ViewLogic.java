@@ -119,14 +119,14 @@ public class ViewLogic {
 	/**
 	 * Open Create Customer Window
 	 */
-	protected static void newCreateCusWindow() {
+	protected static void createAccountWindow() {
 		Stage stage = new Stage();
 
 		newWindow(ViewLogic.class.getResource("CreateCustomer.fxml"),
 				stage,
 				null, null, null, null, null, null,
 				false,
-				"Create An Account",
+				"Create an Account",
 				false);
 	}
 	
