@@ -115,7 +115,21 @@ public class ViewLogic {
 				"Login",
 				false);
 	}
+	// ============================= Create Customer =============================
+	/**
+	 * Open Create Customer Window
+	 */
+	protected static void newCreateCusWindow() {
+		Stage stage = new Stage();
 
+		newWindow(ViewLogic.class.getResource("CreateCustomer.fxml"),
+				stage,
+				null, null, null, null, null, null,
+				false,
+				"Create An Account",
+				false);
+	}
+	
 	// ================================== Admin ==================================
 	/**
 	 * Open Admin Main Window

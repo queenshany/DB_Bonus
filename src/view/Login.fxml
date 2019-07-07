@@ -27,6 +27,11 @@
 				<Font name="System Bold" size="16.0" />
 			</font>
 		</Label>
+		<Label fx:id="errorLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000">
+			<VBox.margin>
+				<Insets />
+			</VBox.margin>
+		</Label>
 		<VBox alignment="CENTER" spacing="20.0">
 			<children>
 				<JFXTextField fx:id="userTextField" alignment="CENTER" focusColor="WHITE" labelFloat="true" onKeyReleased="#onKeyReleased" promptText="Username" style="-fx-prompt-text-fill: #014a74;" unFocusColor="#014a74" />
@@ -56,10 +61,5 @@
 				</Hyperlink>
 			</children>
 		</HBox>
-		<Label fx:id="errorLabel" alignment="CENTER" textAlignment="CENTER" textFill="#bc0000">
-			<VBox.margin>
-				<Insets />
-			</VBox.margin>
-		</Label>
 	</children>
 </VBox>
