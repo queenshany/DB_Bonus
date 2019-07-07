@@ -1,4 +1,4 @@
-.label {
+/*.label {
 	-fx-effect: dropshadow( one-pass-box , black , 4 , 0.5 , 0 , 0 );
 }
 
@@ -11,4 +11,8 @@
 	-fx-border-width: 1.25;
 	-fx-border-radius: 9;
 	-fx-effect: dropshadow(one-pass-box, black, 9, 0.0, 4, 0);
+}*/
+
+.jfx-text-field {
+-fx-prompt-text-fill: #014a74;
 }

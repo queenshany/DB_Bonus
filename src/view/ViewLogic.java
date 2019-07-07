@@ -112,7 +112,7 @@ public class ViewLogic {
 				stage,
 				null, null, null, null, null, null,
 				false,
-				"Welcome to Nemo Seamanship",
+				"Login",
 				false);
 	}
 
