@@ -1,0 +1,10 @@
+.label {
+	-fx-text-fill: white;
+	-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 )
+}
+
+.jfx-button {
+	-fx-background-color: #101d3d;
+	-fx-text-fill: white;
+	/*-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 )*/
+}

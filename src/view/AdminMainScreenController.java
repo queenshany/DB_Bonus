@@ -9,42 +9,46 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-public class LoginScreenController {
+public class AdminMainScreenController {
 
 	// ============================== Variables =============================
 
-	@FXML
-	private VBox pane;
+	   @FXML
+	    private AnchorPane pane;
 
-	@FXML
-	private JFXTextField userTextField;
+	    @FXML
+	    private JFXButton counPortsBut;
 
-	@FXML
-	private JFXPasswordField pwTextField;
+	    @FXML
+	    private JFXButton shipRoomBut;
 
-	@FXML
-	private Hyperlink accountHyper;
+	    @FXML
+	    private JFXButton customersBut;
 
-	@FXML
-	private Label errorLabel;
-	
-	@FXML
-	private JFXButton loginBut;
+	    @FXML
+	    private JFXButton cruiseOrderBut;
+
+	    @FXML
+	    private JFXButton dashboardBut;
+
+	    @FXML
+	    private JFXButton sailCruiseBut;
 	
 	// =============================== Methods ==============================
 
 	public void initialize() {
-		pane.setStyle("-fx-background-image: url(\"/rsc/login-bg.jpg\");"
+		pane.setStyle("-fx-background-image: url(\"/rsc/admin-bg.png\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
-		Label l = new Label("Login");
-		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
-		loginBut.setGraphic(l);
+//		Label l = new Label("Login");
+//		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
+//		loginBut.setGraphic(l);
 	}
 
 	protected void closeWindow() {
-		((Stage) userTextField.getScene().getWindow()).close();
+		((Stage) pane.getScene().getWindow()).close();
 	}
 
 	// ========================== Action Listeners ==========================
@@ -52,7 +56,7 @@ public class LoginScreenController {
 	//TODO
 	@FXML
 	private void createAccount() {
-		ViewLogic.createAccountWindow();
+		//ViewLogic.createAccountWindow();
 	}
 
 	/**
@@ -61,8 +65,6 @@ public class LoginScreenController {
 	 */
 	@FXML
 	private void loginOnAction() {
-		errorLabel.setText("hello");
-		ViewLogic.newAdminMainWindow();
 		//TODO
 		//		String username = userField.getText();
 		//		String pw = pwField.getText();
