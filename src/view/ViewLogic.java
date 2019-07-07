@@ -145,5 +145,19 @@ public class ViewLogic {
 				false);
 	}
 
+	// ================================== Admin ==================================
+	/**
+	 * Open Customer Main Window
+	 */
+	protected static void newCustomerMainWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("CustomerMain.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Customer",
+				false);
+	}
 
 }
