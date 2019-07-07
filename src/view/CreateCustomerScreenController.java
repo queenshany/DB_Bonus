@@ -15,32 +15,44 @@ public class CreateCustomerScreenController {
 
 	// ============================== Variables =============================
 
-	@FXML
-	private VBox pane;
+    @FXML
+    private VBox pane;
 
-	@FXML
-	private JFXTextField userTextField;
+    @FXML
+    private Label errorLabel;
 
-	@FXML
-	private JFXPasswordField pwTextField;
+    @FXML
+    private JFXTextField userTextField;
 
-	@FXML
-	private Hyperlink accountHyper;
+    @FXML
+    private JFXPasswordField pwTextField;
 
-	@FXML
-	private Label errorLabel;
-	
-	@FXML
-	private JFXButton loginBut;
+    @FXML
+    private JFXPasswordField pwConTextField;
+
+    @FXML
+    private JFXTextField fnameTextField;
+
+    @FXML
+    private JFXTextField surnameTextField;
+
+    @FXML
+    private JFXTextField emailTextField;
+
+    @FXML
+    private JFXTextField phoneTextField;
+
+    @FXML
+    private JFXButton registerBut;
 	
 	// =============================== Methods ==============================
 
 	public void initialize() {
-		pane.setStyle("-fx-background-image: url(\"/rsc/create-customer-bg1.jpg\");"
+		pane.setStyle("-fx-background-image: url(\"/rsc/create-customer-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 		Label l = new Label("Register");
 		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #305e00 , 4 , 0.5 , 0 , 0 )");
-		loginBut.setGraphic(l);
+		registerBut.setGraphic(l);
 	}
 
 	protected void closeWindow() {
@@ -60,7 +72,7 @@ public class CreateCustomerScreenController {
 	 * presses on the login button
 	 */
 	@FXML
-	private void loginOnAction() {
+	private void regOnAction() {
 		errorLabel.setText("hello");
 		//TODO
 		//		String username = userField.getText();
@@ -111,6 +123,6 @@ public class CreateCustomerScreenController {
 	@FXML
 	private void onKeyReleased(KeyEvent e) {
 		if (e.getCode() == KeyCode.ENTER)
-			loginOnAction();
+			regOnAction();
 	}
 }
