@@ -51,7 +51,7 @@ public class CreateCustomerScreenController {
 		pane.setStyle("-fx-background-image: url(\"/rsc/create-customer-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 		Label l = new Label("Register");
-		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #305e00 , 4 , 0.5 , 0 , 0 )");
+		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #305e00 , 4 , 1 , 0 , 0 )");
 		registerBut.setGraphic(l);
 	}
 

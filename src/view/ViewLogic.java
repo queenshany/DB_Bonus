@@ -130,7 +130,7 @@ public class ViewLogic {
 				false);
 	}
 	
-	// ================================== Admin ==================================
+	// ================================== Admin Main ==================================
 	/**
 	 * Open Admin Main Window
 	 */
@@ -144,8 +144,23 @@ public class ViewLogic {
 				"Admin",
 				false);
 	}
+	
+	// ================================== Admin Dashboard ==================================
+	/**
+	 * Open Admin Dashboard Window
+	 */
+	protected static void newAdminDashWindow() {
+		Stage stage = new Stage();
 
-	// ================================== Admin ==================================
+		newWindow(ViewLogic.class.getResource("AdminDashboard.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Dashboard",
+				false);
+	}
+
+	// ================================== Customer Main ==================================
 	/**
 	 * Open Customer Main Window
 	 */
