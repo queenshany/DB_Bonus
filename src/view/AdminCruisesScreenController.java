@@ -18,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Country;
 import model.Port;
-public class AdminCountriesPortsScreenController {
+public class AdminCruisesScreenController {
 
 	// ============================== Variables =============================
 
@@ -50,51 +50,73 @@ public class AdminCountriesPortsScreenController {
 	    private JFXButton dashboardBut;
 
 	    @FXML
-	    private HBox pane;
+	    private VBox pane;
 
 	    @FXML
-	    private JFXListView<Country> countryList;
+	    private TableView<?> cruisesTable;
 
 	    @FXML
-	    private Label errorCounLabel;
+	    private TableColumn<?, ?> cruiseIDColumnC;
 
 	    @FXML
-	    private JFXButton addCountryBut;
+	    private TableColumn<?, ?> shipColumnC;
 
 	    @FXML
-	    private JFXButton delCountryBut;
+	    private TableColumn<?, ?> leavingTimeColumnC;
 
 	    @FXML
-	    private JFXButton updateCountryBut;
+	    private TableColumn<?, ?> returnTmeColumnC;
 
 	    @FXML
-	    private TableView<Port> portsTable;
+	    private Label errorCruiseLabel;
 
 	    @FXML
-	    private TableColumn<Port, String> portColumn;
+	    private JFXButton addCruiseBut;
 
 	    @FXML
-	    private TableColumn<Port, Country> countryColumn;
+	    private JFXButton delCruiseBut;
 
 	    @FXML
-	    private Label errorPortLabel;
+	    private JFXButton updateCruiseBut;
 
 	    @FXML
-	    private JFXButton addPortBut;
+	    private TableView<?> SailToTable;
 
 	    @FXML
-	    private JFXButton delPortBut;
+	    private TableColumn<?, ?> cruiseColumnST;
 
 	    @FXML
-	    private JFXButton updatePortBut;
+	    private TableColumn<?, ?> countryColumnST;
+
+	    @FXML
+	    private TableColumn<?, ?> portColumnST;
+
+	    @FXML
+	    private TableColumn<?, ?> arrivalTimeColumnST;
+
+	    @FXML
+	    private TableColumn<?, ?> leavingTimeColumnST;
+
+	    @FXML
+	    private Label errorSTLabel;
+
+	    @FXML
+	    private JFXButton addSailToBut;
+
+	    @FXML
+	    private JFXButton delSailToBut;
+
+	    @FXML
+	    private JFXButton updateSailToBut;
 	
 	// =============================== Methods ==============================
 
 	public void initialize() {
-		pane.setStyle("-fx-background-image: url(\"/rsc/port-country-bg.jpg\");"
+		pane.setStyle("-fx-background-image: url(\"/rsc/cruise-st-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
-		errorCounLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
-		errorPortLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
+		
+		errorCruiseLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
+		errorSTLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
 //		Label l = new Label("Login");
 //		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
 //		loginBut.setGraphic(l);
@@ -106,38 +128,37 @@ public class AdminCountriesPortsScreenController {
 
 	//TODO
 	@FXML
-	private void addCountry() {
-		errorCounLabel.setText("ERROR error big err");
-		errorPortLabel.setText("ERROR");
+	private void addCruise() {
+
 	}
 	
 	//TODO
 	@FXML
-	private void deleteCountry() {
+	private void deleteCruise() {
 		
 	}
 	
 	//TODO
 	@FXML
-	private void updateCountry() {
+	private void updateCruise() {
 		
 	}
 	
 	//TODO
 	@FXML
-	private void addPort() {
+	private void addSailTo() {
 		
 	}
 	
 	//TODO
 	@FXML
-	private void deletePort() {
+	private void deleteSailTo() {
 		
 	}
 	
 	//TODO
 	@FXML
-	private void updatePort() {
+	private void updateSailTo() {
 		
 	}
 	

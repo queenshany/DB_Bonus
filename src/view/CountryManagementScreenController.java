@@ -34,6 +34,8 @@ public class CountryManagementScreenController {
 	    @FXML
 	    private JFXButton saveCountryBut;
 	
+	    protected boolean update;
+	    
 	// =============================== Methods ==============================
 
 	public void initialize() {

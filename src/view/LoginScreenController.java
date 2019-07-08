@@ -62,13 +62,6 @@ public class LoginScreenController {
 	@FXML
 	private void loginOnAction() {
 		errorLabel.setText("hello");
-		//ViewLogic.newAdminMainWindow();
-		//ViewLogic.newCustomerMainWindow();
-		//ViewLogic.newAdminDashWindow();
-		//ViewLogic.newCustomerDashWindow();
-		//ViewLogic.newAdminPortCountryWindow();
-		//ViewLogic.newCountryManagementWindow();
-		ViewLogic.newPortManagementWindow();
 		//TODO
 		//		String username = userField.getText();
 		//		String pw = pwField.getText();

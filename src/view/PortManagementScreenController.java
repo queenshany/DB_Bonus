@@ -37,6 +37,8 @@ public class PortManagementScreenController {
 
 	@FXML
 	private JFXButton savePortBut;
+	
+	protected boolean update;
 
 	// =============================== Methods ==============================
 

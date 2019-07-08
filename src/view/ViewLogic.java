@@ -34,7 +34,10 @@ public class ViewLogic {
 	 * this method starts the windows in the system
 	 */
 	public static void initUI() {
-		newLoginWindow();
+		//newLoginWindow();
+		
+		//newAdminCruisesSTWindow();
+		newAdminPortCountryWindow();
 	}
 
 	/**
@@ -202,6 +205,21 @@ public class ViewLogic {
 					null, null,	null, null,	null, null,
 					false,
 					"Port Management",
+					false);
+		}
+		
+		// ================================== Admin Cruises & SailTos ==================================
+		/**
+		 * Open Admin Cruises & SailTos Window
+		 */
+		protected static void newAdminCruisesSTWindow() {
+			Stage stage = new Stage();
+
+			newWindow(ViewLogic.class.getResource("AdminCruises.fxml"),
+					stage,
+					null, null,	null, null,	null, null,
+					false,
+					"Cruises & Destinations",
 					false);
 		}
 		
