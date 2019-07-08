@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminDashboardScreenController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CustomerDashboardScreenController">
 	<children>
 		<VBox alignment="TOP_CENTER" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
 			<children>
 				<HBox alignment="CENTER" fillHeight="false" VBox.vgrow="SOMETIMES">
 					<children>
-						<JFXButton fx:id="homeBut" alignment="CENTER" contentDisplay="CENTER" maxWidth="68.0" minWidth="50.0" onAction="#loginOnAction" prefHeight="25.0" prefWidth="68.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text=" " textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
+						<JFXButton fx:id="homeBut" alignment="CENTER" contentDisplay="CENTER" maxWidth="68.0" minWidth="50.0" onAction="#loginOnAction" prefHeight="50.0" prefWidth="68.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text=" " textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
 							<graphic>
 								<ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
 									<image>
@@ -30,7 +30,7 @@
 								<Font name="System Bold" size="12.0" />
 							</font>
 						</JFXButton>
-						<JFXButton fx:id="logoutBut" alignment="CENTER" contentDisplay="CENTER" maxWidth="87.0" minWidth="50.0" onAction="#loginOnAction" prefHeight="25.0" prefWidth="87.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text=" " textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
+						<JFXButton fx:id="logoutBut" alignment="CENTER" contentDisplay="CENTER" maxWidth="87.0" minWidth="50.0" onAction="#loginOnAction" prefHeight="50.0" prefWidth="87.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text=" " textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
 							<graphic>
 								<ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
 									<image>
@@ -53,15 +53,13 @@
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<JFXButton fx:id="counPortsBut" alignment="CENTER" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="100.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="Countries &amp; Ports Management" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+						<JFXButton fx:id="editDetailsBut" alignment="CENTER" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="140.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="Edit Details" textAlignment="CENTER" textFill="WHITE" wrapText="true">
 							<graphic>
 								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 									<image>
-										<Image url="@../rsc/port-icon.png" />
+										<Image url="@../rsc/edit-details-icon.png" />
 									</image>
 								</ImageView>
 							</graphic>
@@ -69,7 +67,7 @@
 								<Font name="System Bold" size="10.0" />
 							</font>
 						</JFXButton>
-						<JFXButton fx:id="shipRoomBut" alignment="CENTER" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="100.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="Ships &amp; Rooms Management" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+						<JFXButton fx:id="cruiseOrderBut" alignment="CENTER" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="140.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="Cruise Order" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
 							<graphic>
 								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 									<image>
@@ -81,11 +79,11 @@
 								<Font name="System Bold" size="10.0" />
 							</font>
 						</JFXButton>
-						<JFXButton fx:id="sailCruiseBut" alignment="CENTER" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="100.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="Cruises Management" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
+						<JFXButton fx:id="viewOrdersBut" alignment="CENTER" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="140.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="View Orders" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
 							<graphic>
 								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 									<image>
-										<Image url="@../rsc/sailing-icon.png" />
+										<Image url="@../rsc/view-orders-icon.png" />
 									</image>
 								</ImageView>
 							</graphic>
@@ -93,31 +91,7 @@
 								<Font name="System Bold" size="10.0" />
 							</font>
 						</JFXButton>
-						<JFXButton fx:id="customersBut" alignment="CENTER" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="100.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="Customers Management" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="3">
-							<graphic>
-								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-									<image>
-										<Image url="@../rsc/customer-icon.png" />
-									</image>
-								</ImageView>
-							</graphic>
-							<font>
-								<Font name="System Bold" size="10.0" />
-							</font>
-						</JFXButton>
-						<JFXButton fx:id="cruiseOrderBut" alignment="CENTER" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="100.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="Cruise Orders Management" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="4">
-							<graphic>
-								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-									<image>
-										<Image url="@../rsc/cruise-order-icon.png" />
-									</image>
-								</ImageView>
-							</graphic>
-							<font>
-								<Font name="System Bold" size="10.0" />
-							</font>
-						</JFXButton>
-						<JFXButton fx:id="dashboardBut" alignment="CENTER" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="100.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="View Dashboard" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="5">
+						<JFXButton fx:id="dashboardBut" alignment="CENTER" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="140.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="View Dashboard" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="3">
 							<graphic>
 								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 									<image>

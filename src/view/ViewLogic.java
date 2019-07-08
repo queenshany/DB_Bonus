@@ -174,5 +174,19 @@ public class ViewLogic {
 				"Customer",
 				false);
 	}
+	
+	// ================================== Customer Dashboard ==================================
+	/**
+	 * Open Customer Dashboard Window
+	 */
+	protected static void newCustomerDashWindow() {
+		Stage stage = new Stage();
 
+		newWindow(ViewLogic.class.getResource("CustomerDashboard.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Dashboard",
+				false);
+	}
 }
