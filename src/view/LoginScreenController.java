@@ -44,7 +44,7 @@ public class LoginScreenController {
 	}
 
 	protected void closeWindow() {
-		((Stage) userTextField.getScene().getWindow()).close();
+		((Stage) pane.getScene().getWindow()).close();
 	}
 
 	// ========================== Action Listeners ==========================
@@ -65,7 +65,8 @@ public class LoginScreenController {
 		//ViewLogic.newAdminMainWindow();
 		//ViewLogic.newCustomerMainWindow();
 		//ViewLogic.newAdminDashWindow();
-		ViewLogic.newCustomerDashWindow();
+		//ViewLogic.newCustomerDashWindow();
+		ViewLogic.newAdminPortCountryWindow();
 		
 		//TODO
 		//		String username = userField.getText();

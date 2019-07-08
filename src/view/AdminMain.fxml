@@ -28,7 +28,7 @@
 				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<JFXButton fx:id="counPortsBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Countries &amp; Ports" textAlignment="CENTER" textFill="WHITE">
+				<JFXButton fx:id="counPortsBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#countriesPortsOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Countries &amp; Ports" textAlignment="CENTER" textFill="WHITE">
 					<graphic>
 						<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 							<image>
@@ -40,7 +40,7 @@
 						<Font name="System Bold" size="12.0" />
 					</font>
 				</JFXButton>
-				<JFXButton fx:id="shipRoomBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="130.0" layoutY="-4.0" onAction="#loginOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Ships &amp; Rooms" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
+				<JFXButton fx:id="shipRoomBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="130.0" layoutY="-4.0" onAction="#shipsRoomsOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Ships &amp; Rooms" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
 					<graphic>
 						<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 							<image>
@@ -52,7 +52,7 @@
 						<Font name="System Bold" size="12.0" />
 					</font>
 				</JFXButton>
-				<JFXButton fx:id="customersBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="250.0" layoutY="-4.0" onAction="#loginOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Customers" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
+				<JFXButton fx:id="customersBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="250.0" layoutY="-4.0" onAction="#customersOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Customers" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
 					<graphic>
 						<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 							<image>
@@ -64,7 +64,7 @@
 						<Font name="System Bold" size="12.0" />
 					</font>
 				</JFXButton>
-				<JFXButton fx:id="cruiseOrderBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="46.0" onAction="#loginOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Cruise Orders" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+				<JFXButton fx:id="cruiseOrderBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="46.0" onAction="#cruiseOrdersOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Cruise Orders" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
 					<graphic>
 						<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 							<image>
@@ -76,7 +76,7 @@
 						<Font name="System Bold" size="12.0" />
 					</font>
 				</JFXButton>
-				<JFXButton fx:id="dashboardBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="130.0" layoutY="46.0" onAction="#loginOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="View Dashboard" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+				<JFXButton fx:id="dashboardBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="130.0" layoutY="46.0" onAction="#dashboardOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="View Dashboard" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
 					<graphic>
 						<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 							<image>
@@ -88,7 +88,7 @@
 						<Font name="System Bold" size="12.0" />
 					</font>
 				</JFXButton>
-				<JFXButton fx:id="sailCruiseBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#loginOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Cruises" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+				<JFXButton fx:id="sailCruiseBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#cruisesOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Cruises" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
 					<graphic>
 						<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 							<image>
@@ -102,7 +102,7 @@
 				</JFXButton>
 			</children>
 		</GridPane>
-		<JFXButton fx:id="logoutBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" layoutX="810.0" layoutY="14.0" onAction="#loginOnAction" ripplerFill="#ffffff66" text="Logout" textAlignment="CENTER" textFill="WHITE">
+		<JFXButton fx:id="logoutBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" layoutX="810.0" layoutY="14.0" onAction="#logoutOnAction" ripplerFill="#ffffff66" text="Logout" textAlignment="CENTER" textFill="WHITE">
 			<graphic>
 				<ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
 					<image>

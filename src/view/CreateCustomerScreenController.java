@@ -61,12 +61,6 @@ public class CreateCustomerScreenController {
 
 	// ========================== Action Listeners ==========================
 
-	//TODO
-	@FXML
-	private void createAccount() {
-
-	}
-
 	/**
 	 * If the user exists in the system, this method allows him to log in when he
 	 * presses on the login button

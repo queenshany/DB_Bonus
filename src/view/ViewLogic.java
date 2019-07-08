@@ -160,6 +160,21 @@ public class ViewLogic {
 				false);
 	}
 
+	// ================================== Admin Ports & Countries ==================================
+	/**
+	 * Open Admin Ports & Countries Window
+	 */
+	protected static void newAdminPortCountryWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("AdminCountriesPorts.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Ports & Countries",
+				false);
+	}
+	
 	// ================================== Customer Main ==================================
 	/**
 	 * Open Customer Main Window
