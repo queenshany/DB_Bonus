@@ -1,6 +1,7 @@
 package view;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -12,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import utils.E_Phone;
 public class CreateCustomerScreenController {
 
 	// ============================== Variables =============================
@@ -53,6 +55,9 @@ public class CreateCustomerScreenController {
     @FXML
     private JFXButton registerBut;
 	
+    @FXML
+    private JFXComboBox<E_Phone> phoneCombo;
+    
 	// =============================== Methods ==============================
 
 	public void initialize() {

@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane fx:id="mainPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CreateCustomerScreenController">
    <children>
       <VBox fx:id="pane" alignment="CENTER" fillWidth="false" maxHeight="600.0" maxWidth="400.0" minHeight="600.0" minWidth="400.0" prefHeight="600.0" prefWidth="400.0" spacing="10.0">
@@ -44,7 +43,7 @@
                         </StackPane>
             				<HBox alignment="CENTER" spacing="5.0">
             					<children>
-            						<JFXComboBox focusColor="#0090b1" labelFloat="true" prefWidth="67.0" unFocusColor="#305e00" />
+            						<JFXComboBox fx:id="phoneCombo" focusColor="#0090b1" labelFloat="true" prefWidth="67.0" unFocusColor="#305e00" />
             						<JFXTextField fx:id="phoneTextField" alignment="CENTER" focusColor="#0090b1" labelFloat="true" onKeyReleased="#onKeyReleased" promptText="Phone" unFocusColor="#305e00" />
             					</children>
             				</HBox>
