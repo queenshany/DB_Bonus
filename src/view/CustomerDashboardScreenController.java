@@ -55,69 +55,41 @@ public class CustomerDashboardScreenController {
 		((Stage) pane.getScene().getWindow()).close();
 	}
 
-	// ========================== Action Listeners ==========================
+	// ========================== Menu Action Listeners ==========================
 
 	//TODO
 	@FXML
-	private void createAccount() {
-		//ViewLogic.createAccountWindow();
+	private void homeMainOnAction() {
+		
 	}
 
-	/**
-	 * If the user exists in the system, this method allows him to log in when he
-	 * presses on the login button
-	 */
+	//TODO
 	@FXML
-	private void loginOnAction() {
-		//TODO
-		//		String username = userField.getText();
-		//		String pw = pwField.getText();
-		//
-		//		ViewLogic.currentUserType = ViewLogic.sysData.validateUser(username, pw);
-		//
-		//		if (ViewLogic.currentUserType == null) {
-		//			System.out.println("User Doesn't exist!");
-		//
-		//		
-		//
-		//			Validation.alert("Login Error!", "Invalid Credentials!");
-		//		}
-		//
-		//		else {
-		//			ViewLogic.currentUserID = username;
-		//			System.out.println(ViewLogic.currentUserType + " ID: " + ViewLogic.currentUserID + " has logged in!");
-		//			Sound.playLoginSound();
-		//			
-		//			switch (ViewLogic.currentUserType) {
-		//			case ADMIN:
-		//				closeWindow();
-		//				ViewLogic.newAdminWindow();
-		//				break;
-		//
-		//			case COACH:
-		//				closeWindow();
-		//				ViewLogic.newCoachWindow();
-		//				break;
-		//
-		//			case RECEPTIONIST:
-		//				closeWindow();
-		//				ViewLogic.newRecepWindow();
-		//				break;
-		//
-		//			case CUSTOMER:
-		//				closeWindow();
-		//				ViewLogic.newCusWindow();
-		//				break;
-		//			}
-		//		}
+	private void logoutOnAction() {
+		
 	}
 
-	/**
-	 * this method enables logging in pressing Enter
-	 */
+	//TODO
 	@FXML
-	private void onKeyReleased(KeyEvent e) {
-		if (e.getCode() == KeyCode.ENTER)
-			loginOnAction();
+	private void editDetailsOnAction() {
+		
+	}
+	
+	//TODO
+	@FXML
+	private void cruiseOrderOnAction() {
+		
+	}
+	
+	//TODO
+	@FXML
+	private void viewOrdersOnAction() {
+		
+	}
+	
+	//TODO
+	@FXML
+	private void dashboardOnAction() {
+		
 	}
 }

@@ -1,20 +1,25 @@
 package view;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 public class CreateCustomerScreenController {
 
 	// ============================== Variables =============================
 
+
+    @FXML
+    private StackPane mainPane;
+    
     @FXML
     private VBox pane;
 
@@ -40,6 +45,9 @@ public class CreateCustomerScreenController {
     private JFXTextField emailTextField;
 
     @FXML
+    private JFXDatePicker birthDatePicker;
+
+    @FXML
     private JFXTextField phoneTextField;
 
     @FXML
@@ -48,7 +56,7 @@ public class CreateCustomerScreenController {
 	// =============================== Methods ==============================
 
 	public void initialize() {
-		pane.setStyle("-fx-background-image: url(\"/rsc/create-customer-bg.jpg\");"
+		mainPane.setStyle("-fx-background-image: url(\"/rsc/create-customer-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 		Label l = new Label("Register");
 		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #305e00 , 4 , 1 , 0 , 0 )");
@@ -56,7 +64,7 @@ public class CreateCustomerScreenController {
 	}
 
 	protected void closeWindow() {
-		((Stage) userTextField.getScene().getWindow()).close();
+		((Stage) pane.getScene().getWindow()).close();
 	}
 
 	// ========================== Action Listeners ==========================
@@ -68,47 +76,6 @@ public class CreateCustomerScreenController {
 	@FXML
 	private void regOnAction() {
 		errorLabel.setText("hello");
-		//TODO
-		//		String username = userField.getText();
-		//		String pw = pwField.getText();
-		//
-		//		ViewLogic.currentUserType = ViewLogic.sysData.validateUser(username, pw);
-		//
-		//		if (ViewLogic.currentUserType == null) {
-		//			System.out.println("User Doesn't exist!");
-		//
-		//		
-		//
-		//			Validation.alert("Login Error!", "Invalid Credentials!");
-		//		}
-		//
-		//		else {
-		//			ViewLogic.currentUserID = username;
-		//			System.out.println(ViewLogic.currentUserType + " ID: " + ViewLogic.currentUserID + " has logged in!");
-		//			Sound.playLoginSound();
-		//			
-		//			switch (ViewLogic.currentUserType) {
-		//			case ADMIN:
-		//				closeWindow();
-		//				ViewLogic.newAdminWindow();
-		//				break;
-		//
-		//			case COACH:
-		//				closeWindow();
-		//				ViewLogic.newCoachWindow();
-		//				break;
-		//
-		//			case RECEPTIONIST:
-		//				closeWindow();
-		//				ViewLogic.newRecepWindow();
-		//				break;
-		//
-		//			case CUSTOMER:
-		//				closeWindow();
-		//				ViewLogic.newCusWindow();
-		//				break;
-		//			}
-		//		}
 	}
 
 	/**
