@@ -38,8 +38,8 @@ public class ViewLogic {
 		
 		//newAdminCruisesSTWindow();
 		//newAdminPortCountryWindow();
-		newAdminShipsRoomsWindow();
-		
+		//newAdminShipsRoomsWindow();
+		newAdminCustomersWindow();
 	}
 
 	/**
@@ -237,6 +237,21 @@ public class ViewLogic {
 					null, null,	null, null,	null, null,
 					false,
 					"Ships & Rooms Management",
+					false);
+		}
+		
+		// ================================== Admin Customers ==================================
+		/**
+		 * Open Admin Customers Window
+		 */
+		protected static void newAdminCustomersWindow() {
+			Stage stage = new Stage();
+
+			newWindow(ViewLogic.class.getResource("AdminCustomers.fxml"),
+					stage,
+					null, null,	null, null,	null, null,
+					false,
+					"Customers Management",
 					false);
 		}
 		
