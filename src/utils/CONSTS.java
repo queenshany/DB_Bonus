@@ -1,6 +1,6 @@
 package utils;
 
-public final class CONSTS {
+public final class Consts {
 
     public static final String SUITE = "Suite";
     public static final String STANDARD = "standard";

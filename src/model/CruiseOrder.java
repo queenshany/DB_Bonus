@@ -2,31 +2,31 @@ package model;
 
 public class CruiseOrder {
 
-    private String cruiseID;
-    private String cruiseShipID;
-    private String roomNumber;
-    private String personID;
+    private CruiseSailing cruiseID;
+    private CruiseShip cruiseShipID;
+    private Room roomNumber;
+    private Person personID;
 
-    public CruiseOrder(String cruiseID, String cruiseShipID, String roomNumber, String personID) {
+    public CruiseOrder(CruiseSailing cruiseID, CruiseShip cruiseShipID, Room roomNumber, Person personID) {
         this.cruiseID = cruiseID;
         this.cruiseShipID = cruiseShipID;
         this.roomNumber = roomNumber;
         this.personID = personID;
     }
 
-    public String getCruiseID() {
+    public CruiseSailing getCruiseID() {
         return cruiseID;
     }
 
-    public String getCruiseShipID() {
+    public CruiseShip getCruiseShipID() {
         return cruiseShipID;
     }
 
-    public String getRoomNumber() {
+    public Room getRoomNumber() {
         return roomNumber;
     }
 
-    public String getPersonID() {
+    public Person getPersonID() {
         return personID;
     }
 }

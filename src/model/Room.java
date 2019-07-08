@@ -2,13 +2,13 @@ package model;
 
 public class Room {
 
-    private String cruiseShipID;
+    private CruiseShip cruiseShipID;
     private String roomNumber;
     private int bedsAmount;
     private String roomType;
     private int price;
 
-    public Room(String cruiseShipID, String roomNumber, int bedsAmount, String roomType, int price) {
+    public Room(CruiseShip cruiseShipID, String roomNumber, int bedsAmount, String roomType, int price) {
         this.cruiseShipID = cruiseShipID;
         this.roomNumber = roomNumber;
         this.bedsAmount = bedsAmount;
@@ -16,7 +16,7 @@ public class Room {
         this.price = price;
     }
 
-    public String getCruiseShipID() {
+    public CruiseShip getCruiseShipID() {
         return cruiseShipID;
     }
 

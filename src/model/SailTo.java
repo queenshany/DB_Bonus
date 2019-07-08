@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class SailTo {
 
-    private String countryName;
-    private String portName;
-    private String sailingID;
+    private Country countryName;
+    private Port portName;
+    private CruiseSailing sailingID;
     private Date arrivalTime;
     private Date leavingTime;
 
-    public SailTo(String countryName, String portName, String sailingID, Date arrivalTime, Date leavingTime) {
+    public SailTo(Country countryName, Port portName, CruiseSailing sailingID, Date arrivalTime, Date leavingTime) {
         this.countryName = countryName;
         this.portName = portName;
         this.sailingID = sailingID;
@@ -18,15 +18,15 @@ public class SailTo {
         this.leavingTime = leavingTime;
     }
 
-    public String getCountryName() {
+    public Country getCountryName() {
         return countryName;
     }
 
-    public String getPortName() {
+    public Port getPortName() {
         return portName;
     }
 
-    public String getSailingID() {
+    public CruiseSailing getSailingID() {
         return sailingID;
     }
 
