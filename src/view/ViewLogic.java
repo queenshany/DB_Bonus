@@ -175,66 +175,36 @@ public class ViewLogic {
 				false);
 	}
 	
-	// ================================== Add Country ==================================
+	// ================================== Add & Update Country ==================================
 	/**
-	 * Open Admin Ports & Countries Window
+	 * Open Country Management Window
 	 */
-	protected static void newAddCountryWindow() {
+	protected static void newCountryManagementWindow() {
 		Stage stage = new Stage();
 
-		newWindow(ViewLogic.class.getResource("AddCountry.fxml"),
+		newWindow(ViewLogic.class.getResource("CountryManagement.fxml"),
 				stage,
 				null, null,	null, null,	null, null,
 				false,
-				"Add Country",
+				"Country Management",
 				false);
 	}
 	
-	// ================================== Update Country ==================================
-	/**
-	 * Open Admin Ports & Countries Window
-	 */
-	protected static void newUpdateCountryWindow() {
-		Stage stage = new Stage();
-
-		newWindow(ViewLogic.class.getResource("UpdateCountry.fxml"),
-				stage,
-				null, null,	null, null,	null, null,
-				false,
-				"Update Country",
-				false);
-	}
-	
-	// ================================== Add Country ==================================
+	// ================================== Add & Update Port ==================================
 		/**
-		 * Open Admin Ports & Countries Window
+		 * Open Port Management Window
 		 */
-		protected static void newAddPortWindow() {
+		protected static void newPortManagementWindow() {
 			Stage stage = new Stage();
 
-			newWindow(ViewLogic.class.getResource("AddPort.fxml"),
+			newWindow(ViewLogic.class.getResource("PortManagement.fxml"),
 					stage,
 					null, null,	null, null,	null, null,
 					false,
-					"Add Port",
+					"Port Management",
 					false);
 		}
 		
-		// ================================== Update Port ==================================
-		/**
-		 * Open Admin Ports & Countries Window
-		 */
-		protected static void newUpdatePortWindow() {
-			Stage stage = new Stage();
-
-			newWindow(ViewLogic.class.getResource("UpdatePort.fxml"),
-					stage,
-					null, null,	null, null,	null, null,
-					false,
-					"Update Port",
-					false);
-		}
-	
 	// ================================== Customer Main ==================================
 	/**
 	 * Open Customer Main Window

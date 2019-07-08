@@ -18,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Country;
 import model.Port;
-public class AddCountryScreenController {
+public class CountryManagementScreenController {
 
 	// ============================== Variables =============================
 
@@ -39,6 +39,7 @@ public class AddCountryScreenController {
 	public void initialize() {
 		mainPane.setStyle("-fx-background-image: url(\"/rsc/country-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
+		errorLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , black , 5 , 1.5 , 0 , 0 )");
 //		Label l = new Label("Login");
 //		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
 //		loginBut.setGraphic(l);
@@ -53,6 +54,7 @@ public class AddCountryScreenController {
 	//TODO
 	@FXML
 	private void saveCountry() {
+		errorLabel.setText("hello");
 		
 	}
 	

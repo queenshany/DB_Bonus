@@ -11,19 +11,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="175.0" prefWidth="250.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddCountryScreenController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="175.0" prefWidth="250.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CountryManagementScreenController">
 	<children>
 		<VBox alignment="CENTER" maxWidth="399.0" minWidth="399.0" prefWidth="399.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<children>
-				<Label text="Add Country" textAlignment="CENTER" textFill="WHITE">
+				<Label text="Country Management" textAlignment="CENTER" textFill="WHITE">
 					<font>
-						<Font name="System Bold" size="18.0" />
+						<Font name="System Bold" size="14.0" />
 					</font>
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
 				</Label>
-            <JFXTextField fx:id="countryTextField" alignment="CENTER" focusColor="WHITE" labelFloat="true" onKeyReleased="#onKeyReleased" promptText="Country Name" style="-fx-prompt-text-fill: #014a74;" unFocusColor="#014a74" />
+            <JFXTextField fx:id="countryTextField" alignment="CENTER" focusColor="WHITE" labelFloat="true" onKeyReleased="#onKeyReleased" promptText="Country Name" style="-fx-prompt-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
             <Label fx:id="errorLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
             <HBox alignment="CENTER" spacing="20.0">
                <children>
