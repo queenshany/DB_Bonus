@@ -66,8 +66,8 @@ public class LoginScreenController {
 		//ViewLogic.newCustomerMainWindow();
 		//ViewLogic.newAdminDashWindow();
 		//ViewLogic.newCustomerDashWindow();
-		ViewLogic.newAdminPortCountryWindow();
-		
+		//ViewLogic.newAdminPortCountryWindow();
+		ViewLogic.newAddCountryWindow();
 		//TODO
 		//		String username = userField.getText();
 		//		String pw = pwField.getText();

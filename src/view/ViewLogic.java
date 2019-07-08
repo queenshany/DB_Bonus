@@ -175,6 +175,66 @@ public class ViewLogic {
 				false);
 	}
 	
+	// ================================== Add Country ==================================
+	/**
+	 * Open Admin Ports & Countries Window
+	 */
+	protected static void newAddCountryWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("AddCountry.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Add Country",
+				false);
+	}
+	
+	// ================================== Update Country ==================================
+	/**
+	 * Open Admin Ports & Countries Window
+	 */
+	protected static void newUpdateCountryWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("UpdateCountry.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Update Country",
+				false);
+	}
+	
+	// ================================== Add Country ==================================
+		/**
+		 * Open Admin Ports & Countries Window
+		 */
+		protected static void newAddPortWindow() {
+			Stage stage = new Stage();
+
+			newWindow(ViewLogic.class.getResource("AddPort.fxml"),
+					stage,
+					null, null,	null, null,	null, null,
+					false,
+					"Add Port",
+					false);
+		}
+		
+		// ================================== Update Port ==================================
+		/**
+		 * Open Admin Ports & Countries Window
+		 */
+		protected static void newUpdatePortWindow() {
+			Stage stage = new Stage();
+
+			newWindow(ViewLogic.class.getResource("UpdatePort.fxml"),
+					stage,
+					null, null,	null, null,	null, null,
+					false,
+					"Update Port",
+					false);
+		}
+	
 	// ================================== Customer Main ==================================
 	/**
 	 * Open Customer Main Window
