@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminCruisesScreenController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminShipsRoomsScreenController">
 	<children>
 		<VBox alignment="TOP_CENTER" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
 			<children>
@@ -143,20 +143,21 @@
                <children>
                   <VBox alignment="CENTER" spacing="10.0">
                      <children>
-                        <Label text="Cruises" textAlignment="CENTER" textFill="WHITE">
+                        <Label text="Ships" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="cruisesTable" maxHeight="200.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
+                        <TableView fx:id="shipsTable" maxHeight="200.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
                           <columns>
-                            <TableColumn fx:id="cruiseIDColumnC" maxWidth="162.5" minWidth="162.5" prefWidth="162.5" text="Cruise ID" />
-                            <TableColumn fx:id="shipColumnC" maxWidth="162.5" minWidth="162.5" prefWidth="162.5" text="Ship" />
-                              <TableColumn fx:id="leavingTimeColumnC" maxWidth="162.5" minWidth="162.5" prefWidth="162.5" text="Leaving Time" />
-                              <TableColumn fx:id="returnTmeColumnC" maxWidth="162.5" minWidth="162.5" prefWidth="162.5" text="Return Time" />
+                            <TableColumn fx:id="shipIDColumnS" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Ship ID" />
+                            <TableColumn fx:id="nameColumnS" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Name" />
+                              <TableColumn fx:id="manuDateColumnS" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Manufacturing Date" />
+                              <TableColumn fx:id="maxCapacityColumnS" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Max Capacity" />
+                              <TableColumn fx:id="maxPeopleColumnS" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Max Num of People" />
                           </columns>
                         </TableView>
-                        <Label fx:id="errorCruiseLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+                        <Label fx:id="errorShipLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -164,7 +165,7 @@
                   </VBox>
                   <VBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <JFXButton fx:id="addCruiseBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#addCruise" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="addShipBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#addShip" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -176,7 +177,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="delCruiseBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#deleteCruise" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="delShipBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#deleteShip" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -188,7 +189,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="updateCruiseBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#updateCruise" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="updateShipBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#updateShip" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -209,21 +210,21 @@
                <children>
                   <VBox alignment="CENTER" spacing="10.0">
                      <children>
-                        <Label text="Sail To" textAlignment="CENTER" textFill="WHITE">
+                        <Label text="Rooms" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="sailToTable" maxHeight="220050.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
+                        <TableView fx:id="roomsTable" maxHeight="220050.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
                            <columns>
-                              <TableColumn fx:id="cruiseColumnST" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Cruise" />
-                              <TableColumn fx:id="countryColumnST" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Country" />
-                              <TableColumn fx:id="portColumnST" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Port" />
-                              <TableColumn fx:id="arrivalTimeColumnST" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Arrival Time" />
-                              <TableColumn fx:id="leavingTimeColumnST" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Leaving Time" />
+                              <TableColumn fx:id="shipColumnR" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Ship" />
+                              <TableColumn fx:id="roomNumColumnR" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Room Number" />
+                              <TableColumn fx:id="bedsAmountColumnR" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Beds Amount" />
+                              <TableColumn fx:id="roomTypeColumnR" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Room Type" />
+                              <TableColumn fx:id="priceColumnR" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Price Per Night" />
                            </columns>
                         </TableView>
-                        <Label fx:id="errorSTLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+                        <Label fx:id="errorRoomLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -231,7 +232,7 @@
                   </VBox>
                   <VBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <JFXButton fx:id="addSailToBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#addSailTo" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="addRoomBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#addRoom" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -243,7 +244,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="delSailToBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#deleteSailTo" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="delRoomBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#deleteRoom" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -255,7 +256,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="updateSailToBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#updateSailTo" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="updateRoomBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#updateRoom" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

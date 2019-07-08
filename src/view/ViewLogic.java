@@ -37,7 +37,9 @@ public class ViewLogic {
 		//newLoginWindow();
 		
 		//newAdminCruisesSTWindow();
-		newAdminPortCountryWindow();
+		//newAdminPortCountryWindow();
+		newAdminShipsRoomsWindow();
+		
 	}
 
 	/**
@@ -174,7 +176,7 @@ public class ViewLogic {
 				stage,
 				null, null,	null, null,	null, null,
 				false,
-				"Ports & Countries",
+				"Ports & Countries Management",
 				false);
 	}
 	
@@ -219,7 +221,22 @@ public class ViewLogic {
 					stage,
 					null, null,	null, null,	null, null,
 					false,
-					"Cruises & Destinations",
+					"Cruises & Destinations Management",
+					false);
+		}
+		
+		// ================================== Admin Ships & Rooms ==================================
+		/**
+		 * Open Admin Ships & Rooms Window
+		 */
+		protected static void newAdminShipsRoomsWindow() {
+			Stage stage = new Stage();
+
+			newWindow(ViewLogic.class.getResource("AdminShipsRooms.fxml"),
+					stage,
+					null, null,	null, null,	null, null,
+					false,
+					"Ships & Rooms Management",
 					false);
 		}
 		

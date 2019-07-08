@@ -18,11 +18,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Country;
 import model.Port;
-public class AdminCruisesScreenController {
+public class AdminShipsRoomsScreenController {
 
 	// ============================== Variables =============================
 
-	  @FXML
+	 @FXML
 	    private AnchorPane mainPane;
 
 	    @FXML
@@ -53,70 +53,73 @@ public class AdminCruisesScreenController {
 	    private VBox pane;
 
 	    @FXML
-	    private TableView<?> cruisesTable;
+	    private TableView<?> shipsTable;
 
 	    @FXML
-	    private TableColumn<?, ?> cruiseIDColumnC;
+	    private TableColumn<?, ?> shipIDColumnS;
 
 	    @FXML
-	    private TableColumn<?, ?> shipColumnC;
+	    private TableColumn<?, ?> nameColumnS;
 
 	    @FXML
-	    private TableColumn<?, ?> leavingTimeColumnC;
+	    private TableColumn<?, ?> manuDateColumnS;
 
 	    @FXML
-	    private TableColumn<?, ?> returnTmeColumnC;
+	    private TableColumn<?, ?> maxCapacityColumnS;
 
 	    @FXML
-	    private Label errorCruiseLabel;
+	    private TableColumn<?, ?> maxPeopleColumnS;
 
 	    @FXML
-	    private JFXButton addCruiseBut;
+	    private Label errorShipLabel;
 
 	    @FXML
-	    private JFXButton delCruiseBut;
+	    private JFXButton addShipBut;
 
 	    @FXML
-	    private JFXButton updateCruiseBut;
+	    private JFXButton delShipBut;
 
 	    @FXML
-	    private TableView<?> sailToTable;
+	    private JFXButton updateShipBut;
 
 	    @FXML
-	    private TableColumn<?, ?> cruiseColumnST;
+	    private TableView<?> roomsTable;
 
 	    @FXML
-	    private TableColumn<?, ?> countryColumnST;
+	    private TableColumn<?, ?> shipColumnR;
 
 	    @FXML
-	    private TableColumn<?, ?> portColumnST;
+	    private TableColumn<?, ?> roomNumColumnR;
 
 	    @FXML
-	    private TableColumn<?, ?> arrivalTimeColumnST;
+	    private TableColumn<?, ?> bedsAmountColumnR;
 
 	    @FXML
-	    private TableColumn<?, ?> leavingTimeColumnST;
+	    private TableColumn<?, ?> roomTypeColumnR;
 
 	    @FXML
-	    private Label errorSTLabel;
+	    private TableColumn<?, ?> priceColumnR;
 
 	    @FXML
-	    private JFXButton addSailToBut;
+	    private Label errorRoomLabel;
 
 	    @FXML
-	    private JFXButton delSailToBut;
+	    private JFXButton addRoomBut;
 
 	    @FXML
-	    private JFXButton updateSailToBut;
+	    private JFXButton delRoomBut;
+
+	    @FXML
+	    private JFXButton updateRoomBut;
 	
 	// =============================== Methods ==============================
 
 	public void initialize() {
-		pane.setStyle("-fx-background-image: url(\"/rsc/cruise-st-bg.jpg\");"
+		pane.setStyle("-fx-background-image: url(\"/rsc/ship-room-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 		
-		errorCruiseLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
-		errorSTLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
+		errorRoomLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
+		errorShipLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
 //		Label l = new Label("Login");
 //		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
 //		loginBut.setGraphic(l);
@@ -128,37 +131,37 @@ public class AdminCruisesScreenController {
 
 	//TODO
 	@FXML
-	private void addCruise() {
+	private void addShip() {
 
 	}
 	
 	//TODO
 	@FXML
-	private void deleteCruise() {
+	private void deleteShip() {
 		
 	}
 	
 	//TODO
 	@FXML
-	private void updateCruise() {
+	private void updateShip() {
 		
 	}
 	
 	//TODO
 	@FXML
-	private void addSailTo() {
+	private void addRoom() {
 		
 	}
 	
 	//TODO
 	@FXML
-	private void deleteSailTo() {
+	private void deleteRoom() {
 		
 	}
 	
 	//TODO
 	@FXML
-	private void updateSailTo() {
+	private void updateRoom() {
 		
 	}
 	
