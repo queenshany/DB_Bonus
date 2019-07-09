@@ -1,5 +1,8 @@
 package view;
 
+
+import java.util.Date;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -11,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Person;
 public class LoginScreenController {
 
 	// ============================== Variables =============================
@@ -29,10 +33,10 @@ public class LoginScreenController {
 
 	@FXML
 	private Label errorLabel;
-	
+
 	@FXML
 	private JFXButton loginBut;
-	
+
 	// =============================== Methods ==============================
 
 	public void initialize() {
@@ -49,9 +53,9 @@ public class LoginScreenController {
 
 	// ========================== Action Listeners ==========================
 
-	//TODO
 	@FXML
 	private void createAccount() {
+		closeWindow();
 		ViewLogic.createAccountWindow();
 	}
 
@@ -61,48 +65,39 @@ public class LoginScreenController {
 	 */
 	@FXML
 	private void loginOnAction() {
-		errorLabel.setText("hello");
-		//TODO
-		//		String username = userField.getText();
-		//		String pw = pwField.getText();
-		//
-		//		ViewLogic.currentUserType = ViewLogic.sysData.validateUser(username, pw);
-		//
-		//		if (ViewLogic.currentUserType == null) {
-		//			System.out.println("User Doesn't exist!");
-		//
-		//		
-		//
-		//			Validation.alert("Login Error!", "Invalid Credentials!");
-		//		}
-		//
-		//		else {
-		//			ViewLogic.currentUserID = username;
-		//			System.out.println(ViewLogic.currentUserType + " ID: " + ViewLogic.currentUserID + " has logged in!");
-		//			Sound.playLoginSound();
-		//			
-		//			switch (ViewLogic.currentUserType) {
-		//			case ADMIN:
-		//				closeWindow();
-		//				ViewLogic.newAdminWindow();
-		//				break;
-		//
-		//			case COACH:
-		//				closeWindow();
-		//				ViewLogic.newCoachWindow();
-		//				break;
-		//
-		//			case RECEPTIONIST:
-		//				closeWindow();
-		//				ViewLogic.newRecepWindow();
-		//				break;
-		//
-		//			case CUSTOMER:
-		//				closeWindow();
-		//				ViewLogic.newCusWindow();
-		//				break;
-		//			}
-		//		}
+		//errorLabel.setText("hello");
+		String username = userTextField.getText();
+		String pw = pwTextField.getText();
+
+		if (username != null && !username.isEmpty()) {
+			if (pw != null && !pw.isEmpty()) {
+				if (username.equalsIgnoreCase("admin") && pw.equalsIgnoreCase("admin")) {
+					// ViewLogic.currentUser = //TODO GET THE CURRENT PERSON 
+					closeWindow();
+					ViewLogic.newAdminMainWindow();
+				}
+				//TODO
+				else if (username.equals("1") && pw.equals("1")) {
+					closeWindow();
+					ViewLogic.currentUser = new Person("111", "hello", "world", new Date(), "000000000", "hello@world.com", "1");
+					ViewLogic.newCustomerMainWindow();
+				}
+				//				else if (false) { //TODO ALSO TO DO A CHECK THAT THE USER EXISTS
+				//					errorLabel.setText("Username doesn't exist. Please create an account.");
+				//				}
+				//				else if (false) { //TODO USER EXISTS AND IS A CUSTOMER AND HIS DATA IS GOOD
+				//					closeWindow();
+				//					ViewLogic.newCustomerMainWindow();
+				//				}
+				else {
+					errorLabel.setText("Incorrect username or password.");
+				}
+			}else{
+				errorLabel.setText("Please Enter a password.");
+			}
+		}else{
+			errorLabel.setText("Please Enter a username.");
+		}
 	}
 
 	/**

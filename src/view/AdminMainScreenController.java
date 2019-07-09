@@ -40,6 +40,7 @@ public class AdminMainScreenController {
 	// =============================== Methods ==============================
 
 	public void initialize() {
+		System.out.println("Welcome " + (ViewLogic.currentUser == null ? "Admin" : ViewLogic.currentUser));
 		pane.setStyle("-fx-background-image: url(\"/rsc/admin-bg.png\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 //		Label l = new Label("Login");
@@ -53,34 +54,34 @@ public class AdminMainScreenController {
 
 	// ========================== Menu Action Listeners ==========================
 
-	//TODO
 	@FXML
 	private void logoutOnAction() {
-		
+		closeWindow();
+		ViewLogic.newLoginWindow();
 	}
 
-	//TODO
 	@FXML
 	private void countriesPortsOnAction() {
-		
+		closeWindow();
+		ViewLogic.newAdminPortCountryWindow();
 	}
 	
-	//TODO
 	@FXML
 	private void shipsRoomsOnAction() {
-		
+		closeWindow();
+		ViewLogic.newAdminShipsRoomsWindow();
 	}
 	
-	//TODO
 	@FXML
 	private void cruisesOnAction() {
-		
+		closeWindow();
+		ViewLogic.newAdminCruisesSTWindow();
 	}
 	
-	//TODO
 	@FXML
 	private void customersOnAction() {
-		
+		closeWindow();
+		ViewLogic.newAdminCustomersWindow();
 	}
 	
 	//TODO
@@ -89,9 +90,9 @@ public class AdminMainScreenController {
 		
 	}
 	
-	//TODO
 	@FXML
 	private void dashboardOnAction() {
-		
+		closeWindow();
+		ViewLogic.newAdminDashWindow();
 	}
 }

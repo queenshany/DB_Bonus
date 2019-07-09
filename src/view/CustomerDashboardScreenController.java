@@ -57,16 +57,17 @@ public class CustomerDashboardScreenController {
 
 	// ========================== Menu Action Listeners ==========================
 
-	//TODO
 	@FXML
 	private void homeMainOnAction() {
-		
+		closeWindow();
+		ViewLogic.newCustomerMainWindow();
 	}
 
-	//TODO
 	@FXML
 	private void logoutOnAction() {
-		
+		closeWindow();
+		ViewLogic.currentUser = null;
+		ViewLogic.newLoginWindow();
 	}
 
 	//TODO
@@ -75,21 +76,21 @@ public class CustomerDashboardScreenController {
 		
 	}
 	
-	//TODO
 	@FXML
 	private void cruiseOrderOnAction() {
-		
+		closeWindow();
+		ViewLogic.newCustomerCruiseOrderWindow();
 	}
 	
-	//TODO
 	@FXML
 	private void viewOrdersOnAction() {
-		
+		closeWindow();
+		ViewLogic.newCustomerViewOrdersWindow();
 	}
 	
-	//TODO
 	@FXML
 	private void dashboardOnAction() {
-		
+		closeWindow();
+		ViewLogic.newCustomerDashWindow();
 	}
 }

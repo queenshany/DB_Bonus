@@ -70,39 +70,40 @@ public class CustomerViewOrdersScreenController {
 
 	// ========================== Menu Action Listeners ==========================
 
-	//TODO
 	@FXML
 	private void homeMainOnAction() {
-
+		closeWindow();
+		ViewLogic.newCustomerMainWindow();
 	}
 
-	//TODO
 	@FXML
 	private void logoutOnAction() {
-
+		closeWindow();
+		ViewLogic.currentUser = null;
+		ViewLogic.newLoginWindow();
 	}
 
 	//TODO
 	@FXML
 	private void editDetailsOnAction() {
-
+		
 	}
-
-	//TODO
+	
 	@FXML
 	private void cruiseOrderOnAction() {
-
+		closeWindow();
+		ViewLogic.newCustomerCruiseOrderWindow();
 	}
-
-	//TODO
+	
 	@FXML
 	private void viewOrdersOnAction() {
-
+		closeWindow();
+		ViewLogic.newCustomerViewOrdersWindow();
 	}
-
-	//TODO
+	
 	@FXML
 	private void dashboardOnAction() {
-
+		closeWindow();
+		ViewLogic.newCustomerDashWindow();
 	}
 }

@@ -16,44 +16,44 @@ public class AdminDashboardScreenController {
 
 	// ============================== Variables =============================
 
-	   @FXML
-	    private AnchorPane mainPane;
-	   
-	   @FXML
-	    private VBox pane;
-	   
-	    @FXML
-	    private JFXButton homeBut;
+	@FXML
+	private AnchorPane mainPane;
 
-	    @FXML
-	    private JFXButton logoutBut;
+	@FXML
+	private VBox pane;
 
-	    @FXML
-	    private JFXButton counPortsBut;
+	@FXML
+	private JFXButton homeBut;
 
-	    @FXML
-	    private JFXButton shipRoomBut;
+	@FXML
+	private JFXButton logoutBut;
 
-	    @FXML
-	    private JFXButton sailCruiseBut;
+	@FXML
+	private JFXButton counPortsBut;
 
-	    @FXML
-	    private JFXButton customersBut;
+	@FXML
+	private JFXButton shipRoomBut;
 
-	    @FXML
-	    private JFXButton cruiseOrderBut;
+	@FXML
+	private JFXButton sailCruiseBut;
 
-	    @FXML
-	    private JFXButton dashboardBut;
-	
+	@FXML
+	private JFXButton customersBut;
+
+	@FXML
+	private JFXButton cruiseOrderBut;
+
+	@FXML
+	private JFXButton dashboardBut;
+
 	// =============================== Methods ==============================
 
 	public void initialize() {
 		pane.setStyle("-fx-background-image: url(\"/rsc/dashboard-bg1.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
-//		Label l = new Label("Login");
-//		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
-//		loginBut.setGraphic(l);
+		//		Label l = new Label("Login");
+		//		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
+		//		loginBut.setGraphic(l);
 	}
 
 	protected void closeWindow() {
@@ -62,52 +62,52 @@ public class AdminDashboardScreenController {
 
 	// ========================== Menu Action Listeners ==========================
 
-		//TODO
-		@FXML
-		private void homeMainOnAction() {
-			
-		}
+	@FXML
+	private void homeMainOnAction() {
+		closeWindow();
+		ViewLogic.newAdminMainWindow();
+	}
 
-		//TODO
-		@FXML
-		private void logoutOnAction() {
-			
-		}
+	@FXML
+	private void logoutOnAction() {
+		closeWindow();
+		ViewLogic.newLoginWindow();
+	}
 
-		//TODO
-		@FXML
-		private void countriesPortsOnAction() {
-			
-		}
-		
-		//TODO
-		@FXML
-		private void shipsRoomsOnAction() {
-			
-		}
-		
-		//TODO
-		@FXML
-		private void cruisesOnAction() {
-			
-		}
-		
-		//TODO
-		@FXML
-		private void customersOnAction() {
-			
-		}
-		
-		//TODO
-		@FXML
-		private void cruiseOrdersOnAction() {
-			
-		}
-		
-		//TODO
-		@FXML
-		private void dashboardOnAction() {
-			
-		}
+	@FXML
+	private void countriesPortsOnAction() {
+		closeWindow();
+		ViewLogic.newAdminPortCountryWindow();
+	}
+
+	@FXML
+	private void shipsRoomsOnAction() {
+		closeWindow();
+		ViewLogic.newAdminShipsRoomsWindow();
+	}
+
+	@FXML
+	private void cruisesOnAction() {
+		closeWindow();
+		ViewLogic.newAdminCruisesSTWindow();
+	}
+
+	@FXML
+	private void customersOnAction() {
+		closeWindow();
+		ViewLogic.newAdminCustomersWindow();
+	}
+
+	//TODO
+	@FXML
+	private void cruiseOrdersOnAction() {
+
+	}
+
+	@FXML
+	private void dashboardOnAction() {
+		closeWindow();
+		ViewLogic.newAdminDashWindow();
+	}
 
 }

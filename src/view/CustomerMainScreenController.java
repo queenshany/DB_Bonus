@@ -39,6 +39,7 @@ public class CustomerMainScreenController {
 	public void initialize() {
 		pane.setStyle("-fx-background-image: url(\"/rsc/customer-bg.png\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
+		System.out.println("Welcome "+ ViewLogic.currentUser);
 //		Label l = new Label("Login");
 //		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
 //		loginBut.setGraphic(l);
@@ -50,10 +51,11 @@ public class CustomerMainScreenController {
 
 	// ========================== Menu Action Listeners ==========================
 
-		//TODO
 		@FXML
 		private void logoutOnAction() {
-			
+			closeWindow();
+			ViewLogic.currentUser = null;
+			ViewLogic.newLoginWindow();
 		}
 
 		//TODO
@@ -62,21 +64,21 @@ public class CustomerMainScreenController {
 			
 		}
 		
-		//TODO
 		@FXML
 		private void cruiseOrderOnAction() {
-			
+			closeWindow();
+			ViewLogic.newCustomerCruiseOrderWindow();
 		}
 		
-		//TODO
 		@FXML
 		private void viewOrdersOnAction() {
-			
+			closeWindow();
+			ViewLogic.newCustomerViewOrdersWindow();
 		}
 		
-		//TODO
 		@FXML
 		private void dashboardOnAction() {
-			
+			closeWindow();
+			ViewLogic.newCustomerDashWindow();
 		}
 }
