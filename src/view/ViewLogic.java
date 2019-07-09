@@ -35,11 +35,15 @@ public class ViewLogic {
 	 */
 	public static void initUI() {
 		//newLoginWindow();
-		
+		//TODO
 		//newAdminCruisesSTWindow();
 		//newAdminPortCountryWindow();
 		//newAdminShipsRoomsWindow();
 		//newAdminCustomersWindow();
+		//newCustomerMainWindow();
+		//newCustomerDashWindow();
+		//newCustomerViewOrdersWindow();
+		newCustomerCruiseOrderWindow();
 	}
 
 	/**
@@ -282,6 +286,36 @@ public class ViewLogic {
 				null, null,	null, null,	null, null,
 				false,
 				"Dashboard",
+				false);
+	}
+	
+	// ================================== Customer View Orders ==================================
+	/**
+	 * Open Customer View Orders Window
+	 */
+	protected static void newCustomerViewOrdersWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("CustomerViewOrders.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"My Orders",
+				false);
+	}
+	
+	// ================================== Customer Cruise Order ==================================
+	/**
+	 * Open Customer View Orders Window
+	 */
+	protected static void newCustomerCruiseOrderWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("CustomerCruiseOrder.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Cruise Order",
 				false);
 	}
 }
