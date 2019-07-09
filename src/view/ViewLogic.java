@@ -39,7 +39,7 @@ public class ViewLogic {
 		//newAdminCruisesSTWindow();
 		//newAdminPortCountryWindow();
 		//newAdminShipsRoomsWindow();
-		newAdminCustomersWindow();
+		//newAdminCustomersWindow();
 	}
 
 	/**
