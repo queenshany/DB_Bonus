@@ -8,4 +8,27 @@ public final class Consts {
     public static final int TWO = 1;
     public static final int THREE = 1;
     public static final int FOUR = 1;
+
+    public static final String getAllCustomers = "exec GetAllCustomers";
+    public static final String getAllCountries = "exec GetAllCountries";
+    public static final String getAllCruise = "exec GetAllCruise";
+    public static final String getAllPorts = "exec GetAllPorts";
+    public static final String getAllRooms = "exec GetAllRooms ?";
+    public static final String getAllSailTo = "exec GetAllSailTo ?";
+    public static final String getAllShips = "exec GetAllShips";
+    public static final String insertPerson = "exec InsertPerson ?,?,?,?,?,?,?";
+    public static final String insertCountry = "exec InsertCountry ?";
+    public static final String insertCruise = "exec InsertCruise ?,?,?,?";
+    public static final String insertCruiseOrder = "exec InsertCruiseOrder ?,?,?,?";
+    public static final String insertPort = "exec InsertPort ?,?";
+    public static final String insertRoom = "exec InsertRoom ?,?,?,?,?";
+    public static final String insertSailTo = "exec InsertSailTo ?,?,?,?,?";
+    public static final String insertShip = "exec InsertShip ?,?,?,?,?";
+    public static final String removeCountry = "exec RemoveCountry ?";
+    public static final String removeCruise = "exec RemoveCruise ?";
+    public static final String removeCruiseOrder = "exec RemoveCruiseOrder ?,?,?";
+    public static final String removePort = "exec RemovePort ?,?";
+    public static final String removeRoom = "exec RemoveRoom ?,?";
+    public static final String removeSailTo = "exec RemoveSailTo ?,?,?";
+    public static final String removeShip = "exec RemoveShip ?";
 }

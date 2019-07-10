@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 /**
  * Class SailTo ~ represent a single SailTo
  * 
@@ -9,14 +9,14 @@ import java.util.Date;
  */
 public class SailTo {
 	// ------------------------------- Class Members ------------------------------
-	private Country countryName;
-	private Port portName;
-	private CruiseSailing sailingID;
+	private String countryName;
+	private String portName;
+	private String sailingID;
 	private Date arrivalTime;
 	private Date leavingTime;
 
 	// -------------------------------- Constructors ------------------------------
-	public SailTo(Country countryName, Port portName, CruiseSailing sailingID, Date arrivalTime, Date leavingTime) {
+	public SailTo(String countryName, String portName, String sailingID, Date arrivalTime, Date leavingTime) {
 		this.countryName = countryName;
 		this.portName = portName;
 		this.sailingID = sailingID;
@@ -24,22 +24,22 @@ public class SailTo {
 		this.leavingTime = leavingTime;
 	}
 
-	public SailTo(Country countryName, Port portName, CruiseSailing sailingID) {
+	public SailTo(String countryName, String portName, String sailingID) {
 		this.countryName = countryName;
 		this.portName = portName;
 		this.sailingID = sailingID;
 	}
 
 	// ----------------------------- Getters & Setters ----------------------------
-	public Country getCountryName() {
+	public String getCountryName() {
 		return countryName;
 	}
 
-	public Port getPortName() {
+	public String getPortName() {
 		return portName;
 	}
 
-	public CruiseSailing getSailingID() {
+	public String getSailingID() {
 		return sailingID;
 	}
 
@@ -51,15 +51,15 @@ public class SailTo {
 		return leavingTime;
 	}
 
-	public void setCountryName(Country countryName) {
+	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
 
-	public void setPortName(Port portName) {
+	public void setPortName(String portName) {
 		this.portName = portName;
 	}
 
-	public void setSailingID(CruiseSailing sailingID) {
+	public void setSailingID(String sailingID) {
 		this.sailingID = sailingID;
 	}
 

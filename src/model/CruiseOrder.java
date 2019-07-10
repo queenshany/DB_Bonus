@@ -7,19 +7,19 @@ package model;
  */
 public class CruiseOrder {
 	// ------------------------------- Class Members ------------------------------
-	private CruiseSailing cruiseID;
-	private CruiseShip cruiseShipID;
-	private Room roomNumber;
-	private Person personID;
+	private String cruiseID;
+	private String cruiseShipID;
+	private String roomNumber;
+	private String personID;
 
 	// -------------------------------- Constructors ------------------------------
-	public CruiseOrder(CruiseSailing cruiseID, CruiseShip cruiseShipID, Room roomNumber) {
+	public CruiseOrder(String cruiseID, String cruiseShipID, String roomNumber) {
 		this.cruiseID = cruiseID;
 		this.cruiseShipID = cruiseShipID;
 		this.roomNumber = roomNumber;
 	}
 
-	public CruiseOrder(CruiseSailing cruiseID, CruiseShip cruiseShipID, Room roomNumber, Person personID) {
+	public CruiseOrder(String cruiseID, String cruiseShipID, String roomNumber, String personID) {
 		this.cruiseID = cruiseID;
 		this.cruiseShipID = cruiseShipID;
 		this.roomNumber = roomNumber;
@@ -27,35 +27,35 @@ public class CruiseOrder {
 	}
 
 	// ----------------------------- Getters & Setters ----------------------------
-	public CruiseSailing getCruiseID() {
+	public String getCruiseID() {
 		return cruiseID;
 	}
 
-	public CruiseShip getCruiseShipID() {
+	public String getCruiseShipID() {
 		return cruiseShipID;
 	}
 
-	public Room getRoomNumber() {
+	public String getRoomNumber() {
 		return roomNumber;
 	}
 
-	public Person getPersonID() {
+	public String getPersonID() {
 		return personID;
 	}
 
-	public void setCruiseID(CruiseSailing cruiseID) {
+	public void setCruiseID(String cruiseID) {
 		this.cruiseID = cruiseID;
 	}
 
-	public void setCruiseShipID(CruiseShip cruiseShipID) {
+	public void setCruiseShipID(String cruiseShipID) {
 		this.cruiseShipID = cruiseShipID;
 	}
 
-	public void setRoomNumber(Room roomNumber) {
+	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
-	public void setPersonID(Person personID) {
+	public void setPersonID(String personID) {
 		this.personID = personID;
 	}
 
