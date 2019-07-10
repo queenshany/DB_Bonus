@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import model.Person;
 
 /**
  * Class ViewLogic ~ manages the windows in the system
@@ -26,7 +27,7 @@ public class ViewLogic {
 	protected static final Rectangle2D FULL_SCREEN = Screen.getPrimary().getBounds();
 	protected static final Rectangle2D VISIBLE_SCREEN = Screen.getPrimary().getVisualBounds();
 
-	//protected static User currentUser;
+	protected static Person currentUser;
 	//	protected static SysData sysData = control.SysData.getInstance();
 
 	// ------------------------------ Methods ------------------------------
@@ -34,12 +35,16 @@ public class ViewLogic {
 	 * this method starts the windows in the system
 	 */
 	public static void initUI() {
-		//newLoginWindow();
-		
+		newLoginWindow();
+		//TODO
 		//newAdminCruisesSTWindow();
 		//newAdminPortCountryWindow();
 		//newAdminShipsRoomsWindow();
 		//newAdminCustomersWindow();
+		//newCustomerMainWindow();
+		//newCustomerDashWindow();
+		//newCustomerViewOrdersWindow();
+		//newCustomerCruiseOrderWindow();
 	}
 
 	/**
@@ -282,6 +287,36 @@ public class ViewLogic {
 				null, null,	null, null,	null, null,
 				false,
 				"Dashboard",
+				false);
+	}
+	
+	// ================================== Customer View Orders ==================================
+	/**
+	 * Open Customer View Orders Window
+	 */
+	protected static void newCustomerViewOrdersWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("CustomerViewOrders.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"My Orders",
+				false);
+	}
+	
+	// ================================== Customer Cruise Order ==================================
+	/**
+	 * Open Customer View Orders Window
+	 */
+	protected static void newCustomerCruiseOrderWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("CustomerCruiseOrder.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Cruise Order",
 				false);
 	}
 }

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CustomerCruiseOrderScreenController">
+	<children>
+		<VBox alignment="TOP_CENTER" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
+			<children>
+				<HBox alignment="CENTER" fillHeight="false" VBox.vgrow="SOMETIMES">
+					<children>
+						<JFXButton fx:id="homeBut" alignment="CENTER" contentDisplay="CENTER" maxWidth="68.0" minWidth="50.0" onAction="#homeMainOnAction" prefHeight="50.0" prefWidth="68.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text=" " textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
+							<graphic>
+								<ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+									<image>
+										<Image url="@../rsc/home-white-icon.png" />
+									</image>
+								</ImageView>
+							</graphic>
+							<font>
+								<Font name="System Bold" size="12.0" />
+							</font>
+						</JFXButton>
+						<JFXButton fx:id="logoutBut" alignment="CENTER" contentDisplay="CENTER" maxWidth="87.0" minWidth="50.0" onAction="#logoutOnAction" prefHeight="50.0" prefWidth="87.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text=" " textAlignment="CENTER" textFill="WHITE" wrapText="true" HBox.hgrow="NEVER">
+							<graphic>
+								<ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+									<image>
+										<Image url="@../rsc/sign-out-white-icon.png" />
+									</image>
+								</ImageView>
+							</graphic>
+							<font>
+								<Font name="System Bold" size="12.0" />
+							</font>
+						</JFXButton>
+					</children>
+				</HBox>
+				<GridPane VBox.vgrow="ALWAYS">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<JFXButton fx:id="editDetailsBut" alignment="CENTER" contentDisplay="TOP" onAction="#editDetailsOnAction" prefHeight="140.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="Edit Details" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+							<graphic>
+								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+									<image>
+										<Image url="@../rsc/edit-details-icon.png" />
+									</image>
+								</ImageView>
+							</graphic>
+							<font>
+								<Font name="System Bold" size="10.0" />
+							</font>
+						</JFXButton>
+						<JFXButton fx:id="cruiseOrderBut" alignment="CENTER" contentDisplay="TOP" onAction="#cruiseOrderOnAction" prefHeight="140.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="Cruise Order" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+							<graphic>
+								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+									<image>
+										<Image url="@../rsc/ship-icon.png" />
+									</image>
+								</ImageView>
+							</graphic>
+							<font>
+								<Font name="System Bold" size="10.0" />
+							</font>
+						</JFXButton>
+						<JFXButton fx:id="viewOrdersBut" alignment="CENTER" contentDisplay="TOP" onAction="#viewOrdersOnAction" prefHeight="140.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="View Orders" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
+							<graphic>
+								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+									<image>
+										<Image url="@../rsc/view-orders-icon.png" />
+									</image>
+								</ImageView>
+							</graphic>
+							<font>
+								<Font name="System Bold" size="10.0" />
+							</font>
+						</JFXButton>
+						<JFXButton fx:id="dashboardBut" alignment="CENTER" contentDisplay="TOP" onAction="#dashboardOnAction" prefHeight="140.0" prefWidth="100.0" ripplerFill="#005b85cc" style="-fx-background-radius: 0;" text="View Dashboard" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="3">
+							<graphic>
+								<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+									<image>
+										<Image url="@../rsc/dashboard-icon.png" />
+									</image>
+								</ImageView>
+							</graphic>
+							<font>
+								<Font name="System Bold" size="10.0" />
+							</font>
+						</JFXButton>
+					</children>
+				</GridPane>
+			</children>
+		</VBox>
+      <VBox fx:id="pane" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="New Order" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cruiseCombo" focusColor="WHITE" labelFloat="true" maxWidth="400.0" minWidth="400.0" prefHeight="25.0" prefWidth="400.0" promptText="Choose Cruise" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
+                  <JFXComboBox fx:id="roomCombo" disable="true" focusColor="WHITE" labelFloat="true" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" promptText="Choose Room" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </JFXComboBox>
+                  <Label fx:id="errorAddOrderLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+                  <JFXButton fx:id="addOrderBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#addOrder" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../rsc/add-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            <Separator maxWidth="760.0" minWidth="760.0" prefWidth="760.0">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Separator>
+            <VBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Future Orders" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="ordersTable" maxHeight="200.0" maxWidth="720.0" minHeight="200.0" minWidth="720.0" prefHeight="200.0" prefWidth="720.0">
+                     <columns>
+                        <TableColumn fx:id="cruiseColumn" maxWidth="240.0" minWidth="240.0" prefWidth="240.0" text="Cruise" />
+                        <TableColumn fx:id="shipColumn" maxWidth="240.0" minWidth="240.0" prefWidth="240.0" text="Ship" />
+                        <TableColumn fx:id="roomNumColumn" maxWidth="240.0" minWidth="240.0" prefWidth="240.0" text="Room Number" />
+                     </columns>
+                  </TableView>
+                  <Label fx:id="errorDelOrderLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+                  <JFXButton fx:id="delOrderBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#deleteOrder" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../rsc/remove-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </VBox>
+	</children>
+</AnchorPane>
