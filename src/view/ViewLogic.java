@@ -39,13 +39,13 @@ public class ViewLogic {
 	 * this method starts the windows in the system
 	 */
 	public static void initUI() {
-		//newLoginWindow();
-		
+		newLoginWindow();
+		//createAccountWindow();
 		//TODO
 		//newAdminCruisesSTWindow();
 		//newAdminPortCountryWindow();
-		newAdminCruisesSTWindow();
-		newCruiseManagementWindow();
+		//newAdminCruisesSTWindow();
+		//newCruiseManagementWindow();
 		//newAdminShipsRoomsWindow();
 		//newAdminCustomersWindow();
 		//newCustomerMainWindow();
