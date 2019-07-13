@@ -192,8 +192,8 @@
                   </Label>
                   <TableView fx:id="portsTable" maxHeight="400.0" maxWidth="300.0" minHeight="400.0" minWidth="300.0" prefHeight="400.0" prefWidth="300.0">
                     <columns>
-                      <TableColumn fx:id="portColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Port" />
-                      <TableColumn fx:id="countryColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Country" />
+                      <TableColumn fx:id="portColumn" maxWidth="149.0" minWidth="149.0" prefWidth="149.0" text="Port" />
+                      <TableColumn fx:id="countryColumn" maxWidth="149.0" minWidth="149.0" prefWidth="149.0" text="Country" />
                     </columns>
                   </TableView>
                   <Label fx:id="errorPortLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />

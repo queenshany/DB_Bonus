@@ -150,10 +150,10 @@
                         </Label>
                         <TableView fx:id="cruisesTable" maxHeight="200.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
                           <columns>
-                            <TableColumn fx:id="cruiseIDColumnC" maxWidth="162.5" minWidth="162.5" prefWidth="162.5" text="Cruise ID" />
-                            <TableColumn fx:id="shipColumnC" maxWidth="162.5" minWidth="162.5" prefWidth="162.5" text="Ship" />
-                              <TableColumn fx:id="leavingTimeColumnC" maxWidth="162.5" minWidth="162.5" prefWidth="162.5" text="Leaving Time" />
-                              <TableColumn fx:id="returnTmeColumnC" maxWidth="162.5" minWidth="162.5" prefWidth="162.5" text="Return Time" />
+                            <TableColumn fx:id="cruiseIDColumnC" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Cruise ID" />
+                            <TableColumn fx:id="shipColumnC" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Ship ID" />
+                              <TableColumn fx:id="leavingTimeColumnC" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Leaving Time" />
+                              <TableColumn fx:id="returnTmeColumnC" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Return Time" />
                           </columns>
                         </TableView>
                         <Label fx:id="errorCruiseLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
@@ -216,11 +216,11 @@
                         </Label>
                         <TableView fx:id="sailToTable" maxHeight="220050.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
                            <columns>
-                              <TableColumn fx:id="cruiseColumnST" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Cruise" />
-                              <TableColumn fx:id="countryColumnST" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Country" />
-                              <TableColumn fx:id="portColumnST" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Port" />
-                              <TableColumn fx:id="arrivalTimeColumnST" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Arrival Time" />
-                              <TableColumn fx:id="leavingTimeColumnST" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Leaving Time" />
+                              <TableColumn fx:id="cruiseColumnST" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Cruise ID" />
+                              <TableColumn fx:id="countryColumnST" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Country" />
+                              <TableColumn fx:id="portColumnST" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Port" />
+                              <TableColumn fx:id="arrivalTimeColumnST" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Arrival Time" />
+                              <TableColumn fx:id="leavingTimeColumnST" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Leaving Time" />
                            </columns>
                         </TableView>
                         <Label fx:id="errorSTLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />

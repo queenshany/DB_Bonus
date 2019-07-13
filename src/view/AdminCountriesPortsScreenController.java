@@ -109,7 +109,7 @@ public class AdminCountriesPortsScreenController {
 		// setting country list
 		setCountryList();
 
-		// setting port column
+		// setting port table
 		countryColumn.setCellValueFactory(new PropertyValueFactory<>("countryName")); // According to variable name
 		portColumn.setCellValueFactory(new PropertyValueFactory<>("portName")); // Same here
 		setPortTable();

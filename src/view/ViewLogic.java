@@ -32,6 +32,7 @@ public class ViewLogic {
 	protected static ControllerLogic controller = ControllerLogic.getInstance();
 
 	protected static AdminCountriesPortsScreenController adminCountriesPortsScreenController;
+	protected static AdminCruisesScreenController adminCruisesScreenController;
 	
 	// ------------------------------ Methods ------------------------------
 	/**
@@ -42,7 +43,9 @@ public class ViewLogic {
 		
 		//TODO
 		//newAdminCruisesSTWindow();
-		newAdminPortCountryWindow();
+		//newAdminPortCountryWindow();
+		newAdminCruisesSTWindow();
+		newCruiseManagementWindow();
 		//newAdminShipsRoomsWindow();
 		//newAdminCustomersWindow();
 		//newCustomerMainWindow();
@@ -235,6 +238,36 @@ public class ViewLogic {
 					false,
 					"Cruises & Destinations Management",
 					false);
+		}
+		
+		// ================================== Add & Update Cruise ==================================
+		/**
+		 * Open Cruise Management Window
+		 */
+		protected static void newCruiseManagementWindow() {
+			Stage stage = new Stage();
+
+			newWindow(ViewLogic.class.getResource("CruiseManagement.fxml"),
+					stage,
+					null, null,	null, null,	null, null,
+					false,
+					"Cruise Management",
+					true);
+		}
+		
+		// ================================== Add & Update Sail To ==================================
+		/**
+		 * Open Sail To Management Window
+		 */
+		protected static void newSailToManagementWindow() {
+			Stage stage = new Stage();
+
+			newWindow(ViewLogic.class.getResource("SailToManagement.fxml"),
+					stage,
+					null, null,	null, null,	null, null,
+					false,
+					"Sail To Management",
+					true);
 		}
 		
 		// ================================== Admin Ships & Rooms ==================================

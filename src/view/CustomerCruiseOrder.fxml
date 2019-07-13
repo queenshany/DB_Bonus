@@ -159,9 +159,9 @@
                   </Label>
                   <TableView fx:id="ordersTable" maxHeight="200.0" maxWidth="720.0" minHeight="200.0" minWidth="720.0" prefHeight="200.0" prefWidth="720.0">
                      <columns>
-                        <TableColumn fx:id="cruiseColumn" maxWidth="240.0" minWidth="240.0" prefWidth="240.0" text="Cruise" />
-                        <TableColumn fx:id="shipColumn" maxWidth="240.0" minWidth="240.0" prefWidth="240.0" text="Ship" />
-                        <TableColumn fx:id="roomNumColumn" maxWidth="240.0" minWidth="240.0" prefWidth="240.0" text="Room Number" />
+                        <TableColumn fx:id="cruiseColumn" maxWidth="239.0" minWidth="239.0" prefWidth="239.0" text="Cruise" />
+                        <TableColumn fx:id="shipColumn" maxWidth="239.0" minWidth="239.0" prefWidth="239.0" text="Ship" />
+                        <TableColumn fx:id="roomNumColumn" maxWidth="239.0" minWidth="239.0" prefWidth="239.0" text="Room Number" />
                      </columns>
                   </TableView>
                   <Label fx:id="errorDelOrderLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
