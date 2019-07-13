@@ -7,14 +7,14 @@ package model;
  */
 public class Room {
 	// ------------------------------- Class Members ------------------------------
-	private CruiseShip cruiseShipID;
+	private String cruiseShipID;
 	private int roomNumber;
 	private int bedsAmount;
 	private String roomType;
 	private int price;
 
 	// -------------------------------- Constructors ------------------------------
-	public Room(CruiseShip cruiseShipID, int roomNumber, int bedsAmount, String roomType, int price) {
+	public Room(String cruiseShipID, int roomNumber, int bedsAmount, String roomType, int price) {
 		this.cruiseShipID = cruiseShipID;
 		this.roomNumber = roomNumber;
 		this.bedsAmount = bedsAmount;
@@ -22,13 +22,13 @@ public class Room {
 		this.price = price;
 	}
 
-	public Room(CruiseShip cruiseShipID, int roomNumber) {
+	public Room(String cruiseShipID, int roomNumber) {
 		this.cruiseShipID = cruiseShipID;
 		this.roomNumber = roomNumber;
 	}
 
 	// ----------------------------- Getters & Setters ----------------------------
-	public CruiseShip getCruiseShipID() {
+	public String getCruiseShipID() {
 		return cruiseShipID;
 	}
 
@@ -48,7 +48,7 @@ public class Room {
 		return price;
 	}
 
-	public void setCruiseShipID(CruiseShip cruiseShipID) {
+	public void setCruiseShipID(String cruiseShipID) {
 		this.cruiseShipID = cruiseShipID;
 	}
 

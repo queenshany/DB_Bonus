@@ -7,17 +7,17 @@ package model;
  */
 public class Port {
 	// ------------------------------- Class Members ------------------------------
-	private Country countryName;
+	private String countryName;
 	private String portName;
 
 	// -------------------------------- Constructors ------------------------------
-	public Port(Country countryName, String portName) {
+	public Port(String countryName, String portName) {
 		this.countryName = countryName;
 		this.portName = portName;
 	}
 
 	// ----------------------------- Getters & Setters ----------------------------
-	public Country getCountryName() {
+	public String getCountryName() {
 		return countryName;
 	}
 
@@ -25,7 +25,7 @@ public class Port {
 		return portName;
 	}
 
-	public void setCountryName(Country countryName) {
+	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
 

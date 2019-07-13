@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 /**
  * Class CruiseSailing ~ represent a single CruiseSailing
  * 
@@ -10,12 +10,12 @@ import java.util.Date;
 public class CruiseSailing {
 	// ------------------------------- Class Members ------------------------------
 	private String cruiseID;
-	private CruiseShip cruiseShipID;
+	private String cruiseShipID;
 	private Date leavingTime;
 	private Date returnTime;
 
 	// -------------------------------- Constructors ------------------------------
-	public CruiseSailing(String cruiseID, CruiseShip cruiseShipID, Date leavingTime, Date returnTime) {
+	public CruiseSailing(String cruiseID, String cruiseShipID, Date leavingTime, Date returnTime) {
 		this.cruiseID = cruiseID;
 		this.cruiseShipID = cruiseShipID;
 		this.leavingTime = leavingTime;
@@ -31,7 +31,7 @@ public class CruiseSailing {
 		return cruiseID;
 	}
 
-	public CruiseShip getCruiseShipID() {
+	public String getCruiseShipID() {
 		return cruiseShipID;
 	}
 
@@ -47,7 +47,7 @@ public class CruiseSailing {
 		this.cruiseID = cruiseID;
 	}
 
-	public void setCruiseShipID(CruiseShip cruiseShipID) {
+	public void setCruiseShipID(String cruiseShipID) {
 		this.cruiseShipID = cruiseShipID;
 	}
 

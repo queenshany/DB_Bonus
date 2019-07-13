@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 /**
  * Class Person ~ represent a single Person
  * 
