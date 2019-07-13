@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 /**
  * Class CruiseSailing ~ represent a single CruiseSailing
  * 
@@ -11,11 +11,11 @@ public class CruiseSailing {
 	// ------------------------------- Class Members ------------------------------
 	private String cruiseID;
 	private String cruiseShipID;
-	private Date leavingTime;
-	private Date returnTime;
+	private Timestamp leavingTime;
+	private Timestamp returnTime;
 
 	// -------------------------------- Constructors ------------------------------
-	public CruiseSailing(String cruiseID, String cruiseShipID, Date leavingTime, Date returnTime) {
+	public CruiseSailing(String cruiseID, String cruiseShipID, Timestamp leavingTime, Timestamp returnTime) {
 		this.cruiseID = cruiseID;
 		this.cruiseShipID = cruiseShipID;
 		this.leavingTime = leavingTime;
@@ -35,11 +35,11 @@ public class CruiseSailing {
 		return cruiseShipID;
 	}
 
-	public Date getLeavingTime() {
+	public Timestamp getLeavingTime() {
 		return leavingTime;
 	}
 
-	public Date getReturnTime() {
+	public Timestamp getReturnTime() {
 		return returnTime;
 	}
 
@@ -51,11 +51,11 @@ public class CruiseSailing {
 		this.cruiseShipID = cruiseShipID;
 	}
 
-	public void setLeavingTime(Date leavingTime) {
+	public void setLeavingTime(Timestamp leavingTime) {
 		this.leavingTime = leavingTime;
 	}
 
-	public void setReturnTime(Date returnTime) {
+	public void setReturnTime(Timestamp returnTime) {
 		this.returnTime = returnTime;
 	}
 

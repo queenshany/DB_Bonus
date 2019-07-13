@@ -40,31 +40,47 @@ public class ControllerLogic {
         s = conn.createStatement();
     }
 
-    public void insertPerson(Person p) {
+    public boolean insertPerson(Person p) {
         PreparedStatement ps;
+        ArrayList<Person> customers = getAllCustomers();
+        if (customers.contains(p)){
+            return false;
+        }
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.insertPerson);
+
             insertUpdatePerson(p, ps, i);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
-    public void insertCountry(Country c) {
+    public boolean insertCountry(Country c) {
         PreparedStatement ps;
+        ArrayList<Country> countries = getAllCountries();
+        if (countries.contains(c)){
+            return false;
+        }
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.insertCountry);
             ps.setString(i++, c.getCountryName());
+
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
-    public void insertCruise(CruiseSailing cs) {
+    public boolean insertCruise(CruiseSailing cs) {
         PreparedStatement ps;
+        ArrayList<CruiseSailing> cruiseSailings = getAllCruise();
+        if (cruiseSailings.contains(cs)){
+            return false;
+        }
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.insertCruise);
@@ -72,10 +88,15 @@ public class ControllerLogic {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
-    public void insertCruiseOrder(CruiseOrder co) {
+    public boolean insertCruiseOrder(CruiseOrder co) {
         PreparedStatement ps;
+        ArrayList<CruiseOrder> cruiseOrders= getAllCruiseOrder();
+        if (cruiseOrders.contains(co)){
+            return false;
+        }
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.insertCruiseOrder);
@@ -87,10 +108,15 @@ public class ControllerLogic {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
-    public void insertPort(Port p) {
+    public boolean insertPort(Port p) {
         PreparedStatement ps;
+        ArrayList<Port> ports = getAllPorts();
+        if (ports.contains(p)){
+            return false;
+        }
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.insertPort);
@@ -100,10 +126,15 @@ public class ControllerLogic {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
-    public void insertRoom(Room r) {
+    public boolean insertRoom(Room r) {
         PreparedStatement ps;
+        ArrayList<Room> rooms = getAllRooms(r.getCruiseShipID());
+        if (rooms.contains(r)){
+            return false;
+        }
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.insertRoom);
@@ -111,10 +142,15 @@ public class ControllerLogic {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
-    public void insertSailTo(SailTo st) {
+    public boolean insertSailTo(SailTo st) {
         PreparedStatement ps;
+        ArrayList<SailTo> sailTos = getAllSailTo(st.getSailingID());
+        if (sailTos.contains(st)){
+            return false;
+        }
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.insertSailTo);
@@ -122,6 +158,7 @@ public class ControllerLogic {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return true;
     }
 
     public void insertShip(CruiseShip csh) {
@@ -261,8 +298,8 @@ public class ControllerLogic {
     private void insertUpdateCruise(CruiseSailing cs, PreparedStatement ps, int i) throws SQLException {
         ps.setInt(i++, Integer.parseInt(cs.getCruiseID()));
         ps.setInt(i++, Integer.parseInt(cs.getCruiseShipID()));
-        ps.setDate(i++, cs.getLeavingTime());
-        ps.setDate(i++, cs.getReturnTime());
+        ps.setTimestamp(i++, cs.getLeavingTime());
+        ps.setTimestamp(i++, cs.getReturnTime());
         ps.execute();
     }
 
@@ -375,7 +412,7 @@ public class ControllerLogic {
 
             while (rs.next()) {
                 int i = 1;
-                toReturn.add(new CruiseSailing(Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), rs.getDate(i++), rs.getDate(i++)));
+                toReturn.add(new CruiseSailing(Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), rs.getTimestamp(i++), rs.getTimestamp(i++)));
             }
 
         } catch (SQLException e) {
@@ -468,6 +505,47 @@ public class ControllerLogic {
             ResultSet rs;
             PreparedStatement ps;
             ps = conn.prepareStatement(Consts.getAllCruiseOrders);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.add(new CruiseOrder(Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), rs.getString(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    public ArrayList<CruiseOrder> getAllCruiseOrderByCustomerID(CruiseOrder co){
+        ArrayList<CruiseOrder> toReturn = new ArrayList<>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getAllCruiseOrdersByCustomerID);
+            ps.setString(1, co.getPersonID());
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.add(new CruiseOrder(Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), rs.getString(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    public ArrayList<CruiseOrder> getFutureCruiseOrderByCustomerID(CruiseOrder co, Date d){
+        ArrayList<CruiseOrder> toReturn = new ArrayList<>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getAllFutureCruiseOrderByCustomerID);
+            ps.setString(1, co.getPersonID());
+            ps.setDate(2, d);
             rs = ps.executeQuery();
 
             while (rs.next()) {
