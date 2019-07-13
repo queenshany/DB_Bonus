@@ -26,7 +26,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/control/ControllerLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="561">
               <caret line="313" column="12" selection-start-line="313" selection-start-column="12" selection-end-line="313" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -78,7 +78,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
@@ -193,15 +193,15 @@
       <workItem from="1562655906685" duration="553000" />
       <workItem from="1562656720391" duration="3193000" />
       <workItem from="1562667842452" duration="15241000" />
-      <workItem from="1562920661712" duration="3879000" />
+      <workItem from="1562920661712" duration="4299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31714000" />
+    <option name="totallyTimeSpent" value="32134000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -447,7 +447,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/control/ControllerLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
+        <state relative-caret-position="561">
           <caret line="313" column="12" selection-start-line="313" selection-start-column="12" selection-end-line="313" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
