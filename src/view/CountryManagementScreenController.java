@@ -22,44 +22,53 @@ public class CountryManagementScreenController {
 
 	// ============================== Variables =============================
 
-	  @FXML
-	    private AnchorPane mainPane;
+	@FXML
+	private AnchorPane mainPane;
 
-	    @FXML
-	    private JFXTextField countryTextField;
+	@FXML
+	private JFXTextField countryTextField;
 
-	    @FXML
-	    private Label errorLabel;
+	@FXML
+	private Label errorLabel;
 
-	    @FXML
-	    private JFXButton saveCountryBut;
-	
-	    protected boolean update;
-	    
+	@FXML
+	private JFXButton saveCountryBut;
+
+	protected Country country;
+
 	// =============================== Methods ==============================
 
 	public void initialize() {
 		mainPane.setStyle("-fx-background-image: url(\"/rsc/country-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
-		errorLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , black , 5 , 1.5 , 0 , 0 )");
-//		Label l = new Label("Login");
-//		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
-//		loginBut.setGraphic(l);
+		errorLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
 	}
 
 	protected void closeWindow() {
 		((Stage) mainPane.getScene().getWindow()).close();
 	}
-	
+
 	// ========================== Action Listeners ==========================
-	
-	//TODO
+
 	@FXML
 	private void saveCountry() {
-		errorLabel.setText("hello");
-		
+		String country = countryTextField.getText();
+		if (country != null || (country != null && !country.isEmpty())) {
+			if (Validation.validName(country)) {
+				try {
+					//TODO CHECK IF EXISTS
+					ViewLogic.controller.insertCountry(new Country(country));
+					ViewLogic.adminCountriesPortsScreenController.setCountryList();
+					errorLabel.setText("Country added successfully. Add another?");
+				}catch(Exception e) {
+					errorLabel.setText("Error occured.");
+				}
+			} else
+				errorLabel.setText("Invalid country name.");
+		} else
+			errorLabel.setText("Please type a country name.");
 	}
-	
+
 	@FXML
 	private void onKeyReleased(KeyEvent e) {
 		if (e.getCode() == KeyCode.ENTER)

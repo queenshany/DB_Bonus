@@ -37,30 +37,49 @@ public class PortManagementScreenController {
 
 	@FXML
 	private JFXButton savePortBut;
-	
-	protected boolean update;
+
+	protected Port port;
 
 	// =============================== Methods ==============================
 
 	public void initialize() {
 		mainPane.setStyle("-fx-background-image: url(\"/rsc/port-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
-		errorLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , black , 5 , 1.5 , 0 , 0 )");
-		//		Label l = new Label("Login");
-		//		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
-		//		loginBut.setGraphic(l);
+		errorLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
+		setCountryCombo();
 	}
 
 	protected void closeWindow() {
 		((Stage) mainPane.getScene().getWindow()).close();
 	}
 
+	private void setCountryCombo() {
+		countryCombo.getItems().setAll(ViewLogic.controller.getAllCountries());
+	}
+
 	// ========================== Action Listeners ==========================
 
-	//TODO
 	@FXML
 	private void savePort() {
-		errorLabel.setText("hello");
+		Country c = countryCombo.getValue();
+		if (c != null) {
+			String port = portTextField.getText();
+			if (port != null || (port != null && !port.isEmpty())) {
+				if (Validation.validName(port)) {
+					try {
+						//TODO CHECK IF PORT EXISTS
+						ViewLogic.controller.insertPort(new Port(c.getCountryName(), port));
+						ViewLogic.adminCountriesPortsScreenController.setPortTable();
+						errorLabel.setText("Port added successfully. Add another?");
+					}catch(Exception e) {
+						errorLabel.setText("Error occured.");
+					}
+				} else
+					errorLabel.setText("Invalid port name.");
+			} else
+				errorLabel.setText("Please type a port name.");
+		} else
+			errorLabel.setText("Please select a country.");
 
 	}
 

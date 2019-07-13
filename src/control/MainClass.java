@@ -15,6 +15,12 @@ import java.sql.Date;
  */
 public class MainClass extends Application{
 	public static void main(String[] args) {
+		try {
+			ControllerLogic.getInstance().initConn();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		launch(args);
 
 	}
