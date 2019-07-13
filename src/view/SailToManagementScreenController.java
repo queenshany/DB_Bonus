@@ -1,5 +1,6 @@
 package view;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.jfoenix.controls.JFXButton;
@@ -26,7 +27,8 @@ import model.Country;
 import model.CruiseSailing;
 import model.CruiseShip;
 import model.Port;
-public class CruiseManagementScreenController {
+import model.SailTo;
+public class SailToManagementScreenController {
 
 	// ============================== Variables =============================
 
@@ -40,19 +42,13 @@ public class CruiseManagementScreenController {
 	private JFXTextField IDTextField;
 
 	@FXML
-	private JFXComboBox<CruiseShip> shipCombo;
+	private JFXComboBox<Port> portCombo;
 
 	@FXML
 	private JFXDatePicker leavingDatePicker;
 
 	@FXML
-	private JFXTimePicker leavingTimePicker;
-
-	@FXML
-	private JFXDatePicker returnDatePicker;
-
-	@FXML
-	private JFXTimePicker returnTimePicker;
+	private JFXDatePicker arrivalDatePicker;
 
 	@FXML
 	private Label errorLabel;
@@ -60,34 +56,31 @@ public class CruiseManagementScreenController {
 	@FXML
 	private JFXButton saveCruiseBut;
 
-	private CruiseSailing cruise;
+	private SailTo sailto;
 
 	// =============================== Methods ==============================
 
 	public void initialize() {
-		cruise = ViewLogic.adminCruisesScreenController.cruise;
-		pane.setStyle("-fx-background-image: url(\"/rsc/cruise-bg.jpg\");"
+		sailto = ViewLogic.adminCruisesScreenController.sailto;
+		pane.setStyle("-fx-background-image: url(\"/rsc/sailto-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 		errorLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
 
-		// set ShipCombo
-		shipCombo.getItems().setAll(ViewLogic.controller.getAllShips());
+		// set portCombo
+		portCombo.getItems().setAll(ViewLogic.controller.getAllPorts());
 
 		// for update
-		if (cruise != null) {
-			IDTextField.setText(cruise.getCruiseID());
-			shipCombo.getSelectionModel().select(new CruiseShip(cruise.getCruiseShipID()));
-			LocalDateTime leavingdt = cruise.getLeavingTime().toLocalDateTime();
-			LocalDateTime returndt = cruise.getReturnTime().toLocalDateTime();
-			leavingDatePicker.setValue(leavingdt.toLocalDate());
-			leavingTimePicker.setValue(leavingdt.toLocalTime());
-			returnDatePicker.setValue(returndt.toLocalDate());
-			returnTimePicker.setValue(returndt.toLocalTime());
-
+		if (sailto.getSailingID() != null)
+			IDTextField.setText(sailto.getSailingID());
+		else
+			IDTextField.setText(""); //TODO GENERATE NEW ID
+		if (sailto.getCountryName() != null && sailto.getCountryName() != null && sailto.getLeavingTime() != null && sailto.getArrivalTime() != null) {
+			portCombo.getSelectionModel().select(new Port(sailto.getCountryName(), sailto.getPortName()));
+			LocalDate leavingd = sailto.getLeavingTime().toLocalDate();
+			LocalDate arrivald = sailto.getArrivalTime().toLocalDate();
+			leavingDatePicker.setValue(leavingd);
+			arrivalDatePicker.setValue(arrivald);
 		}
-		//		else TODO ADD AUTOMATIC ID
-		//			IDTextField.setText(ViewLogic.controller.);
-
 	}
 
 	protected void closeWindow() {

@@ -29,6 +29,10 @@ public class SailTo {
 		this.portName = portName;
 		this.sailingID = sailingID;
 	}
+	
+	public SailTo(String sailingID) {
+		this.sailingID = sailingID;
+	}
 
 	// ----------------------------- Getters & Setters ----------------------------
 	public String getCountryName() {

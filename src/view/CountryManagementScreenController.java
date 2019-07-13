@@ -54,10 +54,12 @@ public class CountryManagementScreenController {
 		if (country != null || (country != null && !country.isEmpty())) {
 			if (Validation.validName(country)) {
 				try {
-					//TODO CHECK IF EXISTS
-					ViewLogic.controller.insertCountry(new Country(country));
-					ViewLogic.adminCountriesPortsScreenController.setCountryList();
-					errorLabel.setText("Country added successfully. Add another?");
+					if (ViewLogic.controller.insertCountry(new Country(country))) {
+						ViewLogic.adminCountriesPortsScreenController.setCountryList();
+						errorLabel.setText("Country added successfully. Add another?");
+					}
+					else 
+						errorLabel.setText("Country already exists.");
 				}catch(Exception e) {
 					errorLabel.setText("Error occured.");
 				}
