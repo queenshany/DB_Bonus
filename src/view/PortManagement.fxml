@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="250.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PortManagementScreenController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="315.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PortManagementScreenController">
 	<children>
 		<VBox alignment="CENTER" maxWidth="399.0" minWidth="399.0" prefWidth="400.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<children>
@@ -24,8 +24,8 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
 				</Label>
-            <JFXComboBox fx:id="countryCombo" focusColor="WHITE" labelFloat="true" prefHeight="25.0" prefWidth="105.0" promptText="Choose Country" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
-            <JFXTextField fx:id="portTextField" alignment="CENTER" focusColor="WHITE" labelFloat="true" maxWidth="105.0" onKeyReleased="#onKeyReleased" prefWidth="105.0" promptText="Port Name" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE">
+            <JFXComboBox fx:id="countryCombo" focusColor="WHITE" labelFloat="true" maxWidth="157.5" minWidth="157.5" prefWidth="157.5" promptText="Choose Country" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
+            <JFXTextField fx:id="portTextField" alignment="CENTER" focusColor="WHITE" labelFloat="true" maxWidth="157.5" minWidth="157.5" onKeyReleased="#onKeyReleased" prefWidth="157.5" promptText="Port Name" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

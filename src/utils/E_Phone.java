@@ -1,7 +1,7 @@
 package utils;
 /**
  * This enum class represents a start of a phone in the system
- * @author Shany Klein & Ofri Kokush
+ * @author Shany Klein & Guy Levy
  *
  */
 public enum E_Phone {
@@ -10,11 +10,8 @@ public enum E_Phone {
 	c053("053"),
 	c054("054"),
 	c055("055"),
-	p02("02"),
-	p03("03"),
-	p04("04"),
-	p08("08"),
-	p09("09");
+	c057("057");
+	
 	private String text;
 	
 	E_Phone(String text) {

@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import java.net.URL;
 
+import control.ControllerLogic;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -28,18 +29,23 @@ public class ViewLogic {
 	protected static final Rectangle2D VISIBLE_SCREEN = Screen.getPrimary().getVisualBounds();
 
 	protected static Person currentUser;
-	//	protected static SysData sysData = control.SysData.getInstance();
+	protected static ControllerLogic controller = ControllerLogic.getInstance();
 
+	protected static AdminCountriesPortsScreenController adminCountriesPortsScreenController;
+	protected static AdminCruisesScreenController adminCruisesScreenController;
+	
 	// ------------------------------ Methods ------------------------------
 	/**
 	 * this method starts the windows in the system
 	 */
 	public static void initUI() {
-		newLoginWindow();
-		//newCountryManagementWindow();
+		//newLoginWindow();
+		
 		//TODO
 		//newAdminCruisesSTWindow();
 		//newAdminPortCountryWindow();
+		newAdminCruisesSTWindow();
+		newCruiseManagementWindow();
 		//newAdminShipsRoomsWindow();
 		//newAdminCustomersWindow();
 		//newCustomerMainWindow();
@@ -48,6 +54,7 @@ public class ViewLogic {
 		//newCustomerCruiseOrderWindow();
 		//newCountryManagementWindow();
 		//newPortManagementWindow();
+		
 	}
 
 	/**
@@ -188,7 +195,7 @@ public class ViewLogic {
 				false);
 	}
 	
-	// ================================== Add & Update Country ==================================
+	// ================================== Add Country ==================================
 	/**
 	 * Open Country Management Window
 	 */
@@ -200,10 +207,10 @@ public class ViewLogic {
 				null, null,	null, null,	null, null,
 				false,
 				"Country Management",
-				false);
+				true);
 	}
 	
-	// ================================== Add & Update Port ==================================
+	// ================================== Add Port ==================================
 		/**
 		 * Open Port Management Window
 		 */
@@ -215,7 +222,7 @@ public class ViewLogic {
 					null, null,	null, null,	null, null,
 					false,
 					"Port Management",
-					false);
+					true);
 		}
 		
 		// ================================== Admin Cruises & SailTos ==================================
@@ -231,6 +238,36 @@ public class ViewLogic {
 					false,
 					"Cruises & Destinations Management",
 					false);
+		}
+		
+		// ================================== Add & Update Cruise ==================================
+		/**
+		 * Open Cruise Management Window
+		 */
+		protected static void newCruiseManagementWindow() {
+			Stage stage = new Stage();
+
+			newWindow(ViewLogic.class.getResource("CruiseManagement.fxml"),
+					stage,
+					null, null,	null, null,	null, null,
+					false,
+					"Cruise Management",
+					true);
+		}
+		
+		// ================================== Add & Update Sail To ==================================
+		/**
+		 * Open Sail To Management Window
+		 */
+		protected static void newSailToManagementWindow() {
+			Stage stage = new Stage();
+
+			newWindow(ViewLogic.class.getResource("SailToManagement.fxml"),
+					stage,
+					null, null,	null, null,	null, null,
+					false,
+					"Sail To Management",
+					true);
 		}
 		
 		// ================================== Admin Ships & Rooms ==================================

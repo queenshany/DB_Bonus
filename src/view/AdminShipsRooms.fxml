@@ -150,11 +150,11 @@
                         </Label>
                         <TableView fx:id="shipsTable" maxHeight="200.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
                           <columns>
-                            <TableColumn fx:id="shipIDColumnS" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Ship ID" />
-                            <TableColumn fx:id="nameColumnS" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Name" />
-                              <TableColumn fx:id="manuDateColumnS" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Manufacturing Date" />
-                              <TableColumn fx:id="maxCapacityColumnS" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Max Capacity" />
-                              <TableColumn fx:id="maxPeopleColumnS" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Max Num of People" />
+                            <TableColumn fx:id="shipIDColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Ship ID" />
+                            <TableColumn fx:id="nameColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Name" />
+                              <TableColumn fx:id="manuDateColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Manufacturing Date" />
+                              <TableColumn fx:id="maxCapacityColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Max Capacity" />
+                              <TableColumn fx:id="maxPeopleColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Max Num of People" />
                           </columns>
                         </TableView>
                         <Label fx:id="errorShipLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
@@ -217,11 +217,11 @@
                         </Label>
                         <TableView fx:id="roomsTable" maxHeight="220050.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
                            <columns>
-                              <TableColumn fx:id="shipColumnR" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Ship" />
-                              <TableColumn fx:id="roomNumColumnR" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Room Number" />
-                              <TableColumn fx:id="bedsAmountColumnR" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Beds Amount" />
-                              <TableColumn fx:id="roomTypeColumnR" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Room Type" />
-                              <TableColumn fx:id="priceColumnR" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" text="Price Per Night" />
+                              <TableColumn fx:id="shipColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Ship ID" />
+                              <TableColumn fx:id="roomNumColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Room Number" />
+                              <TableColumn fx:id="bedsAmountColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Beds Amount" />
+                              <TableColumn fx:id="roomTypeColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Room Type" />
+                              <TableColumn fx:id="priceColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Price Per Night" />
                            </columns>
                         </TableView>
                         <Label fx:id="errorRoomLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
