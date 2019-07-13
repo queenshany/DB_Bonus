@@ -36,6 +36,7 @@ public class ViewLogic {
 	 */
 	public static void initUI() {
 		newLoginWindow();
+		//newCountryManagementWindow();
 		//TODO
 		//newAdminCruisesSTWindow();
 		//newAdminPortCountryWindow();
@@ -45,6 +46,8 @@ public class ViewLogic {
 		//newCustomerDashWindow();
 		//newCustomerViewOrdersWindow();
 		//newCustomerCruiseOrderWindow();
+		//newCountryManagementWindow();
+		//newPortManagementWindow();
 	}
 
 	/**
