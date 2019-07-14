@@ -127,13 +127,13 @@ public class AdminShipsRoomsScreenController {
 	protected CruiseShip ship;
 
 	protected Room room;
-	
+
 	// =============================== Methods ==============================
 
 	public void initialize() {
-		
+
 		ViewLogic.adminShipsRoomsScreenController = this;
-		
+
 		pane.setStyle("-fx-background-image: url(\"/rsc/ship-room-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 
@@ -154,7 +154,6 @@ public class AdminShipsRoomsScreenController {
 		maxCapacityColumnS.setCellValueFactory(new PropertyValueFactory<>("maxCapacity")); // Same here
 		maxPeopleColumnS.setCellValueFactory(new PropertyValueFactory<>("maxNumberOfPeople")); // Same here
 		setShipTable();
-		
 	}
 
 	protected void closeWindow() {
@@ -181,7 +180,7 @@ public class AdminShipsRoomsScreenController {
 
 		roomsTable.refresh();
 	}
-	
+
 	@FXML
 	private void addShip() {
 		ship = null;
