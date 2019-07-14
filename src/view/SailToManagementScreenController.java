@@ -55,7 +55,7 @@ public class SailToManagementScreenController {
 	private Label errorLabel;
 
 	@FXML
-	private JFXButton saveCruiseBut;
+	private JFXButton saveSailToBut;
 
 	private SailTo sailto;
 
@@ -95,7 +95,7 @@ public class SailToManagementScreenController {
 	// ========================== Action Listeners ==========================
 
 	@FXML
-	private void saveCruise() {
+	private void saveSailTo() {
 		Port p = portCombo.getValue();
 		if (p != null) {
 			if (arrivalDatePicker.getValue() != null) {
@@ -140,6 +140,6 @@ public class SailToManagementScreenController {
 	@FXML
 	private void onKeyReleased(KeyEvent e) {
 		if (e.getCode() == KeyCode.ENTER)
-			saveCruise();
+			saveSailTo();
 	}
 }

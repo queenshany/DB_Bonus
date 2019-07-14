@@ -52,7 +52,7 @@
                         <Label fx:id="errorLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
                         <HBox alignment="CENTER" spacing="20.0">
                            <children>
-                              <JFXButton fx:id="saveCruiseBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#saveCruise" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                              <JFXButton fx:id="saveSailToBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#saveSailTo" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
