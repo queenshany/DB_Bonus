@@ -21,6 +21,9 @@ public final class Consts {
     public static final String getAllCruiseOrders = "exec GetAllCruiseOrder";
     public static final String getAllCruiseOrdersByCustomerID = "exec GetCruiseOrderByCustomerID ?";
     public static final String getAllFutureCruiseOrderByCustomerID = "exec GetFutureCruiseOrderByCustomerID ?";
+    public static final String getOneAQuery = "exec OneAQuery ?,?";
+    public static final String getFiveQuery = "exec FiveQuery ?,?";
+    public static final String getSixQuery = "exec SixQuery";
     public static final String insertPerson = "exec InsertPerson ?,?,?,?,?,?,?";
     public static final String insertCountry = "exec InsertCountry ?";
     public static final String insertCruise = "exec InsertCruise ?,?,?,?";

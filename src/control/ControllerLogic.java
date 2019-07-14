@@ -559,6 +559,67 @@ public class ControllerLogic {
         return toReturn;
     }
 
+    public ArrayList<OneAQuery> getOneAQuery(CruiseSailing cs, int year){
+        ArrayList<OneAQuery> toReturn = new ArrayList<>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getOneAQuery);
+            ps.setString(1, cs.getCruiseID());
+            ps.setInt(2, year);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.add(new OneAQuery(rs.getInt(i++), rs.getInt(i++), rs.getString(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    public ArrayList<FiveQuery> getFiveQuery(Date startDate, Date endDate){
+        ArrayList<FiveQuery> toReturn = new ArrayList<>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getFiveQuery);
+            ps.setDate(1, startDate);
+            ps.setDate(2, endDate);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.add(new FiveQuery(rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getInt(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    public ArrayList<SixQuery> getSixQuery(){
+        ArrayList<SixQuery> toReturn = new ArrayList<>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getSixQuery);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.add(new SixQuery(rs.getInt(i++), rs.getInt(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
     public boolean doesPersonExist(Person p){
         ArrayList<Person> persons = getAllCustomers();
         if (persons.contains(p)){
