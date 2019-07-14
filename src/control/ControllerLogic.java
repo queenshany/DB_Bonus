@@ -558,4 +558,14 @@ public class ControllerLogic {
         }
         return toReturn;
     }
+
+    public boolean doesPersonExist(Person p){
+        ArrayList<Person> persons = getAllCustomers();
+        if (persons.contains(p)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
