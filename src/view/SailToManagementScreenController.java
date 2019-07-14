@@ -1,5 +1,6 @@
 package view;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -58,6 +59,8 @@ public class SailToManagementScreenController {
 
 	private SailTo sailto;
 
+	private boolean update;
+
 	// =============================== Methods ==============================
 
 	public void initialize() {
@@ -72,14 +75,16 @@ public class SailToManagementScreenController {
 		// for update
 		if (sailto.getSailingID() != null)
 			IDTextField.setText(sailto.getSailingID());
-		else
-			IDTextField.setText(""); //TODO GENERATE NEW ID
+		//		else
+		//			IDTextField.setText(""); 
 		if (sailto.getCountryName() != null && sailto.getCountryName() != null && sailto.getLeavingTime() != null && sailto.getArrivalTime() != null) {
 			portCombo.getSelectionModel().select(new Port(sailto.getCountryName(), sailto.getPortName()));
+			portCombo.setDisable(true);
 			LocalDate leavingd = sailto.getLeavingTime().toLocalDate();
 			LocalDate arrivald = sailto.getArrivalTime().toLocalDate();
 			leavingDatePicker.setValue(leavingd);
 			arrivalDatePicker.setValue(arrivald);
+			update = true;
 		}
 	}
 
@@ -91,27 +96,45 @@ public class SailToManagementScreenController {
 
 	@FXML
 	private void saveCruise() {
-		errorLabel.setText("hello");
-		//		CruiseShip s = shipCombo.getValue();
-		//		if (s != null) {
-		//			String port = portTextField.getText();
-		//			if (port != null || (port != null && !port.isEmpty())) {
-		//				if (Validation.validName(port)) {
-		//					try {
-		//						//TODO CHECK IF PORT EXISTS
-		//						ViewLogic.controller.insertPort(new Port(c.getCountryName(), port));
-		//						ViewLogic.adminCountriesPortsScreenController.setPortTable();
-		//						errorLabel.setText("Port added successfully. Add another?");
-		//					}catch(Exception e) {
-		//						errorLabel.setText("Error occured.");
-		//					}
-		//				} else
-		//					errorLabel.setText("Invalid port name.");
-		//			} else
-		//				errorLabel.setText("Please type a port name.");
-		//		} else
-		//			errorLabel.setText("Please select a country.");
-
+		Port p = portCombo.getValue();
+		if (p != null) {
+			if (arrivalDatePicker.getValue() != null) {
+				if (arrivalDatePicker.getValue().isAfter(LocalDate.now())) {
+					Date arr = Date.valueOf(arrivalDatePicker.getValue());
+					if (leavingDatePicker.getValue() != null) {
+						if (leavingDatePicker.getValue().isAfter(LocalDate.now())) {
+							if (leavingDatePicker.getValue().isAfter(arrivalDatePicker.getValue())) {
+								Date leave = Date.valueOf(leavingDatePicker.getValue());
+								try {
+									sailto.setSailingID(IDTextField.getText());
+									sailto.setPortName(p.getPortName());
+									sailto.setCountryName(p.getCountryName());
+									sailto.setArrivalTime(arr);
+									sailto.setLeavingTime(leave);
+									if (update) {
+										ViewLogic.controller.updateSailTo(sailto);
+										errorLabel.setText("Sail to destination updated successfully.");
+									}
+									else if (!update && ViewLogic.controller.insertSailTo(sailto))
+										errorLabel.setText("Sail to destination added successfully. Add another?");
+									else if (!update)
+										errorLabel.setText("Sail to destination already exists.");
+									ViewLogic.adminCruisesScreenController.setSTtable();
+								} catch(Exception e) {
+									errorLabel.setText("Error occured.");
+								}
+							} else
+								errorLabel.setText("Leaving date must be after arrival date.");
+						} else 
+							errorLabel.setText("Leaving date must be after today.");
+					} else
+						errorLabel.setText("Leaving date must be after today.");
+				} else
+					errorLabel.setText("Arrival date must be after today.");
+			} else
+				errorLabel.setText("Please select an arrival date.");
+		} else
+			errorLabel.setText("Please select a port.");
 	}
 
 	@FXML

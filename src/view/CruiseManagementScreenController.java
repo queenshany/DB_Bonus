@@ -105,7 +105,6 @@ public class CruiseManagementScreenController {
 		//			if (port != null || (port != null && !port.isEmpty())) {
 		//				if (Validation.validName(port)) {
 		//					try {
-		//						//TODO CHECK IF PORT EXISTS
 		//						ViewLogic.controller.insertPort(new Port(c.getCountryName(), port));
 		//						ViewLogic.adminCountriesPortsScreenController.setPortTable();
 		//						errorLabel.setText("Port added successfully. Add another?");

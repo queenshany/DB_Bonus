@@ -1,7 +1,7 @@
 package view;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -79,7 +79,7 @@ public class LoginScreenController {
 				//TODO
 				else if (username.equals("1") && pw.equals("1")) {
 					closeWindow();
-					ViewLogic.currentUser = new Person("111", "hello", "world", (java.sql.Date) new Date(), "000000000", "hello@world.com", "1");
+					ViewLogic.currentUser = new Person("111", "hello", "world", new Date(1,1,1), "000000000", "hello@world.com", "1");
 					ViewLogic.newCustomerMainWindow();
 				}
 				//				else if (false) { //TODO ALSO TO DO A CHECK THAT THE USER EXISTS

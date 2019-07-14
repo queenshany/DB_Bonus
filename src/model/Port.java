@@ -71,7 +71,7 @@ public class Port {
 	// ---------------------------------- toString --------------------------------
 	@Override
 	public String toString() {
-		return "Port [countryName=" + countryName + ", portName=" + portName + "]";
+		return portName + ", " +countryName;
 	}
 
 

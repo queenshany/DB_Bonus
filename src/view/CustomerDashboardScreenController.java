@@ -70,10 +70,10 @@ public class CustomerDashboardScreenController {
 		ViewLogic.newLoginWindow();
 	}
 
-	//TODO
 	@FXML
 	private void editDetailsOnAction() {
-		
+		closeWindow();
+		ViewLogic.newCustomerEditDetailsWindow();
 	}
 	
 	@FXML

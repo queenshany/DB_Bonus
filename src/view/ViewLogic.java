@@ -33,6 +33,7 @@ public class ViewLogic {
 
 	protected static AdminCountriesPortsScreenController adminCountriesPortsScreenController;
 	protected static AdminCruisesScreenController adminCruisesScreenController;
+	protected static AdminShipsRoomsScreenController adminShipsRoomsScreenController;
 	
 	// ------------------------------ Methods ------------------------------
 	/**
@@ -300,6 +301,22 @@ public class ViewLogic {
 					false);
 		}
 		
+		// ================================== Admin Cruise Orders ==================================
+		/**
+		 * Open Admin Cruise Order Window
+		 */
+		protected static void newAdminCruiseOrdersWindow() {
+			Stage stage = new Stage();
+
+			newWindow(ViewLogic.class.getResource("AdminCruiseOrders.fxml"),
+					stage,
+					null, null,	null, null,	null, null,
+					false,
+					"Cruise Order Management",
+					false);
+		}
+		
+		
 	// ================================== Customer Main ==================================
 	/**
 	 * Open Customer Main Window
@@ -357,6 +374,21 @@ public class ViewLogic {
 				null, null,	null, null,	null, null,
 				false,
 				"Cruise Order",
+				false);
+	}
+	
+	// ================================== Customer Edit Details ==================================
+	/**
+	 * Open Customer Edit Details Window
+	 */
+	protected static void newCustomerEditDetailsWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("CustomerEditDetails.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Edit Details",
 				false);
 	}
 }

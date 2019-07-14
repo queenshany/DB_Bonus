@@ -58,10 +58,10 @@ public class CustomerMainScreenController {
 			ViewLogic.newLoginWindow();
 		}
 
-		//TODO
 		@FXML
 		private void editDetailsOnAction() {
-			
+			closeWindow();
+			ViewLogic.newCustomerEditDetailsWindow();
 		}
 		
 		@FXML

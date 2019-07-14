@@ -161,6 +161,7 @@ public class AdminCruisesScreenController {
 		cruisesTable.refresh();
 	}
 
+	@FXML
 	protected void setSTtable() {
 		CruiseSailing cs = cruisesTable.getSelectionModel().getSelectedItem();
 		if (cs != null) {
@@ -188,6 +189,7 @@ public class AdminCruisesScreenController {
 		else {
 			ViewLogic.controller.removeCruise(cs);
 			setCruiseTable();
+			setSTtable();
 			errorCruiseLabel.setText("Cruise deleted successfully.");
 		}
 	}
@@ -271,10 +273,10 @@ public class AdminCruisesScreenController {
 		ViewLogic.newAdminCustomersWindow();
 	}
 
-	//TODO
 	@FXML
 	private void cruiseOrdersOnAction() {
-
+		closeWindow();
+		ViewLogic.newAdminCruiseOrdersWindow();
 	}
 
 	@FXML
