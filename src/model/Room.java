@@ -27,6 +27,10 @@ public class Room {
 		this.roomNumber = roomNumber;
 	}
 
+	public Room(String cruiseShipID) {
+		this.cruiseShipID = cruiseShipID;
+	}
+	
 	// ----------------------------- Getters & Setters ----------------------------
 	public String getCruiseShipID() {
 		return cruiseShipID;

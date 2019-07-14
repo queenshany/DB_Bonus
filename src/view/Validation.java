@@ -35,6 +35,20 @@ public class Validation {
 		}
 
 		/**
+		 * This method checks if an ID is valid
+		 * @param str
+		 * @return true if valid, false otherwise
+		 */
+		public static boolean validID(String ID) {
+
+			String regexStr = "^[0-9]*$";
+
+			if (ID.matches(regexStr) && ID.length() == Consts.NINE)
+				return true;
+			return false;
+		}
+		
+		/**
 		 * This method checks if an email address is valid
 		 * @param str
 		 * @return true if valid, false otherwise

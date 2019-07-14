@@ -33,19 +33,20 @@ public class ViewLogic {
 
 	protected static AdminCountriesPortsScreenController adminCountriesPortsScreenController;
 	protected static AdminCruisesScreenController adminCruisesScreenController;
-	
+	protected static AdminShipsRoomsScreenController adminShipsRoomsScreenController;
+
 	// ------------------------------ Methods ------------------------------
 	/**
 	 * this method starts the windows in the system
 	 */
 	public static void initUI() {
-		//newLoginWindow();
-		
+		newLoginWindow();
+		//createAccountWindow();
 		//TODO
 		//newAdminCruisesSTWindow();
 		//newAdminPortCountryWindow();
-		newAdminCruisesSTWindow();
-		newCruiseManagementWindow();
+		//newAdminCruisesSTWindow();
+		//newCruiseManagementWindow();
 		//newAdminShipsRoomsWindow();
 		//newAdminCustomersWindow();
 		//newCustomerMainWindow();
@@ -54,7 +55,7 @@ public class ViewLogic {
 		//newCustomerCruiseOrderWindow();
 		//newCountryManagementWindow();
 		//newPortManagementWindow();
-		
+
 	}
 
 	/**
@@ -149,7 +150,7 @@ public class ViewLogic {
 				"Create an Account",
 				false);
 	}
-	
+
 	// ================================== Admin Main ==================================
 	/**
 	 * Open Admin Main Window
@@ -164,7 +165,7 @@ public class ViewLogic {
 				"Admin",
 				false);
 	}
-	
+
 	// ================================== Admin Dashboard ==================================
 	/**
 	 * Open Admin Dashboard Window
@@ -194,7 +195,7 @@ public class ViewLogic {
 				"Ports & Countries Management",
 				false);
 	}
-	
+
 	// ================================== Add Country ==================================
 	/**
 	 * Open Country Management Window
@@ -209,97 +210,143 @@ public class ViewLogic {
 				"Country Management",
 				true);
 	}
-	
+
 	// ================================== Add Port ==================================
-		/**
-		 * Open Port Management Window
-		 */
-		protected static void newPortManagementWindow() {
-			Stage stage = new Stage();
+	/**
+	 * Open Port Management Window
+	 */
+	protected static void newPortManagementWindow() {
+		Stage stage = new Stage();
 
-			newWindow(ViewLogic.class.getResource("PortManagement.fxml"),
-					stage,
-					null, null,	null, null,	null, null,
-					false,
-					"Port Management",
-					true);
-		}
-		
-		// ================================== Admin Cruises & SailTos ==================================
-		/**
-		 * Open Admin Cruises & SailTos Window
-		 */
-		protected static void newAdminCruisesSTWindow() {
-			Stage stage = new Stage();
+		newWindow(ViewLogic.class.getResource("PortManagement.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Port Management",
+				true);
+	}
 
-			newWindow(ViewLogic.class.getResource("AdminCruises.fxml"),
-					stage,
-					null, null,	null, null,	null, null,
-					false,
-					"Cruises & Destinations Management",
-					false);
-		}
-		
-		// ================================== Add & Update Cruise ==================================
-		/**
-		 * Open Cruise Management Window
-		 */
-		protected static void newCruiseManagementWindow() {
-			Stage stage = new Stage();
+	// ================================== Admin Cruises & SailTos ==================================
+	/**
+	 * Open Admin Cruises & SailTos Window
+	 */
+	protected static void newAdminCruisesSTWindow() {
+		Stage stage = new Stage();
 
-			newWindow(ViewLogic.class.getResource("CruiseManagement.fxml"),
-					stage,
-					null, null,	null, null,	null, null,
-					false,
-					"Cruise Management",
-					true);
-		}
-		
-		// ================================== Add & Update Sail To ==================================
-		/**
-		 * Open Sail To Management Window
-		 */
-		protected static void newSailToManagementWindow() {
-			Stage stage = new Stage();
+		newWindow(ViewLogic.class.getResource("AdminCruises.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Cruises & Destinations Management",
+				false);
+	}
 
-			newWindow(ViewLogic.class.getResource("SailToManagement.fxml"),
-					stage,
-					null, null,	null, null,	null, null,
-					false,
-					"Sail To Management",
-					true);
-		}
-		
-		// ================================== Admin Ships & Rooms ==================================
-		/**
-		 * Open Admin Ships & Rooms Window
-		 */
-		protected static void newAdminShipsRoomsWindow() {
-			Stage stage = new Stage();
+	// ================================== Add & Update Cruise ==================================
+	/**
+	 * Open Cruise Management Window
+	 */
+	protected static void newCruiseManagementWindow() {
+		Stage stage = new Stage();
 
-			newWindow(ViewLogic.class.getResource("AdminShipsRooms.fxml"),
-					stage,
-					null, null,	null, null,	null, null,
-					false,
-					"Ships & Rooms Management",
-					false);
-		}
-		
-		// ================================== Admin Customers ==================================
-		/**
-		 * Open Admin Customers Window
-		 */
-		protected static void newAdminCustomersWindow() {
-			Stage stage = new Stage();
+		newWindow(ViewLogic.class.getResource("CruiseManagement.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Cruise Management",
+				true);
+	}
 
-			newWindow(ViewLogic.class.getResource("AdminCustomers.fxml"),
-					stage,
-					null, null,	null, null,	null, null,
-					false,
-					"Customers Management",
-					false);
-		}
-		
+	// ================================== Add & Update Sail To ==================================
+	/**
+	 * Open Sail To Management Window
+	 */
+	protected static void newSailToManagementWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("SailToManagement.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Sail To Management",
+				true);
+	}
+
+	// ================================== Admin Ships & Rooms ==================================
+	/**
+	 * Open Admin Ships & Rooms Window
+	 */
+	protected static void newAdminShipsRoomsWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("AdminShipsRooms.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Ships & Rooms Management",
+				false);
+	}
+
+	// ================================== Add & Update Ship ==================================
+	/**
+	 * Open Ship Management Window
+	 */
+	protected static void newShipManagementWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("ShipManagement.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Ship Management",
+				true);
+	}
+
+	// ================================== Add & Update Room ==================================
+	/**
+	 * Open Room Management Window
+	 */
+	protected static void newRoomManagementWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("RoomManagement.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Room Management",
+				true);
+	}
+
+	// ================================== Admin Customers ==================================
+	/**
+	 * Open Admin Customers Window
+	 */
+	protected static void newAdminCustomersWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("AdminCustomers.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Customers Management",
+				false);
+	}
+
+	// ================================== Admin Cruise Orders ==================================
+	/**
+	 * Open Admin Cruise Order Window
+	 */
+	protected static void newAdminCruiseOrdersWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("AdminCruiseOrders.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Cruise Order Management",
+				false);
+	}
+
+
 	// ================================== Customer Main ==================================
 	/**
 	 * Open Customer Main Window
@@ -314,7 +361,7 @@ public class ViewLogic {
 				"Customer",
 				false);
 	}
-	
+
 	// ================================== Customer Dashboard ==================================
 	/**
 	 * Open Customer Dashboard Window
@@ -329,7 +376,7 @@ public class ViewLogic {
 				"Dashboard",
 				false);
 	}
-	
+
 	// ================================== Customer View Orders ==================================
 	/**
 	 * Open Customer View Orders Window
@@ -344,7 +391,7 @@ public class ViewLogic {
 				"My Orders",
 				false);
 	}
-	
+
 	// ================================== Customer Cruise Order ==================================
 	/**
 	 * Open Customer View Orders Window
@@ -357,6 +404,21 @@ public class ViewLogic {
 				null, null,	null, null,	null, null,
 				false,
 				"Cruise Order",
+				false);
+	}
+
+	// ================================== Customer Edit Details ==================================
+	/**
+	 * Open Customer Edit Details Window
+	 */
+	protected static void newCustomerEditDetailsWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("CustomerEditDetails.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Edit Details",
 				false);
 	}
 }

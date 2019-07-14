@@ -4,7 +4,6 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -15,15 +14,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CruiseManagementScreenController">
+<StackPane fx:id="pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SailToManagementScreenController">
    <children>
       <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0" stylesheets="@AdminMain.css">
       	<children>
             <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-            		<VBox alignment="CENTER" maxWidth="399.0" minWidth="399.0" prefWidth="400.0" spacing="20.0">
+            		<VBox alignment="CENTER" maxWidth="399.0" minWidth="399.0" prefWidth="400.0" spacing="30.0">
             			<children>
-            				<Label text="Cruise Management" textAlignment="CENTER" textFill="WHITE">
+            				<Label text="Sail To Management" textAlignment="CENTER" textFill="WHITE">
             					<font>
             						<Font name="System Bold" size="14.0" />
             					</font>
@@ -36,34 +35,24 @@
                               <Insets />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXComboBox fx:id="shipCombo" focusColor="WHITE" labelFloat="true" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" promptText="Choose Ship" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
+                        <JFXComboBox fx:id="portCombo" focusColor="WHITE" labelFloat="true" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" promptText="Choose Port" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
                         <StackPane>
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                            <children>
+                              <JFXDatePicker fx:id="arrivalDatePicker" defaultColor="#101d3d" maxWidth="200.0" minWidth="200.0" onKeyReleased="#onKeyReleased" overLay="true" prefHeight="25.0" prefWidth="200.0" promptText="Arrival Date" />
+                           </children>
+                        </StackPane>
+                        <StackPane>
+                           <children>
                               <JFXDatePicker fx:id="leavingDatePicker" defaultColor="#101d3d" maxWidth="200.0" minWidth="200.0" onKeyReleased="#onKeyReleased" overLay="true" prefHeight="25.0" prefWidth="200.0" promptText="Leaving Date" />
-                           </children>
-                        </StackPane>
-                        <StackPane>
-                           <children>
-                              <JFXTimePicker fx:id="leavingTimePicker" defaultColor="#101d3d" maxWidth="200.0" minWidth="200.0" onKeyReleased="#onKeyReleased" prefWidth="200.0" promptText="Leaving Time" />
-                           </children>
-                        </StackPane>
-                        <StackPane>
-                           <children>
-                              <JFXDatePicker fx:id="returnDatePicker" defaultColor="#101d3d" maxWidth="200.0" minWidth="200.0" onKeyReleased="#onKeyReleased" overLay="true" prefHeight="25.0" prefWidth="200.0" promptText="Return Date" />
-                           </children>
-                        </StackPane>
-                        <StackPane>
-                           <children>
-                              <JFXTimePicker fx:id="returnTimePicker" defaultColor="#101d3d" maxWidth="200.0" minWidth="200.0" onKeyReleased="#onKeyReleased" prefWidth="200.0" promptText="Return Time" />
                            </children>
                         </StackPane>
                         <Label fx:id="errorLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
                         <HBox alignment="CENTER" spacing="20.0">
                            <children>
-                              <JFXButton fx:id="saveCruiseBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#saveCruise" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                              <JFXButton fx:id="saveSailToBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#saveSailTo" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

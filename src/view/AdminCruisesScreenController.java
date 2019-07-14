@@ -1,11 +1,13 @@
 package view;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.jmx.snmp.Timestamp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -69,10 +71,10 @@ public class AdminCruisesScreenController {
 	private TableColumn<CruiseSailing, String> shipColumnC;
 
 	@FXML
-	private TableColumn<CruiseSailing, ?> leavingTimeColumnC; //TODO
+	private TableColumn<CruiseSailing, Timestamp> leavingTimeColumnC;
 
 	@FXML
-	private TableColumn<CruiseSailing, ?> returnTmeColumnC; //TODO
+	private TableColumn<CruiseSailing, Timestamp> returnTmeColumnC;
 
 	@FXML
 	private Label errorCruiseLabel;
@@ -99,10 +101,10 @@ public class AdminCruisesScreenController {
 	private TableColumn<SailTo, String> portColumnST;
 
 	@FXML
-	private TableColumn<SailTo, ?> arrivalTimeColumnST; //TODO
+	private TableColumn<SailTo, Date> arrivalTimeColumnST;
 
 	@FXML
-	private TableColumn<SailTo, ?> leavingTimeColumnST; //TODO
+	private TableColumn<SailTo, Date> leavingTimeColumnST;
 
 	@FXML
 	private Label errorSTLabel;
@@ -120,6 +122,8 @@ public class AdminCruisesScreenController {
 
 	protected CruiseSailing cruise;
 
+	protected SailTo sailto;
+
 	// =============================== Methods ==============================
 
 	public void initialize() {
@@ -128,8 +132,8 @@ public class AdminCruisesScreenController {
 		pane.setStyle("-fx-background-image: url(\"/rsc/cruise-st-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 
-		//errorCruiseLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
-		//errorSTLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
+		errorCruiseLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
+		errorSTLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
 
 		// setting ST table
 		cruiseColumnST.setCellValueFactory(new PropertyValueFactory<>("sailingID")); // According to variable name
@@ -157,6 +161,7 @@ public class AdminCruisesScreenController {
 		cruisesTable.refresh();
 	}
 
+	@FXML
 	protected void setSTtable() {
 		CruiseSailing cs = cruisesTable.getSelectionModel().getSelectedItem();
 		if (cs != null) {
@@ -170,7 +175,6 @@ public class AdminCruisesScreenController {
 		sailToTable.refresh();
 	}
 
-	//TODO
 	@FXML
 	private void addCruise() {
 		cruise = null;
@@ -185,6 +189,7 @@ public class AdminCruisesScreenController {
 		else {
 			ViewLogic.controller.removeCruise(cs);
 			setCruiseTable();
+			setSTtable();
 			errorCruiseLabel.setText("Cruise deleted successfully.");
 		}
 	}
@@ -198,28 +203,36 @@ public class AdminCruisesScreenController {
 			ViewLogic.newCruiseManagementWindow();
 	}
 
-	//TODO
 	@FXML
 	private void addSailTo() {
-
+		CruiseSailing cs = cruisesTable.getSelectionModel().getSelectedItem();
+		if (cs == null)
+			errorSTLabel.setText("Please select a cruise in order to add a sail to destination to it.");
+		else {
+			sailto = new SailTo(cs.getCruiseID());
+			ViewLogic.newSailToManagementWindow();
+		}
 	}
 
 	@FXML
 	private void deleteSailTo() {
 		SailTo st = sailToTable.getSelectionModel().getSelectedItem();
 		if (st == null)
-			errorCruiseLabel.setText("Please select a sail to destination to delete.");
+			errorSTLabel.setText("Please select a sail to destination to delete.");
 		else {
 			ViewLogic.controller.removeSailTo(st);
 			setSTtable();
-			errorCruiseLabel.setText("Sail to destination deleted successfully.");
+			errorSTLabel.setText("Sail to destination deleted successfully.");
 		}
 	}
 
-	//TODO
 	@FXML
 	private void updateSailTo() {
-
+		sailto = sailToTable.getSelectionModel().getSelectedItem();
+		if (sailto == null)
+			errorSTLabel.setText("Please select a sail to destination to update.");
+		else
+			ViewLogic.newSailToManagementWindow();
 	}
 
 	// ========================== Menu Action Listeners ==========================
@@ -260,10 +273,10 @@ public class AdminCruisesScreenController {
 		ViewLogic.newAdminCustomersWindow();
 	}
 
-	//TODO
 	@FXML
 	private void cruiseOrdersOnAction() {
-
+		closeWindow();
+		ViewLogic.newAdminCruiseOrdersWindow();
 	}
 
 	@FXML

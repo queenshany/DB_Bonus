@@ -105,7 +105,7 @@ public class AdminCountriesPortsScreenController {
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 
 		ViewLogic.adminCountriesPortsScreenController = this;
-		
+
 		// setting country list
 		setCountryList();
 
@@ -120,7 +120,6 @@ public class AdminCountriesPortsScreenController {
 		((Stage) pane.getScene().getWindow()).close();
 	}
 
-	//TODO
 	@FXML
 	private void addCountry() {
 		ViewLogic.newCountryManagementWindow();
@@ -134,6 +133,7 @@ public class AdminCountriesPortsScreenController {
 		else {
 			ViewLogic.controller.removeCountry(c);
 			setCountryList();
+			setPortTable();
 			errorCounLabel.setText("Country deleted successfully.");
 		}
 	}
@@ -206,10 +206,10 @@ public class AdminCountriesPortsScreenController {
 		ViewLogic.newAdminCustomersWindow();
 	}
 
-	//TODO
 	@FXML
 	private void cruiseOrdersOnAction() {
-
+		closeWindow();
+		ViewLogic.newAdminCruiseOrdersWindow();
 	}
 
 	@FXML

@@ -40,7 +40,7 @@
 						<Font name="System Bold" size="12.0" />
 					</font>
 				</JFXButton>
-				<JFXButton fx:id="shipRoomBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="130.0" layoutY="-4.0" onAction="#shipsRoomsOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Ships &amp; Rooms" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
+				<JFXButton fx:id="shipRoomBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="130.0" layoutY="-4.0" onAction="#shipsRoomsOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Ships &amp; Rooms" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
 					<graphic>
 						<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 							<image>
@@ -88,7 +88,7 @@
 						<Font name="System Bold" size="12.0" />
 					</font>
 				</JFXButton>
-				<JFXButton fx:id="sailCruiseBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#cruisesOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Cruises" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+				<JFXButton fx:id="sailCruiseBut" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#cruisesOnAction" prefHeight="90.0" prefWidth="170.0" ripplerFill="#ffffff66" text="Manage Cruises" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
 					<graphic>
 						<ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
 							<image>

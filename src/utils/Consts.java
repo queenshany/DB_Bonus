@@ -9,6 +9,7 @@ public final class Consts {
     public static final int THREE = 3;
     public static final int FOUR = 4;
     public static final int SEVEN = 7;
+    public static final int NINE = 9;
     
     public static final String getAllCustomers = "exec GetAllCustomers";
     public static final String getAllCountries = "exec GetAllCountries";

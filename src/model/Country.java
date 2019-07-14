@@ -13,7 +13,7 @@ public class Country {
 	public Country(String countryName) {
 		this.countryName = countryName;
 	}
-	
+
 	// ----------------------------- Getters & Setters ----------------------------
 	public String getCountryName() {
 		return countryName;
@@ -22,10 +22,10 @@ public class Country {
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
-	
+
 	// ------------------------------- More Methods -------------------------------
 	//TODO
-	
+
 	// ----------------------------- HashCode & Equals ----------------------------
 	@Override
 	public int hashCode() {
@@ -47,7 +47,7 @@ public class Country {
 		if (countryName == null) {
 			if (other.countryName != null)
 				return false;
-		} else if (!countryName.equals(other.countryName))
+		} else if (!countryName.equalsIgnoreCase(other.countryName))
 			return false;
 		return true;
 	}

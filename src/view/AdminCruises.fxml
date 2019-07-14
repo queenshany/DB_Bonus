@@ -148,7 +148,7 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="cruisesTable" maxHeight="200.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
+                        <TableView fx:id="cruisesTable" maxHeight="200.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" onMouseClicked="#setSTtable" prefHeight="200.0" prefWidth="650.0">
                           <columns>
                             <TableColumn fx:id="cruiseIDColumnC" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Cruise ID" />
                             <TableColumn fx:id="shipColumnC" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Ship ID" />

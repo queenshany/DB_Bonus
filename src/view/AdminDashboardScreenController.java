@@ -98,10 +98,10 @@ public class AdminDashboardScreenController {
 		ViewLogic.newAdminCustomersWindow();
 	}
 
-	//TODO
 	@FXML
 	private void cruiseOrdersOnAction() {
-
+		closeWindow();
+		ViewLogic.newAdminCruiseOrdersWindow();
 	}
 
 	@FXML

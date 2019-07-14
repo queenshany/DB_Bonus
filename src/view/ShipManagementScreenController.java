@@ -1,5 +1,6 @@
 package view;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.jfoenix.controls.JFXButton;
@@ -26,64 +27,55 @@ import model.Country;
 import model.CruiseSailing;
 import model.CruiseShip;
 import model.Port;
-public class CruiseManagementScreenController {
+public class ShipManagementScreenController {
 
 	// ============================== Variables =============================
 
 	@FXML
-	private AnchorPane mainPane;
+    private StackPane pane;
 
-	@FXML
-	private StackPane pane;
+    @FXML
+    private AnchorPane mainPane;
 
-	@FXML
-	private JFXTextField IDTextField;
+    @FXML
+    private JFXTextField IDTextField;
 
-	@FXML
-	private JFXComboBox<CruiseShip> shipCombo;
+    @FXML
+    private JFXTextField nameTextField;
 
-	@FXML
-	private JFXDatePicker leavingDatePicker;
+    @FXML
+    private JFXDatePicker manuDatePicker;
 
-	@FXML
-	private JFXTimePicker leavingTimePicker;
+    @FXML
+    private JFXTextField maxCapTextField;
 
-	@FXML
-	private JFXDatePicker returnDatePicker;
+    @FXML
+    private JFXTextField maxPeopleTextField;
 
-	@FXML
-	private JFXTimePicker returnTimePicker;
+    @FXML
+    private Label errorLabel;
 
-	@FXML
-	private Label errorLabel;
+    @FXML
+    private JFXButton saveShipBut;
 
-	@FXML
-	private JFXButton saveCruiseBut;
-
-	private CruiseSailing cruise;
+	private CruiseShip ship;
 
 	// =============================== Methods ==============================
 
 	public void initialize() {
-		cruise = ViewLogic.adminCruisesScreenController.cruise;
-		pane.setStyle("-fx-background-image: url(\"/rsc/cruise-bg.jpg\");"
+		ship = ViewLogic.adminShipsRoomsScreenController.ship;
+		pane.setStyle("-fx-background-image: url(\"/rsc/ship-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 		errorLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
 
-		// set ShipCombo
-		shipCombo.getItems().setAll(ViewLogic.controller.getAllShips());
-
 		// for update
-		if (cruise != null) {
-			IDTextField.setText(cruise.getCruiseID());
-			shipCombo.getSelectionModel().select(new CruiseShip(cruise.getCruiseShipID()));
-			LocalDateTime leavingdt = cruise.getLeavingTime().toLocalDateTime();
-			LocalDateTime returndt = cruise.getReturnTime().toLocalDateTime();
-			leavingDatePicker.setValue(leavingdt.toLocalDate());
-			leavingTimePicker.setValue(leavingdt.toLocalTime());
-			returnDatePicker.setValue(returndt.toLocalDate());
-			returnTimePicker.setValue(returndt.toLocalTime());
-
+		if (ship != null) {
+			IDTextField.setText(ship.getCruiseShipID());
+			nameTextField.setText(ship.getShipName());
+			LocalDate manudt = ship.getManufacturingDate().toLocalDate();
+			manuDatePicker.setValue(manudt);
+			maxCapTextField.setText(Integer.toString(ship.getMaxCapacity()));
+			maxPeopleTextField.setText(Integer.toString(ship.getMaxNumberOfPeople()));
 		}
 		//		else TODO ADD AUTOMATIC ID
 		//			IDTextField.setText(ViewLogic.controller.);
@@ -97,7 +89,7 @@ public class CruiseManagementScreenController {
 	// ========================== Action Listeners ==========================
 
 	@FXML
-	private void saveCruise() {
+	private void saveShip() {
 		errorLabel.setText("hello");
 		//		CruiseShip s = shipCombo.getValue();
 		//		if (s != null) {
@@ -123,6 +115,6 @@ public class CruiseManagementScreenController {
 	@FXML
 	private void onKeyReleased(KeyEvent e) {
 		if (e.getCode() == KeyCode.ENTER)
-			saveCruise();
+			saveShip();
 	}
 }

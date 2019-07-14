@@ -58,7 +58,7 @@ public class Port {
 		if (countryName == null) {
 			if (other.countryName != null)
 				return false;
-		} else if (!countryName.equals(other.countryName))
+		} else if (!countryName.equalsIgnoreCase(other.countryName))
 			return false;
 		if (portName == null) {
 			if (other.portName != null)
@@ -71,7 +71,7 @@ public class Port {
 	// ---------------------------------- toString --------------------------------
 	@Override
 	public String toString() {
-		return "Port [countryName=" + countryName + ", portName=" + portName + "]";
+		return portName + ", " +countryName;
 	}
 
 
