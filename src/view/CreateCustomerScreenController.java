@@ -99,60 +99,64 @@ public class CreateCustomerScreenController {
 
 		if (id != null) {
 			if (Validation.validID(id)) {
-				//TODO ADD AN EXIST ID CHECK
-				if (pw != null && pw != "") {
-					if (pw.length() >= Consts.FOUR) {
-						if (pw.equals(pwc)) {
-							if (fname != null && !fname.equals("")) {
-								if (Validation.validName(fname)) {
-									if (lname != null && !lname.equals("")) {
-										if (Validation.validName(lname)) {
-											if (email != null) {
-												if (Validation.validEmailAddress(email)) {
-													if (birthDatePicker.getValue() != null) {
-														if (birthDatePicker.getValue().isBefore(LocalDate.now())) {
-															Date bday = Date.valueOf(birthDatePicker.getValue());
-															if (phoneCombo.getSelectionModel().getSelectedItem() != null) {
-																if (phoneTextField.getText() != null && !phoneTextField.getText().equals("")) {
-																	if (Validation.validPhone(phoneTextField.getText())) {
-																		String phone = phoneCombo.getSelectionModel().getSelectedItem() + phoneTextField.getText();
-																		Person p = new Person(id, fname, lname, bday, phone, email, pw);
-																		ViewLogic.controller.insertPerson(p);
-																		closeWindow();
-																		ViewLogic.newLoginWindow();
-																		Alert alert = new Alert(AlertType.INFORMATION);
-																		alert.setTitle("Account Created Successfully!");
-																		alert.setHeaderText("Account Created Successfully!");
-																		alert.setContentText("Your username is: " + p.getPersonID());
-																		alert.showAndWait();
+				if (!ViewLogic.controller.doesPersonExist(new Person(id))) {
+					if (pw != null && pw != "") {
+						if (pw.length() >= Consts.FOUR) {
+							if (pw.equals(pwc)) {
+								if (fname != null && !fname.equals("")) {
+									if (Validation.validName(fname)) {
+										if (lname != null && !lname.equals("")) {
+											if (Validation.validName(lname)) {
+												if (email != null) {
+													if (Validation.validEmailAddress(email)) {
+														if (birthDatePicker.getValue() != null) {
+															if (birthDatePicker.getValue().isBefore(LocalDate.now())) {
+																Date bday = Date.valueOf(birthDatePicker.getValue());
+																if (phoneCombo.getSelectionModel().getSelectedItem() != null) {
+																	if (phoneTextField.getText() != null && !phoneTextField.getText().equals("")) {
+																		if (Validation.validPhone(phoneTextField.getText())) {
+																			String phone = phoneCombo.getSelectionModel().getSelectedItem() + phoneTextField.getText();
+																			Person p = new Person(id, fname, lname, bday, phone, email, pw);
+																			if (ViewLogic.controller.insertPerson(p)) {
+																				closeWindow();
+																				ViewLogic.newLoginWindow();
+																				Alert alert = new Alert(AlertType.INFORMATION);
+																				alert.setTitle("Account Created Successfully!");
+																				alert.setHeaderText("Account Created Successfully!");
+																				alert.setContentText("Your username is: " + p.getPersonID());
+																				alert.showAndWait();
+																			} else
+																				errorLabel.setText("Error occured.");
+																		} else
+																			errorLabel.setText("Invalid phone number.");
 																	} else
-																		errorLabel.setText("Invalid phone number.");
+																		errorLabel.setText("Please enter your phone number.");
 																} else
-																	errorLabel.setText("Please enter your phone number.");
+																	errorLabel.setText("Please select an area code.");
 															} else
-																errorLabel.setText("Please select an area code.");
-														} else
-															errorLabel.setText("Invalid birthdate.");
-													} else 
-														errorLabel.setText("Please enter your birthdate.");
+																errorLabel.setText("Invalid birthdate.");
+														} else 
+															errorLabel.setText("Please enter your birthdate.");
+													} else
+														errorLabel.setText("Invalid email.");
 												} else
-													errorLabel.setText("Invalid email.");
+													errorLabel.setText("Please enter your email.");
 											} else
-												errorLabel.setText("Please enter your email.");
+												errorLabel.setText("Invalid surname.");
 										} else
-											errorLabel.setText("Invalid surname.");
+											errorLabel.setText("Please enter your surname.");
 									} else
-										errorLabel.setText("Please enter your surname.");
+										errorLabel.setText("Invalid first name.");
 								} else
-									errorLabel.setText("Invalid first name.");
+									errorLabel.setText("Please enter your first name.");
 							} else
-								errorLabel.setText("Please enter your first name.");
+								errorLabel.setText("Passwords don't match.");
 						} else
-							errorLabel.setText("Passwords don't match.");
+							errorLabel.setText("Password must contain at least " + Consts.FOUR + " characters.");
 					} else
-						errorLabel.setText("Password must contain at least " + Consts.FOUR + " characters.");
+						errorLabel.setText("Please enter a password.");
 				} else
-					errorLabel.setText("Please enter a password.");
+					errorLabel.setText("Account already exists.");
 			} else
 				errorLabel.setText("Invalid ID.");
 		} else

@@ -34,7 +34,8 @@ public class ViewLogic {
 	protected static AdminCountriesPortsScreenController adminCountriesPortsScreenController;
 	protected static AdminCruisesScreenController adminCruisesScreenController;
 	protected static AdminShipsRoomsScreenController adminShipsRoomsScreenController;
-
+	protected static AdminCustomersScreenController adminCustomersScreenController;
+	
 	// ------------------------------ Methods ------------------------------
 	/**
 	 * this method starts the windows in the system
@@ -331,6 +332,21 @@ public class ViewLogic {
 				false);
 	}
 
+	// ================================== Add & Update Customer ==================================
+	/**
+	 * Open Customer Management Window
+	 */
+	protected static void newCustomerManagementWindow() {
+		Stage stage = new Stage();
+
+		newWindow(ViewLogic.class.getResource("CustomerManagement.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Customer Management",
+				true);
+	}
+	
 	// ================================== Admin Cruise Orders ==================================
 	/**
 	 * Open Admin Cruise Order Window
