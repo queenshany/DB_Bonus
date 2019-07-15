@@ -518,13 +518,13 @@ public class ControllerLogic {
         return toReturn;
     }
 
-    public ArrayList<CruiseOrder> getAllCruiseOrderByCustomerID(CruiseOrder co){
+    public ArrayList<CruiseOrder> getAllCruiseOrderByCustomerID(Person p){
         ArrayList<CruiseOrder> toReturn = new ArrayList<>();
         try {
             ResultSet rs;
             PreparedStatement ps;
             ps = conn.prepareStatement(Consts.getAllCruiseOrdersByCustomerID);
-            ps.setString(1, co.getPersonID());
+            ps.setString(1, p.getPersonID());
             rs = ps.executeQuery();
 
             while (rs.next()) {
