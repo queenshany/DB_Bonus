@@ -35,8 +35,8 @@ public final class Consts {
     public static final String insertShip = "exec InsertShip ?,?,?,?,?";
     public static final String updateCruise = "exec UpdateCruise ?";
     public static final String updateCruiseShip = "exec UpdateCruiseShip ?";
-    public static final String updatePerson = "exec UpdatePerson ?";
-    public static final String updateRoom = "exec UpdateRoom ?";
+    public static final String updatePerson = "exec UpdatePerson ?,?,?,?,?,?,?";
+    public static final String updateRoom = "exec UpdateRoom ?,?,?,?,?";
     public static final String updateSailTo = "exec UpdateSailTo ?";
     public static final String removeCountry = "exec RemoveCountry ?";
     public static final String removeCruise = "exec RemoveCruise ?";
