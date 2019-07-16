@@ -422,19 +422,4 @@ public class ViewLogic {
 				"Cruise Order",
 				false);
 	}
-
-	// ================================== Customer Edit Details ==================================
-	/**
-	 * Open Customer Edit Details Window
-	 */
-	protected static void newCustomerEditDetailsWindow() {
-		Stage stage = new Stage();
-
-		newWindow(ViewLogic.class.getResource("CustomerEditDetails.fxml"),
-				stage,
-				null, null,	null, null,	null, null,
-				false,
-				"Edit Details",
-				false);
-	}
 }

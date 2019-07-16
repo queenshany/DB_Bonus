@@ -67,7 +67,10 @@ public class CustomerManagementScreenController {
 	// =============================== Methods ==============================
 
 	public void initialize() {
-		customer = ViewLogic.adminCustomersScreenController.customer;
+		if (ViewLogic.currentUser != null)
+			customer = ViewLogic.currentUser;
+		else
+			customer = ViewLogic.adminCustomersScreenController.customer;
 
 		pane.setStyle("-fx-background-image: url(\"/rsc/customer-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
@@ -138,7 +141,8 @@ public class CustomerManagementScreenController {
 																	}
 																	else
 																		errorLabel.setText("Customer already exists.");
-																	ViewLogic.adminCustomersScreenController.setPersonTable();																		
+																	if (ViewLogic.currentUser == null)
+																		ViewLogic.adminCustomersScreenController.setPersonTable();																		
 																} else
 																	errorLabel.setText("Invalid phone number.");
 															} else

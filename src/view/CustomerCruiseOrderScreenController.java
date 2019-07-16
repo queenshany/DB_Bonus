@@ -120,8 +120,7 @@ public class CustomerCruiseOrderScreenController {
 
 	@FXML
 	private void editDetailsOnAction() {
-		closeWindow();
-		ViewLogic.newCustomerEditDetailsWindow();
+		ViewLogic.newCustomerManagementWindow();
 	}
 	
 	@FXML
