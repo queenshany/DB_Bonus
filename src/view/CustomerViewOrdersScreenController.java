@@ -1,20 +1,27 @@
 package view;
 
+import java.util.ArrayList;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.CruiseOrder;
+import model.CruiseShip;
 public class CustomerViewOrdersScreenController {
 	// ============================== Variables =============================
 
@@ -43,31 +50,42 @@ public class CustomerViewOrdersScreenController {
 	private VBox pane;
 
 	@FXML
-	private TableView<?> ordersTable;
+	private TableView<CruiseOrder> ordersTable;
 
 	@FXML
-	private TableColumn<?, ?> cruiseColumn;
+	private TableColumn<CruiseOrder, String> cruiseColumn;
 
 	@FXML
-	private TableColumn<?, ?> shipColumn;
+	private TableColumn<CruiseOrder, String> shipColumn;
 
 	@FXML
-	private TableColumn<?, ?> roomNumColumn;
+	private TableColumn<CruiseOrder, String> roomNumColumn;
 
+	private ArrayList<CruiseOrder> orders;
+	
 	// =============================== Methods ==============================
 
 	public void initialize() {
 		pane.setStyle("-fx-background-image: url(\"/rsc/view-orders-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
-		//		Label l = new Label("Login");
-		//		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
-		//		loginBut.setGraphic(l);
+
+		cruiseColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseID")); // According to variable name
+		shipColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseShipID")); // Same here
+		roomNumColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber")); // Same here
+		setOrdersTable();
+		
 	}
 
 	protected void closeWindow() {
 		((Stage) pane.getScene().getWindow()).close();
 	}
-
+	
+	private void setOrdersTable() {
+		orders = ViewLogic.controller.getAllCruiseOrderByCustomerID(ViewLogic.currentUser);
+		ObservableList<CruiseOrder> ors = FXCollections.observableArrayList(orders);
+		ordersTable.setItems(ors);
+		ordersTable.refresh();
+	}
 	// ========================== Menu Action Listeners ==========================
 
 	@FXML
@@ -85,8 +103,7 @@ public class CustomerViewOrdersScreenController {
 
 	@FXML
 	private void editDetailsOnAction() {
-		closeWindow();
-		ViewLogic.newCustomerEditDetailsWindow();
+		ViewLogic.newCustomerManagementWindow();
 	}
 	
 	@FXML

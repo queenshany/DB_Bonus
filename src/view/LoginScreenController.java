@@ -72,23 +72,19 @@ public class LoginScreenController {
 		if (username != null && !username.isEmpty()) {
 			if (pw != null && !pw.isEmpty()) {
 				if (username.equalsIgnoreCase("admin") && pw.equalsIgnoreCase("admin")) {
-					// ViewLogic.currentUser = //TODO GET THE CURRENT PERSON 
 					closeWindow();
 					ViewLogic.newAdminMainWindow();
 				}
-				//TODO
-				else if (username.equals("1") && pw.equals("1")) {
+				// check if the user exists
+				else if (!ViewLogic.controller.doesPersonExist(new Person (username))) {
+					errorLabel.setText("Username doesn't exist. Please create an account.");
+				}
+				// the user exists and his password matches the password in the db
+				else if (ViewLogic.controller.doesPersonExist(new Person(username))) { //TODO
+					ViewLogic.currentUser = ViewLogic.controller.getAllCustomers().get(ViewLogic.controller.getAllCustomers().indexOf(new Person(username)));// TODO
 					closeWindow();
-					ViewLogic.currentUser = new Person("111", "hello", "world", new Date(1,1,1), "000000000", "hello@world.com", "1");
 					ViewLogic.newCustomerMainWindow();
 				}
-				//				else if (false) { //TODO ALSO TO DO A CHECK THAT THE USER EXISTS
-				//					errorLabel.setText("Username doesn't exist. Please create an account.");
-				//				}
-				//				else if (false) { //TODO USER EXISTS AND IS A CUSTOMER AND HIS DATA IS GOOD
-				//					closeWindow();
-				//					ViewLogic.newCustomerMainWindow();
-				//				}
 				else {
 					errorLabel.setText("Incorrect username or password.");
 				}

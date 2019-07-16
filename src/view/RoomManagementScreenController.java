@@ -158,6 +158,7 @@ public class RoomManagementScreenController {
 										ViewLogic.controller.updateRoom(room);
 										errorLabel.setText("Room updated successfully.");
 									}
+									
 									else if (!update && ViewLogic.controller.insertRoom(room))
 										errorLabel.setText("Room added successfully. Add another?");
 									else if (!update)

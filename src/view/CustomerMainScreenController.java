@@ -60,8 +60,7 @@ public class CustomerMainScreenController {
 
 		@FXML
 		private void editDetailsOnAction() {
-			closeWindow();
-			ViewLogic.newCustomerEditDetailsWindow();
+			ViewLogic.newCustomerManagementWindow();
 		}
 		
 		@FXML
