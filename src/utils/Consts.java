@@ -21,6 +21,7 @@ public final class Consts {
     public static final String getAllCruiseOrders = "exec GetAllCruiseOrder";
     public static final String getAllCruiseOrdersByCustomerID = "exec GetCruiseOrderByCustomerID ?";
     public static final String getAllFutureCruiseOrderByCustomerID = "exec GetFutureCruiseOrderByCustomerID ?";
+    public static final String getAllFutureCO = "exec GetAllFutureCO";
     public static final String getOneAQuery = "exec OneAQuery ?,?";
     public static final String getFiveQuery = "exec FiveQuery ?,?";
     public static final String getSixQuery = "exec SixQuery";
@@ -44,4 +45,5 @@ public final class Consts {
     public static final String removeRoom = "exec RemoveRoom ?,?";
     public static final String removeSailTo = "exec RemoveSailTo ?,?,?";
     public static final String removeShip = "exec RemoveShip ?";
+    public static final String removePerson = "exec RemovePerson ?";
 }

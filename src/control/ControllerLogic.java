@@ -262,6 +262,18 @@ public class ControllerLogic {
         }
     }
 
+    public void removePerson(Person p) {
+        PreparedStatement ps;
+        try {
+            int i = 1;
+            ps = conn.prepareStatement(Consts.removePerson);
+            ps.setString(i++, p.getPersonID());
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void updatePerson(Person p) {
         PreparedStatement ps;
         try {
@@ -559,6 +571,25 @@ public class ControllerLogic {
         return toReturn;
     }
 
+    public ArrayList<CruiseOrder> getFutureCO(){
+        ArrayList<CruiseOrder> toReturn = new ArrayList<>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getAllFutureCO);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.add(new CruiseOrder(Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), rs.getString(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
     public ArrayList<OneAQuery> getOneAQuery(CruiseSailing cs, int year){
         ArrayList<OneAQuery> toReturn = new ArrayList<>();
         try {
@@ -628,5 +659,17 @@ public class ControllerLogic {
         else {
             return false;
         }
+    }
+
+    public Person doesUserExist(String userID, String pass){
+        ArrayList<Person> persons = getAllCustomers();
+        Person person = null;
+
+        for (Person p: persons) {
+            if (p.getPersonID() == userID && p.getPass() == pass){
+                person = p;
+            }
+        }
+        return person;
     }
 }
