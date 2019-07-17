@@ -83,7 +83,7 @@ public class CustomerCruiseOrderScreenController {
 
 	@FXML
 	private JFXButton delOrderBut;
-	
+
 	private ArrayList<CruiseOrder> orders;
 
 	// =============================== Methods ==============================
@@ -95,8 +95,8 @@ public class CustomerCruiseOrderScreenController {
 		errorDelOrderLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
 		errorAddOrderLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
 
-		cruiseCombo.getItems().setAll(ViewLogic.controller.getAllCruise()); // TODO
-		
+		cruiseCombo.getItems().setAll(ViewLogic.controller.getAllCruise()); // TODO FUTURE CRUISE
+
 		cruiseColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseID")); // According to variable name
 		shipColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseShipID")); // Same here
 		roomNumColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber")); // Same here
@@ -107,25 +107,45 @@ public class CustomerCruiseOrderScreenController {
 		((Stage) pane.getScene().getWindow()).close();
 	}
 
-	//TODO
 	@FXML
 	private void addOrder() {
-
+		CruiseSailing cs = cruiseCombo.getSelectionModel().getSelectedItem();
+		Room r = roomCombo.getSelectionModel().getSelectedItem();
+		
+		if (cs != null) {
+			if (r != null) {
+				if (ViewLogic.controller.insertCruiseOrder(new CruiseOrder(cs.getCruiseID(), cs.getCruiseShipID(), Integer.toString(r.getRoomNumber()), ViewLogic.currentUser.getPersonID()))) {
+					setFutureOrdersTable();
+					setRoomCombo();
+					errorAddOrderLabel.setText("Order added successfully.");					
+				} else
+					errorAddOrderLabel.setText("Error occurred.");
+			} else
+				errorAddOrderLabel.setText("Please select a room.");
+		} else
+			errorAddOrderLabel.setText("Please select a cruise.");
+		
 	}
 
-	//TODO
 	@FXML
 	private void deleteOrder() {
-
+		CruiseOrder co = ordersTable.getSelectionModel().getSelectedItem();
+		if (co == null)
+			errorDelOrderLabel.setText("Please select an order to delete.");
+		else {
+			ViewLogic.controller.removeCruiseOrder(co);
+			setFutureOrdersTable();
+			errorDelOrderLabel.setText("Order deleted successfully.");
+		}
 	}
-	
+
 	private void setFutureOrdersTable() {
 		orders = ViewLogic.controller.getFutureCruiseOrderByCustomerID(ViewLogic.currentUser, Date.valueOf(LocalDate.now()));
 		ObservableList<CruiseOrder> co = FXCollections.observableArrayList(orders);
 		ordersTable.setItems(co);
 		ordersTable.refresh();
 	}
-	
+
 	@FXML
 	private void setRoomCombo() {
 		CruiseSailing cs = cruiseCombo.getSelectionModel().getSelectedItem();
@@ -137,7 +157,7 @@ public class CustomerCruiseOrderScreenController {
 			roomCombo.setDisable(false);
 			roomCombo.getItems().setAll(ViewLogic.controller.getAllRooms(cs.getCruiseShipID())); //TODO AVAILABLE ROOMS
 		}
-		
+
 	}
 
 	// ========================== Menu Action Listeners ==========================
@@ -159,19 +179,19 @@ public class CustomerCruiseOrderScreenController {
 	private void editDetailsOnAction() {
 		ViewLogic.newCustomerManagementWindow();
 	}
-	
+
 	@FXML
 	private void cruiseOrderOnAction() {
 		closeWindow();
 		ViewLogic.newCustomerCruiseOrderWindow();
 	}
-	
+
 	@FXML
 	private void viewOrdersOnAction() {
 		closeWindow();
 		ViewLogic.newCustomerViewOrdersWindow();
 	}
-	
+
 	@FXML
 	private void dashboardOnAction() {
 		closeWindow();
