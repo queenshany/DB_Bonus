@@ -667,7 +667,7 @@ public class ControllerLogic {
         Person person = null;
 
         for (Person p: persons) {
-            if (p.getPersonID() == userID && p.getPass() == pass){
+            if (p.getPersonID().equals(userID) && p.getPass().equals(pass)){
                 person = p;
             }
         }
