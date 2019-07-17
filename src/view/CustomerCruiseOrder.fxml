@@ -121,7 +121,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <JFXComboBox fx:id="cruiseCombo" focusColor="WHITE" labelFloat="true" maxWidth="400.0" minWidth="400.0" prefHeight="25.0" prefWidth="400.0" promptText="Choose Cruise" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
+                  <JFXComboBox fx:id="cruiseCombo" focusColor="WHITE" labelFloat="true" maxWidth="400.0" minWidth="400.0" onAction="#setRoomCombo" prefHeight="25.0" prefWidth="400.0" promptText="Choose Cruise" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
                   <JFXComboBox fx:id="roomCombo" disable="true" focusColor="WHITE" labelFloat="true" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" promptText="Choose Room" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE">
                      <padding>
                         <Insets top="10.0" />

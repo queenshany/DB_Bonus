@@ -551,7 +551,7 @@ public class ControllerLogic {
         return toReturn;
     }
 
-    public ArrayList<CruiseOrder> getFutureCruiseOrderByCustomerID(CruiseOrder co, Date d){
+    public ArrayList<CruiseOrder> getFutureCruiseOrderByCustomerID(Person co, Date d){
         ArrayList<CruiseOrder> toReturn = new ArrayList<>();
         try {
             ResultSet rs;

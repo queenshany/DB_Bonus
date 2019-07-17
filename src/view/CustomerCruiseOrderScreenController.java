@@ -1,20 +1,31 @@
 package view;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.CruiseOrder;
+import model.CruiseSailing;
+import model.CruiseShip;
+import model.Room;
 public class CustomerCruiseOrderScreenController {
 
 	// ============================== Variables =============================
@@ -44,10 +55,10 @@ public class CustomerCruiseOrderScreenController {
 	private VBox pane;
 
 	@FXML
-	private JFXComboBox<?> cruiseCombo;
+	private JFXComboBox<CruiseSailing> cruiseCombo;
 
 	@FXML
-	private JFXComboBox<?> roomCombo;
+	private JFXComboBox<Room> roomCombo;
 
 	@FXML
 	private Label errorAddOrderLabel;
@@ -56,22 +67,24 @@ public class CustomerCruiseOrderScreenController {
 	private JFXButton addOrderBut;
 
 	@FXML
-	private TableView<?> ordersTable;
+	private TableView<CruiseOrder> ordersTable;
 
 	@FXML
-	private TableColumn<?, ?> cruiseColumn;
+	private TableColumn<CruiseOrder, String> cruiseColumn;
 
 	@FXML
-	private TableColumn<?, ?> shipColumn;
+	private TableColumn<CruiseOrder, String> shipColumn;
 
 	@FXML
-	private TableColumn<?, ?> roomNumColumn;
+	private TableColumn<CruiseOrder, String> roomNumColumn;
 
 	@FXML
 	private Label errorDelOrderLabel;
 
 	@FXML
 	private JFXButton delOrderBut;
+	
+	private ArrayList<CruiseOrder> orders;
 
 	// =============================== Methods ==============================
 
@@ -79,12 +92,15 @@ public class CustomerCruiseOrderScreenController {
 		pane.setStyle("-fx-background-image: url(\"/rsc/cruise-order-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 
-		errorDelOrderLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
-		errorAddOrderLabel.setStyle("-fx-text-fill: red; -fx-effect: dropshadow( one-pass-box , white , 5 , 1.5 , 0 , 0 )");
+		errorDelOrderLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
+		errorAddOrderLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
 
-		//		Label l = new Label("Login");
-		//		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
-		//		loginBut.setGraphic(l);
+		cruiseCombo.getItems().setAll(ViewLogic.controller.getAllCruise()); // TODO
+		
+		cruiseColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseID")); // According to variable name
+		shipColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseShipID")); // Same here
+		roomNumColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber")); // Same here
+		setFutureOrdersTable();
 	}
 
 	protected void closeWindow() {
@@ -101,6 +117,27 @@ public class CustomerCruiseOrderScreenController {
 	@FXML
 	private void deleteOrder() {
 
+	}
+	
+	private void setFutureOrdersTable() {
+		orders = ViewLogic.controller.getFutureCruiseOrderByCustomerID(ViewLogic.currentUser, Date.valueOf(LocalDate.now()));
+		ObservableList<CruiseOrder> co = FXCollections.observableArrayList(orders);
+		ordersTable.setItems(co);
+		ordersTable.refresh();
+	}
+	
+	@FXML
+	private void setRoomCombo() {
+		CruiseSailing cs = cruiseCombo.getSelectionModel().getSelectedItem();
+		if (cs == null) {
+			roomCombo.getItems().clear();
+			roomCombo.setDisable(true);
+		}
+		else {
+			roomCombo.setDisable(false);
+			roomCombo.getItems().setAll(ViewLogic.controller.getAllRooms(cs.getCruiseShipID())); //TODO AVAILABLE ROOMS
+		}
+		
 	}
 
 	// ========================== Menu Action Listeners ==========================

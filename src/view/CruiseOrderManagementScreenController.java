@@ -105,7 +105,7 @@ public class CruiseOrderManagementScreenController {
 		setPersonTable();
 		
 		// set cruiseCombo
-		cruiseCombo.getItems().setAll(ViewLogic.controller.getAllCruise());
+		cruiseCombo.getItems().setAll(ViewLogic.controller.getAllCruise()); //TODO
 		
 		// setting room table
 		shipColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseShipID")); // According to variable name
@@ -131,7 +131,7 @@ public class CruiseOrderManagementScreenController {
 	protected void setRoomTable() {
 		CruiseSailing s = cruiseCombo.getSelectionModel().getSelectedItem();
 		if (s != null) {
-			ArrayList<Room> rooms = ViewLogic.controller.getAllRooms(s.getCruiseShipID());
+			ArrayList<Room> rooms = ViewLogic.controller.getAllRooms(s.getCruiseShipID()); //TODO FREE ROOMS
 			ObservableList<Room> rs = FXCollections.observableArrayList(rooms);
 			roomsTable.setItems(rs);
 		}
