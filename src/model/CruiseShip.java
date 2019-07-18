@@ -101,7 +101,7 @@ public class CruiseShip {
 	// ---------------------------------- toString --------------------------------
 	@Override
 	public String toString() {
-		return "CruiseShip [cruiseShipID=" + cruiseShipID + ", shipName=" + shipName + ", manufacturingDate="
-				+ manufacturingDate + ", maxCapacity=" + maxCapacity + ", maxNumberOfPeople=" + maxNumberOfPeople + "]";
+		return "Ship ID: " + cruiseShipID + " | Name: " + shipName + " | Manufacturing Date: "
+				+ manufacturingDate + " | Max Capacity: " + maxCapacity + " | Max Number of People: " + maxNumberOfPeople;
 	}
 }

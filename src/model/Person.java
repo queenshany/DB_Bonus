@@ -121,7 +121,7 @@ public class Person {
 	// ---------------------------------- toString --------------------------------
 	@Override
 	public String toString() {
-		return "Person [personID=" + personID + ", firstName=" + firstName + ", surName=" + surName + ", dateOfBirth="
-				+ dateOfBirth + ", phone=" + phone + ", email=" + email + ", pass=" + pass + "]";
+		return "ID: " + personID + " | Name: " + firstName + " " + surName + " | Birthdate: "
+				+ dateOfBirth + " | Phone: " + phone + " | Email: " + email + " | PW: " + pass;
 	}
 }
