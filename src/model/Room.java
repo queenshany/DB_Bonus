@@ -107,7 +107,7 @@ public class Room {
 	// ---------------------------------- toString --------------------------------
 	@Override
 	public String toString() {
-		return "Room [cruiseShipID=" + cruiseShipID + ", roomNumber=" + roomNumber + ", bedsAmount=" + bedsAmount
-				+ ", roomType=" + roomType + ", price=" + price + "]";
+		return "Ship ID: " + cruiseShipID + " | Room Number: " + roomNumber + " | Beds Amount: " + bedsAmount
+				+ " | Type: " + roomType + " | Price: " + price;
 	}
 }

@@ -91,7 +91,7 @@ public class CruiseSailing {
 	// ---------------------------------- toString --------------------------------
 	@Override
 	public String toString() {
-		return "CruiseSailing [cruiseID=" + cruiseID + ", cruiseShipID=" + cruiseShipID + ", leavingTime=" + leavingTime
-				+ ", returnTime=" + returnTime + "]";
+		return "Cruise ID: " + cruiseID + " | Ship ID: " + cruiseShipID + " | Leaving: " + leavingTime
+				+ " | Return: " + returnTime;
 	}
 }

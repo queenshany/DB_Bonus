@@ -57,7 +57,7 @@ public class AdminCustomersScreenController {
 	private TableColumn<Person, String> IDColumn;
 
 	@FXML
-	private TableColumn<Person, String> fistNameColumn;
+	private TableColumn<Person, String> firstNameColumn;
 
 	@FXML
 	private TableColumn<Person, String> surnameColumn;
@@ -100,7 +100,7 @@ public class AdminCustomersScreenController {
 
 		// setting customers table
 		IDColumn.setCellValueFactory(new PropertyValueFactory<>("personID")); // According to variable name
-		fistNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName")); // Same here
+		firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName")); // Same here
 		surnameColumn.setCellValueFactory(new PropertyValueFactory<>("surName")); // Same here
 		birthdateColumn.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth")); // Same here
 		phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone")); // Same here
@@ -131,7 +131,7 @@ public class AdminCustomersScreenController {
 		if (c == null)
 			errorLabel.setText("Please select a customer to delete.");
 		else {
-			//ViewLogic.controller.custom TODO
+			ViewLogic.controller.removePerson(c);
 			setPersonTable();
 			errorLabel.setText("Customer deleted successfully.");
 		}

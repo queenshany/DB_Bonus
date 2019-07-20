@@ -35,28 +35,19 @@ public class ViewLogic {
 	protected static AdminCruisesScreenController adminCruisesScreenController;
 	protected static AdminShipsRoomsScreenController adminShipsRoomsScreenController;
 	protected static AdminCustomersScreenController adminCustomersScreenController;
-	
+
 	// ------------------------------ Methods ------------------------------
 	/**
 	 * this method starts the windows in the system
 	 */
 	public static void initUI() {
-		newLoginWindow();
-		//createAccountWindow();
+		//newLoginWindow();
+		
 		//TODO
-		//newAdminCruisesSTWindow();
-		//newAdminPortCountryWindow();
+		newAdminPortCountryWindow();
+				
 		//newAdminCruisesSTWindow();
 		//newCruiseManagementWindow();
-		//newAdminShipsRoomsWindow();
-		//newAdminCustomersWindow();
-		//newCustomerMainWindow();
-		//newCustomerDashWindow();
-		//newCustomerViewOrdersWindow();
-		//newCustomerCruiseOrderWindow();
-		//newCountryManagementWindow();
-		//newPortManagementWindow();
-
 	}
 
 	/**
@@ -346,7 +337,7 @@ public class ViewLogic {
 				"Customer Management",
 				true);
 	}
-	
+
 	// ================================== Admin Cruise Orders ==================================
 	/**
 	 * Open Admin Cruise Order Window
@@ -362,7 +353,20 @@ public class ViewLogic {
 				false);
 	}
 
+	// ================================== Add Cruise Order ==================================
+	/**
+	 * Open Cruise Order Management Window
+	 */
+	protected static void newCOManagementWindow() {
+		Stage stage = new Stage();
 
+		newWindow(ViewLogic.class.getResource("CruiseOrderManagement.fxml"),
+				stage,
+				null, null,	null, null,	null, null,
+				false,
+				"Cruise Order Management",
+				true);
+	}
 	// ================================== Customer Main ==================================
 	/**
 	 * Open Customer Main Window

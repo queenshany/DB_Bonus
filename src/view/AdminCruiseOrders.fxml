@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -17,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminShipsRoomsScreenController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminCruiseOrdersScreenController">
 	<children>
 		<VBox alignment="TOP_CENTER" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
 			<children>
@@ -138,35 +137,30 @@
 				</GridPane>
 			</children>
 		</VBox>
-      <VBox fx:id="pane" alignment="CENTER" layoutX="98.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="pane" alignment="CENTER" layoutX="98.0" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" maxHeight="290.0" minHeight="290.0" prefHeight="290.0" spacing="20.0">
+            <Label text="Future Orders" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" maxHeight="200.0" minHeight="200.0" prefHeight="200.0" spacing="20.0">
                <children>
-                  <VBox alignment="CENTER" spacing="10.0">
+                  <VBox alignment="CENTER">
                      <children>
-                        <Label text="Ships" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <TableView fx:id="shipsTable" maxHeight="200.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" onMouseClicked="#setRoomTable" prefHeight="200.0" prefWidth="650.0">
+                        <TableView fx:id="futureOrdersTable" maxHeight="200.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
                           <columns>
-                            <TableColumn fx:id="shipIDColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Ship ID" />
-                            <TableColumn fx:id="nameColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Name" />
-                              <TableColumn fx:id="manuDateColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Manufacturing Date" />
-                              <TableColumn fx:id="maxCapacityColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Max Capacity" />
-                              <TableColumn fx:id="maxPeopleColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Max Num of People" />
+                            <TableColumn fx:id="cruiseColumnF" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Cruise ID" />
+                            <TableColumn fx:id="shipColumnF" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Ship ID" />
+                              <TableColumn fx:id="roomNumColumnF" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Room Number" />
+                              <TableColumn fx:id="personColumnF" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Person ID" />
                           </columns>
                         </TableView>
-                        <Label fx:id="errorShipLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
                      </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
                   </VBox>
                   <VBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <JFXButton fx:id="addShipBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#addShip" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="addOrderBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#addOrder" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -178,7 +172,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="delShipBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#deleteShip" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton fx:id="delOrderBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#deleteOrder" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -190,94 +184,38 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="updateShipBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#updateShip" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../rsc/edit-icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </JFXButton>
                      </children>
                   </VBox>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
             </HBox>
-            <Separator maxWidth="760.0" minWidth="760.0" prefWidth="760.0" />
-            <HBox alignment="CENTER" maxHeight="290.0" minHeight="290.0" prefHeight="290.0" spacing="20.0">
-               <children>
-                  <VBox alignment="CENTER" spacing="10.0">
-                     <children>
-                        <Label text="Rooms" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <TableView fx:id="roomsTable" maxHeight="220050.0" maxWidth="650.0" minHeight="200.0" minWidth="650.0" prefHeight="200.0" prefWidth="650.0">
-                           <columns>
-                              <TableColumn fx:id="shipColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Ship ID" />
-                              <TableColumn fx:id="roomNumColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Room Number" />
-                              <TableColumn fx:id="bedsAmountColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Beds Amount" />
-                              <TableColumn fx:id="roomTypeColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Room Type" />
-                              <TableColumn fx:id="priceColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Price Per Night" />
-                           </columns>
-                        </TableView>
-                        <Label fx:id="errorRoomLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <VBox alignment="CENTER" spacing="20.0">
-                     <children>
-                        <JFXButton fx:id="addRoomBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#addRoom" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../rsc/add-icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="delRoomBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#deleteRoom" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../rsc/remove-icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="updateRoomBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#updateRoom" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../rsc/edit-icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
+            <Label fx:id="errorLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+            <Separator maxWidth="760.0" minWidth="760.0" prefWidth="760.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></Separator>
+            <Label text="Past Orders" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <TableView fx:id="pastOrdersTable" maxHeight="200.0" maxWidth="700.0" minHeight="200.0" minWidth="700.0" prefHeight="200.0" prefWidth="700.0">
+               <columns>
+                  <TableColumn fx:id="cruiseColumnP" maxWidth="174.0" minWidth="174.0" prefWidth="174.0" text="Cruise ID" />
+                  <TableColumn fx:id="shipColumnP" maxWidth="174.0" minWidth="174.0" prefWidth="174.0" text="Ship ID" />
+                  <TableColumn fx:id="roomNumColumnP" maxWidth="174.0" minWidth="174.0" prefWidth="174.0" text="Room Number" />
+                  <TableColumn fx:id="personColumnP" maxWidth="174.0" minWidth="174.0" prefWidth="174.0" text="Person ID" />
+               </columns>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TableView>
          </children>
       </VBox>
 	</children>
-   <stylesheets>
-      <URL value="@AdminMain.css" />
-      <URL value="@Design.css" />
-   </stylesheets>
 </AnchorPane>

@@ -119,8 +119,8 @@ public class SailTo {
 	// ---------------------------------- toString --------------------------------
 	@Override
 	public String toString() {
-		return "SailTo [countryName=" + countryName + ", portName=" + portName + ", sailingID=" + sailingID
-				+ ", arrivalTime=" + arrivalTime + ", leavingTime=" + leavingTime + "]";
+		return "Sail To: " + countryName + ", " + portName + " | Sailing ID: " + sailingID
+				+ " | Arrival: " + arrivalTime + " | Leaving: " + leavingTime;
 	}
 
 }

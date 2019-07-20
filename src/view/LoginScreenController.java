@@ -77,11 +77,10 @@ public class LoginScreenController {
 				}
 				// check if the user exists
 				else if (!ViewLogic.controller.doesPersonExist(new Person (username))) {
-					errorLabel.setText("Username doesn't exist. Please create an account.");
+					errorLabel.setText("User doesn't exist. Please create an account.");
 				}
 				// the user exists and his password matches the password in the db
-				else if (ViewLogic.controller.doesPersonExist(new Person(username))) { //TODO
-					ViewLogic.currentUser = ViewLogic.controller.getAllCustomers().get(ViewLogic.controller.getAllCustomers().indexOf(new Person(username)));// TODO
+				else if ((ViewLogic.currentUser = ViewLogic.controller.doesUserExist(username, pw)) != null) { 
 					closeWindow();
 					ViewLogic.newCustomerMainWindow();
 				}
