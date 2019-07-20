@@ -5,7 +5,9 @@ import utils.Consts;
 
 
 import java.sql.*;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ControllerLogic {
 
@@ -78,6 +80,7 @@ public class ControllerLogic {
 
     public boolean insertCruise(CruiseSailing cs) {
         PreparedStatement ps;
+        boolean isInsert = true;
         ArrayList<CruiseSailing> cruiseSailings = getAllCruise();
         if (cruiseSailings.contains(cs)){
             return false;
@@ -85,7 +88,7 @@ public class ControllerLogic {
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.insertCruise);
-            insertUpdateCruise(cs, ps, i);
+            insertUpdateCruise(cs, ps, i, isInsert);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -164,10 +167,11 @@ public class ControllerLogic {
 
     public void insertShip(CruiseShip csh) {
         PreparedStatement ps;
+        boolean isInsert = true;
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.insertShip);
-            insertUpdateShip(csh, ps, i);
+            insertUpdateShip(csh, ps, i, isInsert);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -277,6 +281,7 @@ public class ControllerLogic {
 
     public void updatePerson(Person p) {
         PreparedStatement ps;
+        boolean isInsert = false;
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.updatePerson);
@@ -299,17 +304,23 @@ public class ControllerLogic {
 
     public void updateCruise(CruiseSailing cs) {
         PreparedStatement ps;
+        boolean isInsert = false;
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.updateCruise);
-            insertUpdateCruise(cs, ps, i);
+            insertUpdateCruise(cs, ps, i, isInsert);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private void insertUpdateCruise(CruiseSailing cs, PreparedStatement ps, int i) throws SQLException {
-        ps.setInt(i++, Integer.parseInt(cs.getCruiseID()));
+    private void insertUpdateCruise(CruiseSailing cs, PreparedStatement ps, int i, boolean isInsert) throws SQLException {
+        if (isInsert){
+            ps.setInt(i++, autoIncrementCruiseID());
+        }
+        else {
+            ps.setInt(i++, Integer.parseInt(cs.getCruiseID()));
+        }
         ps.setInt(i++, Integer.parseInt(cs.getCruiseShipID()));
         ps.setTimestamp(i++, cs.getLeavingTime());
         ps.setTimestamp(i++, cs.getReturnTime());
@@ -318,17 +329,23 @@ public class ControllerLogic {
 
     public void updateShip(CruiseShip csh) {
         PreparedStatement ps;
+        boolean isInsert = false;
         try {
             int i = 1;
             ps = conn.prepareStatement(Consts.updateCruiseShip);
-            insertUpdateShip(csh, ps, i);
+            insertUpdateShip(csh, ps, i, isInsert);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private void insertUpdateShip(CruiseShip csh, PreparedStatement ps, int i) throws SQLException {
-        ps.setInt(i++, Integer.parseInt(csh.getCruiseShipID()));
+    private void insertUpdateShip(CruiseShip csh, PreparedStatement ps, int i, boolean isInsert) throws SQLException {
+        if (isInsert){
+            ps.setInt(i++, autoIncrementCruiseShip());
+        }
+        else {
+            ps.setInt(i++, Integer.parseInt(csh.getCruiseShipID()));
+        }
         ps.setString(i++, csh.getShipName());
         ps.setDate(i++, csh.getManufacturingDate());
         ps.setInt(i++, csh.getMaxCapacity());
@@ -591,6 +608,7 @@ public class ControllerLogic {
         return toReturn;
     }
 
+    //Query
     public ArrayList<OneAQuery> getOneAQuery(CruiseSailing cs, int year){
         ArrayList<OneAQuery> toReturn = new ArrayList<>();
         try {
@@ -612,6 +630,7 @@ public class ControllerLogic {
         return toReturn;
     }
 
+    //Query
     public ArrayList<FiveQuery> getFiveQuery(Date startDate, Date endDate){
         ArrayList<FiveQuery> toReturn = new ArrayList<>();
         try {
@@ -633,6 +652,7 @@ public class ControllerLogic {
         return toReturn;
     }
 
+    //Query
     public ArrayList<SixQuery> getSixQuery(){
         ArrayList<SixQuery> toReturn = new ArrayList<>();
         try {
@@ -644,6 +664,228 @@ public class ControllerLogic {
             while (rs.next()) {
                 int i = 1;
                 toReturn.add(new SixQuery(rs.getInt(i++), rs.getInt(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    //Query
+    public double getCruiseProfitByDateRange(Date startDate, Date endDate){
+        int toReturn = 0;
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getCruiseProfitByDateRange);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn = rs.getInt(i++);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    public ArrayList<CruiseSailing> getAllFutureCruiseSailing(){
+        ArrayList<CruiseSailing> toReturn = new ArrayList<>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getAllFutureCruiseSailing);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.add(new CruiseSailing(Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), rs.getTimestamp(i++), rs.getTimestamp(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    public ArrayList<CruiseOrder> getAllPastCO(){
+        ArrayList<CruiseOrder> toReturn = new ArrayList<>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getAllPastCO);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.add(new CruiseOrder(Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), rs.getString(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    //Query
+    public ArrayList<Room> getFreeCheapestRoom(int cruiseID){
+        ArrayList<Room> toReturn = new ArrayList<>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getFreeCheapestRoom);
+            ps.setInt(1, cruiseID);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.add(new Room(rs.getString(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getInt(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    //Query
+    public HashMap<Integer, Integer> getListOfAllTimeShipOrders(){
+        //key is CruiseShipID, Value is the count of cruiseShipID
+        HashMap<Integer, Integer> toReturn = new HashMap<Integer, Integer>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getListOfAllTimeShipOrders);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.put(rs.getInt(i++), rs.getInt(i++));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    //Query
+    public int getNumberOfCustomersByDestination(String countryName, String portName){
+        int toReturn = 0;
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getNumberOfCustomersByDestination);
+            ps.setString(1, countryName);
+            ps.setString(2, portName);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn = rs.getInt(i++);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    //Query
+    public HashMap<Integer, Integer> getPercentageOfOccupiedRooms(){
+        //key is cruiseID, Value is the count of num of empty rooms
+        HashMap<Integer, Integer> toReturn = new HashMap<Integer, Integer>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getPercentageOfOccupiedRooms);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.put(rs.getInt(i++), rs.getInt(i++));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    //Query
+    public ArrayList<Room> getVacantRoomsByCruiseID(int cruiseID){
+        ArrayList<Room> toReturn = new ArrayList<>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.getVacantRoomsByCruiseID);
+            ps.setInt(1, cruiseID);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.add(new Room(rs.getString(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getInt(i++)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    public String checkVIPcustomer(String personID){
+        String toReturn = "";
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.checkVIPcustomer);
+            ps.setString(1, personID);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn = rs.getString(i++);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    public int autoIncrementCruiseID(){
+        int toReturn = 0;
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.autoIncrementCruiseID);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn = rs.getInt(i++);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    public int autoIncrementCruiseShip(){
+        int toReturn = 0;
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.autoIncrementCruiseShip);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn = rs.getInt(i++);
             }
 
         } catch (SQLException e) {

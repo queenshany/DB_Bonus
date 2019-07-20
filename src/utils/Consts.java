@@ -25,6 +25,14 @@ public final class Consts {
     public static final String getOneAQuery = "exec OneAQuery ?,?";
     public static final String getFiveQuery = "exec FiveQuery ?,?";
     public static final String getSixQuery = "exec SixQuery";
+    public static final String getCruiseProfitByDateRange = "exec CruiseProfitByDateRange ?,?";
+    public static final String getAllFutureCruiseSailing = "exec GetAllFutureCruiseSailing";
+    public static final String getAllPastCO = "exec GetAllPastCO";
+    public static final String getFreeCheapestRoom = "exec GetFreeCheapestRoom ?";
+    public static final String getListOfAllTimeShipOrders = "exec GetListOfAllTimeShipOrders";
+    public static final String getNumberOfCustomersByDestination = "exec GetNumberOfCustomersByDestination";
+    public static final String getPercentageOfOccupiedRooms = "exec GetPercentageOfOccupiedRooms";
+    public static final String getVacantRoomsByCruiseID = "exec GetVacantRoomsByCruiseID";
     public static final String insertPerson = "exec InsertPerson ?,?,?,?,?,?,?";
     public static final String insertCountry = "exec InsertCountry ?";
     public static final String insertCruise = "exec InsertCruise ?,?,?,?";
@@ -46,4 +54,7 @@ public final class Consts {
     public static final String removeSailTo = "exec RemoveSailTo ?,?,?";
     public static final String removeShip = "exec RemoveShip ?";
     public static final String removePerson = "exec RemovePerson ?";
+    public static final String autoIncrementCruiseID = "exec AutoIncrementCruiseID";
+    public static final String autoIncrementCruiseShip = "exec AutoIncrementCruiseShip";
+    public static final String checkVIPcustomer = "exec checkVIPcustomer ?";
 }
