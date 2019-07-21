@@ -915,4 +915,35 @@ public class ControllerLogic {
         }
         return person;
     }
+
+    //returns true if overlaps, false if not.
+    public boolean isOverlapDates(Date startDate, Date endDate, String cruiseID){
+        ArrayList<SailTo> destinations = getAllSailTo(cruiseID);
+        if (!areValidSailToDates(startDate, endDate, cruiseID)){
+            return false;
+        }
+
+        for (SailTo st: destinations){
+            if ((st.getArrivalTime().before(endDate) || st.getArrivalTime().equals(endDate)) && (st.getLeavingTime().after(startDate) || st.getLeavingTime().equals(startDate))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean areValidSailToDates(Date startDate, Date endDate, String cruiseID){
+        ArrayList<CruiseSailing> cruises = getAllCruise();
+        CruiseSailing cruise = null;
+        for (CruiseSailing c : cruises) {
+            if (c.getCruiseID() == cruiseID){
+                cruise = c;
+            }
+        }
+
+        if((cruise.getLeavingTime().before(startDate) || cruise.getLeavingTime().equals(startDate)) &&
+                (cruise.getReturnTime().after(endDate) || cruise.getReturnTime().equals(endDate))){
+            return true;
+        }
+        return false;
+    }
 }

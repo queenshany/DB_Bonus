@@ -18,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/src/utils/Consts.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="570">
-              <caret line="58" column="76" lean-forward="true" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
+              <caret line="58" column="76" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -26,12 +26,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/control/ControllerLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="839" column="29" lean-forward="true" selection-start-line="839" selection-start-column="29" selection-end-line="839" selection-end-column="29" />
+            <state relative-caret-position="165">
+              <caret line="918" column="45" selection-start-line="918" selection-start-column="45" selection-end-line="918" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#23028#23046#0" expanded="true" />
-                <element signature="e#24289#24307#0" expanded="true" />
+                <element signature="e#23570#23588#0" expanded="true" />
+                <element signature="e#24855#24873#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,6 +73,7 @@
       <find>getNumberOfCustomersByDestination</find>
       <find>getPercentageOfOccupiedRooms</find>
       <find>getVacantRoomsByCruiseID</find>
+      <find>autoIncrementCruiseID</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -214,12 +215,12 @@
       <workItem from="1562656720391" duration="3193000" />
       <workItem from="1562667842452" duration="15241000" />
       <workItem from="1562920661712" duration="14780000" />
-      <workItem from="1563301845967" duration="9330000" />
+      <workItem from="1563301845967" duration="12177000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51945000" />
+    <option name="totallyTimeSpent" value="54792000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -234,7 +235,7 @@
       <window_info id="Learn" order="6" />
       <window_info content_ui="combo" id="Project" order="7" visible="true" weight="0.23221476" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -425,17 +426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/CruiseSailing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="57" column="39" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
-          <folding>
-            <element signature="e#866#867#0" expanded="true" />
-            <element signature="e#888#889#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/CruiseShip.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-586">
@@ -527,18 +517,29 @@
     <entry file="file://$PROJECT_DIR$/src/utils/Consts.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
-          <caret line="58" column="76" lean-forward="true" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
+          <caret line="58" column="76" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CruiseSailing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+          <folding>
+            <element signature="e#891#892#0" expanded="true" />
+            <element signature="e#913#914#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/control/ControllerLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="839" column="29" lean-forward="true" selection-start-line="839" selection-start-column="29" selection-end-line="839" selection-end-column="29" />
+        <state relative-caret-position="165">
+          <caret line="918" column="45" selection-start-line="918" selection-start-column="45" selection-end-line="918" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#23028#23046#0" expanded="true" />
-            <element signature="e#24289#24307#0" expanded="true" />
+            <element signature="e#23570#23588#0" expanded="true" />
+            <element signature="e#24855#24873#0" expanded="true" />
           </folding>
         </state>
       </provider>
