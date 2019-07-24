@@ -150,7 +150,7 @@ public class CustomerCruiseOrderScreenController {
 		}
 		else {
 			roomCombo.setDisable(false);
-			roomCombo.getItems().setAll(ViewLogic.controller.getAllRooms(cs.getCruiseShipID())); //TODO AVAILABLE ROOMS
+			roomCombo.getItems().setAll(ViewLogic.controller.getVacantRoomsByCruiseID(Integer.parseInt(cs.getCruiseShipID())));
 		}
 	}
 

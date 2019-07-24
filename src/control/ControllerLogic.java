@@ -935,13 +935,16 @@ public class ControllerLogic {
         ArrayList<CruiseSailing> cruises = getAllCruise();
         CruiseSailing cruise = null;
         for (CruiseSailing c : cruises) {
-            if (c.getCruiseID() == cruiseID){
+            if (c.getCruiseID().equals(cruiseID)){
                 cruise = c;
             }
         }
-
-        if((cruise.getLeavingTime().before(startDate) || cruise.getLeavingTime().equals(startDate)) &&
-                (cruise.getReturnTime().after(endDate) || cruise.getReturnTime().equals(endDate))){
+        
+        Date leaving = new Date(cruise.getLeavingTime().getTime());
+        Date returning = new Date(cruise.getReturnTime().getTime());
+        
+        if ((leaving.before(startDate) || leaving.equals(startDate)) &&
+                (returning.after(endDate) || returning.equals(endDate))){
             return true;
         }
         return false;

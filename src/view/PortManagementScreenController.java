@@ -66,7 +66,7 @@ public class PortManagementScreenController {
 						} else
 							errorLabel.setText("Port already exists.");
 					} catch(Exception e) {
-						errorLabel.setText("Error occured.");
+						errorLabel.setText("Error occurred.");
 					}
 				} else
 					errorLabel.setText("Invalid port name.");

@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -9,10 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -23,7 +21,7 @@
       	<children>
             <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-            		<VBox alignment="CENTER" maxWidth="399.0" minWidth="399.0" prefWidth="400.0" spacing="30.0">
+            		<VBox alignment="CENTER" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" spacing="27.0">
             			<children>
             				<Label text="Room Management" textAlignment="CENTER" textFill="WHITE">
             					<font>
@@ -40,33 +38,22 @@
                         </JFXTextField>
                         <JFXTextField fx:id="roomNumTextField" alignment="CENTER" focusColor="WHITE" labelFloat="true" layoutX="110.0" layoutY="142.0" maxWidth="200.0" minWidth="200.0" onKeyReleased="#onKeyReleased" prefWidth="200.0" promptText="Room Number" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
                         <JFXTextField fx:id="priceTextField" alignment="CENTER" focusColor="WHITE" labelFloat="true" layoutX="110.0" layoutY="169.0" maxWidth="200.0" minWidth="200.0" onKeyReleased="#onKeyReleased" prefWidth="200.0" promptText="Price" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
-                        <GridPane hgap="8.0" maxWidth="220.0" minWidth="220.0" prefWidth="220.0" vgap="25.0">
-                          <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints />
-                            <RowConstraints />
-                          </rowConstraints>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="307.0" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" spacing="20.0">
                            <children>
-                              <JFXRadioButton fx:id="suiteBut" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 ); -jfx-selected-color: #749cff; -jfx-unselected-color: white;" text="Suite" textFill="WHITE" GridPane.columnIndex="2">
+                              <Label text="Type" />
+                              <JFXRadioButton fx:id="standardBut" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 ); -jfx-selected-color: #749cff; -jfx-unselected-color: white;" text="Standard" textFill="WHITE">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="roomTypeGroup" />
-                                 </toggleGroup>
-                              </JFXRadioButton>
-                              <JFXRadioButton fx:id="standardBut" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 ); -jfx-selected-color: #749cff; -jfx-unselected-color: white;" text="Standard" textFill="WHITE" toggleGroup="$roomTypeGroup" GridPane.columnIndex="1" />
-                              <Label text="Type" />
-                              <Label text="Beds Amount" GridPane.rowIndex="1" />
-                              <JFXRadioButton fx:id="twoBut" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 ); -jfx-selected-color: #749cff; -jfx-unselected-color: white;" text="2" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <toggleGroup>
-                                    <ToggleGroup fx:id="bedAmountGroup" />
-                                 </toggleGroup>
-                              </JFXRadioButton>
-                              <JFXRadioButton fx:id="fourBut" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 ); -jfx-selected-color: #749cff; -jfx-unselected-color: white;" text="4" textFill="WHITE" toggleGroup="$bedAmountGroup" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                 </toggleGroup></JFXRadioButton>
+                              <JFXRadioButton fx:id="suiteBut" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 ); -jfx-selected-color: #749cff; -jfx-unselected-color: white;" text="Suite" textFill="WHITE" toggleGroup="$roomTypeGroup" />
                            </children>
-                        </GridPane>
+                        </HBox>
+                        <HBox alignment="CENTER" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" spacing="25.0">
+                           <children>
+                              <Label text="Beds Amount" />
+                              <JFXSlider fx:id="bedsSlider" blockIncrement="1.0" majorTickUnit="1.0" max="4.0" maxWidth="100.0" min="2.0" minWidth="100.0" minorTickCount="0" prefWidth="100.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 ); -text-fill: white; -prompt-text-fill: white;" stylesheets="@RoomSlider.css" value="2.0" />
+                           </children>
+                        </HBox>
                         <Label fx:id="errorLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
                         <HBox alignment="CENTER" spacing="20.0">
                            <children>

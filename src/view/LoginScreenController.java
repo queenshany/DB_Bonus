@@ -63,7 +63,6 @@ public class LoginScreenController {
 	 */
 	@FXML
 	private void loginOnAction() {
-		//errorLabel.setText("hello");
 		String username = userTextField.getText();
 		String pw = pwTextField.getText();
 
