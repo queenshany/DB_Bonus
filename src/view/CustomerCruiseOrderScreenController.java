@@ -6,25 +6,19 @@ import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CruiseOrder;
 import model.CruiseSailing;
-import model.CruiseShip;
 import model.Room;
 public class CustomerCruiseOrderScreenController {
 
@@ -95,7 +89,7 @@ public class CustomerCruiseOrderScreenController {
 		errorDelOrderLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
 		errorAddOrderLabel.setStyle("-fx-effect: dropshadow( one-pass-box , #101d3d , 5 , 1.5 , 0 , 0 )");
 
-		cruiseCombo.getItems().setAll(ViewLogic.controller.getAllCruise()); // TODO FUTURE CRUISE
+		cruiseCombo.getItems().setAll(ViewLogic.controller.getAllFutureCruiseSailing());
 
 		cruiseColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseID")); // According to variable name
 		shipColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseShipID")); // Same here
@@ -111,20 +105,21 @@ public class CustomerCruiseOrderScreenController {
 	private void addOrder() {
 		CruiseSailing cs = cruiseCombo.getSelectionModel().getSelectedItem();
 		Room r = roomCombo.getSelectionModel().getSelectedItem();
-		
+
 		if (cs != null) {
 			if (r != null) {
 				if (ViewLogic.controller.insertCruiseOrder(new CruiseOrder(cs.getCruiseID(), cs.getCruiseShipID(), Integer.toString(r.getRoomNumber()), ViewLogic.currentUser.getPersonID()))) {
 					setFutureOrdersTable();
+					cruiseCombo.getSelectionModel().clearSelection();
 					setRoomCombo();
-					errorAddOrderLabel.setText("Order added successfully.");					
+					errorAddOrderLabel.setText("Order added successfully. Add another?");
 				} else
 					errorAddOrderLabel.setText("Error occurred.");
 			} else
 				errorAddOrderLabel.setText("Please select a room.");
 		} else
 			errorAddOrderLabel.setText("Please select a cruise.");
-		
+
 	}
 
 	@FXML
@@ -157,7 +152,6 @@ public class CustomerCruiseOrderScreenController {
 			roomCombo.setDisable(false);
 			roomCombo.getItems().setAll(ViewLogic.controller.getAllRooms(cs.getCruiseShipID())); //TODO AVAILABLE ROOMS
 		}
-
 	}
 
 	// ========================== Menu Action Listeners ==========================

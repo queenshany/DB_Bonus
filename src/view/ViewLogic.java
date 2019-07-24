@@ -35,16 +35,17 @@ public class ViewLogic {
 	protected static AdminCruisesScreenController adminCruisesScreenController;
 	protected static AdminShipsRoomsScreenController adminShipsRoomsScreenController;
 	protected static AdminCustomersScreenController adminCustomersScreenController;
-
+	protected static AdminCruiseOrdersScreenController adminCruiseOrdersScreenController;
+	
 	// ------------------------------ Methods ------------------------------
 	/**
 	 * this method starts the windows in the system
 	 */
 	public static void initUI() {
-		//newLoginWindow();
+		newLoginWindow();
 		
 		//TODO
-		newAdminPortCountryWindow();
+		//newAdminPortCountryWindow();
 				
 		//newAdminCruisesSTWindow();
 		//newCruiseManagementWindow();

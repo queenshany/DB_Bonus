@@ -1,37 +1,19 @@
 package view;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.Country;
-import model.CruiseSailing;
-import model.CruiseShip;
-import model.Port;
 import model.Room;
-import model.SailTo;
 import utils.Consts;
 public class RoomManagementScreenController {
 
@@ -158,7 +140,7 @@ public class RoomManagementScreenController {
 										ViewLogic.controller.updateRoom(room);
 										errorLabel.setText("Room updated successfully.");
 									}
-									
+
 									else if (!update && ViewLogic.controller.insertRoom(room))
 										errorLabel.setText("Room added successfully. Add another?");
 									else if (!update)
