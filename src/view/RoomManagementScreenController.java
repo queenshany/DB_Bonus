@@ -1,37 +1,20 @@
 package view;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.Country;
-import model.CruiseSailing;
-import model.CruiseShip;
-import model.Port;
 import model.Room;
-import model.SailTo;
 import utils.Consts;
 public class RoomManagementScreenController {
 
@@ -50,25 +33,19 @@ public class RoomManagementScreenController {
 	private JFXTextField roomNumTextField;
 
 	@FXML
-	private JFXRadioButton suiteBut;
-
-	@FXML
-	private ToggleGroup roomTypeGroup;
+	private JFXTextField priceTextField;
 
 	@FXML
 	private JFXRadioButton standardBut;
 
 	@FXML
-	private JFXRadioButton twoBut;
+	private ToggleGroup roomTypeGroup;
 
 	@FXML
-	private ToggleGroup bedAmountGroup;
+	private JFXRadioButton suiteBut;
 
 	@FXML
-	private JFXRadioButton fourBut;
-
-	@FXML
-	private JFXTextField priceTextField;
+	private JFXSlider bedsSlider;
 
 	@FXML
 	private Label errorLabel;
@@ -95,15 +72,12 @@ public class RoomManagementScreenController {
 		if (room.getRoomNumber() > 0 && room.getPrice() > 0 && room.getRoomType() != null && room.getBedsAmount() > 0) {
 			roomNumTextField.setText(Integer.toString(room.getRoomNumber()));
 			roomNumTextField.setEditable(false);
+			bedsSlider.setValue(room.getBedsAmount());
+
 			if (room.getRoomType().equalsIgnoreCase(Consts.STANDARD))
 				roomTypeGroup.selectToggle(standardBut);
 			else if (room.getRoomType().equalsIgnoreCase(Consts.SUITE))
 				roomTypeGroup.selectToggle(suiteBut);
-
-			if (room.getBedsAmount() == Consts.TWO)
-				bedAmountGroup.selectToggle(twoBut);
-			else if (room.getBedsAmount() == Consts.FOUR)
-				bedAmountGroup.selectToggle(fourBut);
 
 			priceTextField.setText(Integer.toString(room.getPrice()));
 
@@ -128,7 +102,6 @@ public class RoomManagementScreenController {
 					if (rprice > 0) {
 						if (roomTypeGroup.getSelectedToggle() != null) {
 							String rtype = Consts.STANDARD;
-							int rbeds = Consts.TWO;
 
 							if (roomTypeGroup.getSelectedToggle().equals(standardBut)) {
 								rtype = Consts.STANDARD; 
@@ -138,32 +111,27 @@ public class RoomManagementScreenController {
 							} else
 								errorLabel.setText("hello.");
 
-							if (bedAmountGroup.getSelectedToggle() != null) {
-								if (bedAmountGroup.getSelectedToggle().equals(twoBut)) {
-									rbeds = Consts.TWO; 
-								}
-								else if (bedAmountGroup.getSelectedToggle().equals(fourBut)) {
-									rbeds = Consts.FOUR; 
-								} else
-									errorLabel.setText("hello2.");
+							if (bedsSlider.getValue() >= 0) {
 
 								try {
 									room.setCruiseShipID(IDTextField.getText());
 									room.setRoomNumber(rnum);
-									room.setBedsAmount(rbeds);
+									room.setBedsAmount(Integer.parseInt(Double.toString((bedsSlider.getValue()))));
 									room.setRoomType(rtype);
 									room.setPrice(rprice);
-
+									//if () TODO CHECK MAX NUM OF PEOPLE{
 									if (update) {
 										ViewLogic.controller.updateRoom(room);
 										errorLabel.setText("Room updated successfully.");
 									}
-									
+
 									else if (!update && ViewLogic.controller.insertRoom(room))
 										errorLabel.setText("Room added successfully. Add another?");
 									else if (!update)
 										errorLabel.setText("Room already exists.");
 									ViewLogic.adminShipsRoomsScreenController.setRoomTable();
+									//	} else
+									//	errorLabel.setText("."); FULL SHIP? TODO
 								} catch(Exception e) {
 									errorLabel.setText("Error occured.");
 								}
@@ -181,45 +149,6 @@ public class RoomManagementScreenController {
 		} catch (NumberFormatException e) {
 			errorLabel.setText("Room Number must be an integer.");
 		}
-		//		Port p = portCombo.getValue();
-		//		if (p != null) {
-		//			if (arrivalDatePicker.getValue() != null) {
-		//				if (arrivalDatePicker.getValue().isAfter(LocalDate.now())) {
-		//					Date arr = Date.valueOf(arrivalDatePicker.getValue());
-		//					if (leavingDatePicker.getValue() != null) {
-		//						if (leavingDatePicker.getValue().isAfter(LocalDate.now())) {
-		//							if (leavingDatePicker.getValue().isAfter(arrivalDatePicker.getValue())) {
-		//								Date leave = Date.valueOf(leavingDatePicker.getValue());
-		//								try {
-		//									sailto.setSailingID(IDTextField.getText());
-		//									sailto.setPortName(p.getPortName());
-		//									sailto.setCountryName(p.getCountryName());
-		//									sailto.setArrivalTime(arr);
-		//									sailto.setLeavingTime(leave);
-		//									if (update) {
-		//										ViewLogic.controller.updateSailTo(sailto);
-		//										errorLabel.setText("Sail to destination updated successfully.");
-		//									}
-		//									else if (!update && ViewLogic.controller.insertSailTo(sailto))
-		//										errorLabel.setText("Sail to destination added successfully. Add another?");
-		//									else if (!update)
-		//										errorLabel.setText("Sail to destination already exists.");
-		//									ViewLogic.adminCruisesScreenController.setSTtable();
-		//								} catch(Exception e) {
-		//									errorLabel.setText("Error occured.");
-		//								}
-		//							} else
-		//								errorLabel.setText("Leaving date must be after arrival date.");
-		//						} else 
-		//							errorLabel.setText("Leaving date must be after today.");
-		//					} else
-		//						errorLabel.setText("Leaving date must be after today.");
-		//				} else
-		//					errorLabel.setText("Arrival date must be after today.");
-		//			} else
-		//				errorLabel.setText("Please select an arrival date.");
-		//		} else
-		//			errorLabel.setText("Please select a port.");
 	}
 
 	@FXML

@@ -1,23 +1,15 @@
 package view;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Country;
-import model.Port;
 public class CountryManagementScreenController {
 
 	// ============================== Variables =============================
@@ -57,11 +49,12 @@ public class CountryManagementScreenController {
 					if (ViewLogic.controller.insertCountry(new Country(country))) {
 						ViewLogic.adminCountriesPortsScreenController.setCountryList();
 						errorLabel.setText("Country added successfully. Add another?");
+						countryTextField.setText("");
 					}
 					else 
 						errorLabel.setText("Country already exists.");
 				}catch(Exception e) {
-					errorLabel.setText("Error occured.");
+					errorLabel.setText("Error occurred.");
 				}
 			} else
 				errorLabel.setText("Invalid country name.");

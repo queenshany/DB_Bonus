@@ -1,8 +1,6 @@
 package view;
 
 
-import java.sql.Date;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -65,7 +63,6 @@ public class LoginScreenController {
 	 */
 	@FXML
 	private void loginOnAction() {
-		//errorLabel.setText("hello");
 		String username = userTextField.getText();
 		String pw = pwTextField.getText();
 
@@ -84,15 +81,12 @@ public class LoginScreenController {
 					closeWindow();
 					ViewLogic.newCustomerMainWindow();
 				}
-				else {
+				else 
 					errorLabel.setText("Incorrect username or password.");
-				}
-			}else{
+			} else
 				errorLabel.setText("Please Enter a password.");
-			}
-		}else{
+		} else
 			errorLabel.setText("Please Enter a username.");
-		}
 	}
 
 	/**

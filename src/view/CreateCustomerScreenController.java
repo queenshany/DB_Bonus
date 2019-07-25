@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -101,7 +100,7 @@ public class CreateCustomerScreenController {
 			if (Validation.validID(id)) {
 				if (!ViewLogic.controller.doesPersonExist(new Person(id))) {
 					if (pw != null && pw != "") {
-						if (pw.length() >= Consts.FOUR) {
+						if (pw.length() >= Consts.FOUR) { //TODO
 							if (pw.equals(pwc)) {
 								if (fname != null && !fname.equals("")) {
 									if (Validation.validName(fname)) {
@@ -126,7 +125,7 @@ public class CreateCustomerScreenController {
 																				alert.setContentText("Your username is: " + p.getPersonID());
 																				alert.showAndWait();
 																			} else
-																				errorLabel.setText("Error occured.");
+																				errorLabel.setText("Error occurred.");
 																		} else
 																			errorLabel.setText("Invalid phone number.");
 																	} else
@@ -152,7 +151,7 @@ public class CreateCustomerScreenController {
 							} else
 								errorLabel.setText("Passwords don't match.");
 						} else
-							errorLabel.setText("Password must contain at least " + Consts.FOUR + " characters.");
+							errorLabel.setText("Password must contain at least " + Consts.FOUR + " characters."); //TODO
 					} else
 						errorLabel.setText("Please enter a password.");
 				} else

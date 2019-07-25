@@ -1,31 +1,23 @@
 package view;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.Country;
 import model.CruiseSailing;
 import model.CruiseShip;
-import model.Port;
 public class CruiseManagementScreenController {
 
 	// ============================== Variables =============================
@@ -62,6 +54,8 @@ public class CruiseManagementScreenController {
 
 	private CruiseSailing cruise;
 
+	private boolean update;
+
 	// =============================== Methods ==============================
 
 	public void initialize() {
@@ -83,11 +77,15 @@ public class CruiseManagementScreenController {
 			leavingTimePicker.setValue(leavingdt.toLocalTime());
 			returnDatePicker.setValue(returndt.toLocalDate());
 			returnTimePicker.setValue(returndt.toLocalTime());
-
+			update = true;
 		}
-		//		else TODO ADD AUTOMATIC ID
-		//			IDTextField.setText(ViewLogic.controller.);
+		else
+			setAutoID();
 
+	}
+
+	private void setAutoID() {
+		IDTextField.setText(ViewLogic.controller.autoIncrementCruiseID()+"");
 	}
 
 	protected void closeWindow() {
@@ -98,26 +96,52 @@ public class CruiseManagementScreenController {
 
 	@FXML
 	private void saveCruise() {
-		errorLabel.setText("hello");
-		//		CruiseShip s = shipCombo.getValue();
-		//		if (s != null) {
-		//			String port = portTextField.getText();
-		//			if (port != null || (port != null && !port.isEmpty())) {
-		//				if (Validation.validName(port)) {
-		//					try {
-		//						ViewLogic.controller.insertPort(new Port(c.getCountryName(), port));
-		//						ViewLogic.adminCountriesPortsScreenController.setPortTable();
-		//						errorLabel.setText("Port added successfully. Add another?");
-		//					}catch(Exception e) {
-		//						errorLabel.setText("Error occured.");
-		//					}
-		//				} else
-		//					errorLabel.setText("Invalid port name.");
-		//			} else
-		//				errorLabel.setText("Please type a port name.");
-		//		} else
-		//			errorLabel.setText("Please select a country.");
-
+		CruiseShip s = shipCombo.getValue();
+		if (s != null) {
+			//TODO if ship is in another sail{
+			if (leavingDatePicker.getValue() != null) {
+				if (leavingTimePicker.getValue() != null) {
+					if (returnDatePicker.getValue() != null) {
+						if (returnTimePicker.getValue() != null) {
+							Timestamp leaving = Timestamp.valueOf(LocalDateTime.of(leavingDatePicker.getValue(), leavingTimePicker.getValue()));
+							Timestamp returning = Timestamp.valueOf(LocalDateTime.of(returnDatePicker.getValue(), returnTimePicker.getValue()));
+							if (leaving.after(new Timestamp(System.currentTimeMillis()))) {
+								if (returning.after(new Timestamp(System.currentTimeMillis()))) {
+									if (leaving.before(returning)) {
+										CruiseSailing cs = new CruiseSailing(IDTextField.getText(), s.getCruiseShipID(), leaving, returning);
+										if (update) {
+											ViewLogic.controller.updateCruise(cs);
+											errorLabel.setText("Cruise updated successfully.");
+										}
+										else if (!update && ViewLogic.controller.insertCruise(cs)) {
+											errorLabel.setText("Cruise added successfully. Add Another?");
+											setAutoID();
+											shipCombo.getSelectionModel().clearSelection();
+											leavingDatePicker.setValue(null);
+											leavingTimePicker.setValue(null);
+											returnDatePicker.setValue(null);
+											returnTimePicker.setValue(null);
+										}
+										else
+											errorLabel.setText("Error occurred.");
+									} else
+										errorLabel.setText("Leaving date must be before return date.");
+								} else
+									errorLabel.setText("Return date must be after today.");
+							} else
+								errorLabel.setText("Leaving date must be after today.");
+						} else
+							errorLabel.setText("Please select a return time.");
+					} else
+						errorLabel.setText("Please select a return date.");
+				} else
+					errorLabel.setText("Please select a leaving time.");
+			} else
+				errorLabel.setText("Please select a leaving date.");
+		//} else TODO
+		//	errorLabel.setText("Ship is already in use during these dates.");
+		} else
+			errorLabel.setText("Please select a ship.");
 	}
 
 	@FXML

@@ -134,8 +134,17 @@ public class CustomerManagementScreenController {
 																		errorLabel.setText("Customer updated successfully.");
 																	}
 																	else if (!update && !ViewLogic.controller.doesPersonExist(p)) {
-																		if (ViewLogic.controller.insertPerson(p))
-																			errorLabel.setText("Customer added successfully.");
+																		if (ViewLogic.controller.insertPerson(p)) {
+																			errorLabel.setText("Customer added successfully. Add Another?");
+																			IDTextField.setText("");
+																			pwTextField.setText("");
+																			firstNameTextField.setText("");
+																			surnameTextField.setText("");
+																			emailTextField.setText("");
+																			birthDatePicker.setValue(null);
+																			phoneCombo.getSelectionModel().clearSelection();
+																			phoneTextField.setText("");
+																		}
 																		else
 																			errorLabel.setText("Customer already exists.");
 																	}
@@ -173,7 +182,6 @@ public class CustomerManagementScreenController {
 				errorLabel.setText("Invalid ID.");
 		} else
 			errorLabel.setText("Please enter your ID.");
-
 	}
 
 	@FXML
