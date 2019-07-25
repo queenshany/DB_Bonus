@@ -98,7 +98,6 @@ public class CruiseManagementScreenController {
 	private void saveCruise() {
 		CruiseShip s = shipCombo.getValue();
 		if (s != null) {
-			//TODO if ship is in another sail{
 			if (leavingDatePicker.getValue() != null) {
 				if (leavingTimePicker.getValue() != null) {
 					if (returnDatePicker.getValue() != null) {
@@ -109,6 +108,7 @@ public class CruiseManagementScreenController {
 								if (returning.after(new Timestamp(System.currentTimeMillis()))) {
 									if (leaving.before(returning)) {
 										CruiseSailing cs = new CruiseSailing(IDTextField.getText(), s.getCruiseShipID(), leaving, returning);
+										if (!ViewLogic.controller.cruiseSailOverlappingDates(cs)) {
 										if (update) {
 											ViewLogic.controller.updateCruise(cs);
 											errorLabel.setText("Cruise updated successfully.");
@@ -124,6 +124,8 @@ public class CruiseManagementScreenController {
 										}
 										else
 											errorLabel.setText("Error occurred.");
+										} else 
+											errorLabel.setText("Ship is already in use during these dates. Please Choose Different dates.");
 									} else
 										errorLabel.setText("Leaving date must be before return date.");
 								} else
@@ -138,8 +140,7 @@ public class CruiseManagementScreenController {
 					errorLabel.setText("Please select a leaving time.");
 			} else
 				errorLabel.setText("Please select a leaving date.");
-		//} else TODO
-		//	errorLabel.setText("Ship is already in use during these dates.");
+
 		} else
 			errorLabel.setText("Please select a ship.");
 	}

@@ -1,5 +1,6 @@
 package view;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import com.jfoenix.controls.JFXButton;
@@ -19,33 +20,35 @@ public class ShipManagementScreenController {
 	// ============================== Variables =============================
 
 	@FXML
-    private StackPane pane;
+	private StackPane pane;
 
-    @FXML
-    private AnchorPane mainPane;
+	@FXML
+	private AnchorPane mainPane;
 
-    @FXML
-    private JFXTextField IDTextField;
+	@FXML
+	private JFXTextField IDTextField;
 
-    @FXML
-    private JFXTextField nameTextField;
+	@FXML
+	private JFXTextField nameTextField;
 
-    @FXML
-    private JFXDatePicker manuDatePicker;
+	@FXML
+	private JFXDatePicker manuDatePicker;
 
-    @FXML
-    private JFXTextField maxCapTextField;
+	@FXML
+	private JFXTextField maxCapTextField;
 
-    @FXML
-    private JFXTextField maxPeopleTextField;
+	@FXML
+	private JFXTextField maxPeopleTextField;
 
-    @FXML
-    private Label errorLabel;
+	@FXML
+	private Label errorLabel;
 
-    @FXML
-    private JFXButton saveShipBut;
+	@FXML
+	private JFXButton saveShipBut;
 
 	private CruiseShip ship;
+
+	private boolean update;
 
 	// =============================== Methods ==============================
 
@@ -63,10 +66,15 @@ public class ShipManagementScreenController {
 			manuDatePicker.setValue(manudt);
 			maxCapTextField.setText(Integer.toString(ship.getMaxCapacity()));
 			maxPeopleTextField.setText(Integer.toString(ship.getMaxNumberOfPeople()));
+			update = true;
 		}
-		//		else TODO ADD AUTOMATIC ID
-		//			IDTextField.setText(ViewLogic.controller.);
+		else
+			setAutoID();
 
+	}
+
+	private void setAutoID() {
+		IDTextField.setText(ViewLogic.controller.autoIncrementCruiseShip()+"");
 	}
 
 	protected void closeWindow() {
@@ -77,26 +85,56 @@ public class ShipManagementScreenController {
 
 	@FXML
 	private void saveShip() {
-		errorLabel.setText("hello");
-		//		CruiseShip s = shipCombo.getValue();
-		//		if (s != null) {
-		//			String port = portTextField.getText();
-		//			if (port != null || (port != null && !port.isEmpty())) {
-		//				if (Validation.validName(port)) {
-		//					try {
-		//						ViewLogic.controller.insertPort(new Port(c.getCountryName(), port));
-		//						ViewLogic.adminCountriesPortsScreenController.setPortTable();
-		//						errorLabel.setText("Port added successfully. Add another?");
-		//					}catch(Exception e) {
-		//						errorLabel.setText("Error occured.");
-		//					}
-		//				} else
-		//					errorLabel.setText("Invalid port name.");
-		//			} else
-		//				errorLabel.setText("Please type a port name.");
-		//		} else
-		//			errorLabel.setText("Please select a country.");
+		if (Validation.validName(nameTextField.getText())) {
+			if (manuDatePicker.getValue() != null) {
+				if (manuDatePicker.getValue().isBefore(LocalDate.now())) {
+					Date mdate = Date.valueOf(manuDatePicker.getValue());
+					try {
+						int maxCap = Integer.parseInt(maxCapTextField.getText());
+						if (maxCap > 0) {
+							try {
+								int maxPpl = Integer.parseInt(maxPeopleTextField.getText());
+								if (maxPpl > 0) {
+									if (maxPpl >= ViewLogic.controller.roomsAmountInShip(ship)) {
+										ship.setCruiseShipID(IDTextField.getText());
+										ship.setShipName(nameTextField.getText());
+										ship.setManufacturingDate(mdate);
+										ship.setMaxCapacity(maxCap);
+										ship.setMaxCapacity(maxPpl);
+										if (update) {
+											ViewLogic.controller.updateShip(ship);
+											errorLabel.setText("Ship updated successfully.");
+										}
+										else if (!update ) {//&& ViewLogic.controller.insertShip(ship)) {
+											ViewLogic.controller.insertShip(ship); //TODO
+											errorLabel.setText("Ship added successfully. Add another?");
+											setAutoID();
+											nameTextField.setText("");
+											manuDatePicker.setValue(null);
+											maxPeopleTextField.setText("");
+											maxCapTextField.setText("");
+										} else if (!update)
+											errorLabel.setText("Ship already exists.");
+										ViewLogic.adminShipsRoomsScreenController.setShipTable();
 
+									} else
+										errorLabel.setText("Max number of people must be bigger than the ship's beds amount.");
+								} else
+									errorLabel.setText("Max number of people must be a positive integer.");
+							} catch (NumberFormatException e) {
+								errorLabel.setText("Max number of people must be an integer.");
+							}
+						} else
+							errorLabel.setText("Max capacity must be a positive integer.");
+					} catch (NumberFormatException e) {
+						errorLabel.setText("Max capacity must be an integer.");
+					}
+				} else
+					errorLabel.setText("Leaving date must be before today.");
+			} else
+				errorLabel.setText("Please select a manufacturing date.");
+		} else
+			errorLabel.setText("Invalid ship name.");
 	}
 
 	@FXML

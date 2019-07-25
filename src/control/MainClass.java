@@ -2,10 +2,8 @@ package control;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.Person;
 import view.ViewLogic;
 
-import java.sql.Date;
 
 /**
  * Class MainClass ~ represents the program runner
@@ -18,7 +16,6 @@ public class MainClass extends Application{
 		try {
 			ControllerLogic.getInstance().initConn();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		launch(args);

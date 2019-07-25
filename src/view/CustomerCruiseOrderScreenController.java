@@ -135,7 +135,7 @@ public class CustomerCruiseOrderScreenController {
 	}
 
 	private void setFutureOrdersTable() {
-		orders = ViewLogic.controller.getFutureCruiseOrderByCustomerID(ViewLogic.currentUser, Date.valueOf(LocalDate.now()));
+		orders = ViewLogic.controller.getFutureCruiseOrderByCustomerID(ViewLogic.currentUser);
 		ObservableList<CruiseOrder> co = FXCollections.observableArrayList(orders);
 		ordersTable.setItems(co);
 		ordersTable.refresh();
