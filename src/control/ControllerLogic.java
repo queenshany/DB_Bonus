@@ -554,13 +554,7 @@ public class ControllerLogic {
             ResultSet rs;
             PreparedStatement ps;
             ps = conn.prepareStatement(Consts.getAllCruiseOrdersByCustomerID);
-            ps.setString(1, p.getPersonID());
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int i = 1;
-                toReturn.add(new CruiseOrder(Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), rs.getString(i++)));
-            }
+            getCoByCustomerID(p, toReturn, ps);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -568,25 +562,30 @@ public class ControllerLogic {
         return toReturn;
     }
 
-    public ArrayList<CruiseOrder> getFutureCruiseOrderByCustomerID(Person co, Date d){
+    public ArrayList<CruiseOrder> getFutureCruiseOrderByCustomerID(Person co){
         ArrayList<CruiseOrder> toReturn = new ArrayList<>();
         try {
             ResultSet rs;
             PreparedStatement ps;
             ps = conn.prepareStatement(Consts.getAllFutureCruiseOrderByCustomerID);
-            ps.setString(1, co.getPersonID());
-            ps.setDate(2, d);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int i = 1;
-                toReturn.add(new CruiseOrder(Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), rs.getString(i++)));
-            }
+            getCoByCustomerID(co, toReturn, ps);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return toReturn;
+    }
+
+    private void getCoByCustomerID(Person co, ArrayList<CruiseOrder> toReturn, PreparedStatement ps) throws SQLException {
+        ResultSet rs;
+        ps.setString(1, co.getPersonID());
+
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            int i = 1;
+            toReturn.add(new CruiseOrder(Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), Integer.toString(rs.getInt(i++)), rs.getString(i++)));
+        }
     }
 
     public ArrayList<CruiseOrder> getFutureCO(){
@@ -872,6 +871,9 @@ public class ControllerLogic {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        if (toReturn == 0){
+            return 1;
+        }
         return toReturn;
     }
 
@@ -945,5 +947,43 @@ public class ControllerLogic {
             return true;
         }
         return false;
+    }
+
+    //returns true if overlaps, false if not.
+    private boolean cruiseSailOverlappingDates(CruiseSailing sailing, String cruiseShipID, Date startDate, Date endDate){
+        ArrayList<CruiseSailing> cruises = getAllCruise();
+        for (CruiseSailing cs : cruises){
+            if (cs.getCruiseShipID() == cruiseShipID){
+
+                if((cs.getLeavingTime().before(startDate) || cs.getLeavingTime().equals(startDate)) &&
+                        (cs.getReturnTime().after(endDate) || cs.getReturnTime().equals(endDate))){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean canAddRoomToShip(Room room){
+        ArrayList<CruiseShip> ships = getAllShips();
+        ArrayList<Room> rooms;
+        int currentNumOfBeds = 0;
+        CruiseShip ship = null;
+
+        for (CruiseShip cs: ships) {
+            if (cs.getCruiseShipID() == room.getCruiseShipID()){
+                ship = cs;
+            }
+        }
+        rooms = getAllRooms(ship.getCruiseShipID());
+
+        for (Room r:rooms) {
+            currentNumOfBeds += r.getBedsAmount();
+        }
+
+        if (room.getBedsAmount() + currentNumOfBeds > ship.getMaxNumberOfPeople()){
+            return false;
+        }
+        return true;
     }
 }
