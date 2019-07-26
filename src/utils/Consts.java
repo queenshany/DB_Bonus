@@ -57,4 +57,5 @@ public final class Consts {
     public static final String autoIncrementCruiseID = "exec AutoIncrementCruiseID";
     public static final String autoIncrementCruiseShip = "exec AutoIncrementCruiseShip";
     public static final String checkVIPcustomer = "exec checkVIPcustomer ?";
+    public static final String customerOrderByYear = "exec CustomerOrderByYear ?";
 }

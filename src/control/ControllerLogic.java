@@ -835,6 +835,7 @@ public class ControllerLogic {
 		return toReturn;
 	}
 
+	//Query
 	public String checkVIPcustomer(String personID){
 		String toReturn = "";
 		try {
@@ -854,6 +855,27 @@ public class ControllerLogic {
 		}
 		return toReturn;
 	}
+
+    //Query
+    public HashMap<Integer, Integer> getCustomerOrderByYear(Person p){
+        //key is cruiseID, Value is the count of num of empty rooms
+        HashMap<Integer, Integer> toReturn = new HashMap<Integer, Integer>();
+        try {
+            ResultSet rs;
+            PreparedStatement ps;
+            ps = conn.prepareStatement(Consts.customerOrderByYear);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int i = 1;
+                toReturn.put(rs.getInt(i++), rs.getInt(i++));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
 
 	public int autoIncrementCruiseID(){
 		int toReturn = 0;
