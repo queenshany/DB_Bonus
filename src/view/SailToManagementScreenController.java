@@ -2,31 +2,19 @@ package view;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.Country;
-import model.CruiseSailing;
-import model.CruiseShip;
 import model.Port;
 import model.SailTo;
 public class SailToManagementScreenController {
@@ -72,11 +60,10 @@ public class SailToManagementScreenController {
 		// set portCombo
 		portCombo.getItems().setAll(ViewLogic.controller.getAllPorts());
 
-		// for update
+		// for new
 		if (sailto.getSailingID() != null)
 			IDTextField.setText(sailto.getSailingID());
-		//		else
-		//			IDTextField.setText(""); 
+		// for update
 		if (sailto.getCountryName() != null && sailto.getCountryName() != null && sailto.getLeavingTime() != null && sailto.getArrivalTime() != null) {
 			portCombo.getSelectionModel().select(new Port(sailto.getCountryName(), sailto.getPortName()));
 			portCombo.setDisable(true);
@@ -105,7 +92,7 @@ public class SailToManagementScreenController {
 						if (leavingDatePicker.getValue().isAfter(LocalDate.now())) {
 							if (leavingDatePicker.getValue().isAfter(arrivalDatePicker.getValue())) {
 								Date leave = Date.valueOf(leavingDatePicker.getValue());
-								try {
+								if (!ViewLogic.controller.isOverlapDates(arr, leave, IDTextField.getText())) {
 									sailto.setSailingID(IDTextField.getText());
 									sailto.setPortName(p.getPortName());
 									sailto.setCountryName(p.getCountryName());
@@ -115,14 +102,16 @@ public class SailToManagementScreenController {
 										ViewLogic.controller.updateSailTo(sailto);
 										errorLabel.setText("Sail to destination updated successfully.");
 									}
-									else if (!update && ViewLogic.controller.insertSailTo(sailto))
+									else if (!update && ViewLogic.controller.insertSailTo(sailto)) {
 										errorLabel.setText("Sail to destination added successfully. Add another?");
-									else if (!update)
+										portCombo.getSelectionModel().clearSelection();
+										arrivalDatePicker.setValue(null);
+										leavingDatePicker.setValue(null);
+									} else if (!update)
 										errorLabel.setText("Sail to destination already exists.");
 									ViewLogic.adminCruisesScreenController.setSTtable();
-								} catch(Exception e) {
-									errorLabel.setText("Error occured.");
-								}
+								} else
+									errorLabel.setText("Dates overlap in the cruise. Please select different dates.");
 							} else
 								errorLabel.setText("Leaving date must be after arrival date.");
 						} else 

@@ -2,6 +2,7 @@ package view;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Optional;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -11,8 +12,10 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -63,6 +66,9 @@ public class CreateCustomerScreenController {
 	private JFXButton registerBut;
 
 	@FXML
+	private JFXButton cancelBut;
+
+	@FXML
 	private JFXComboBox<E_Phone> phoneCombo;
 
 	// =============================== Methods ==============================
@@ -70,9 +76,15 @@ public class CreateCustomerScreenController {
 	public void initialize() {
 		mainPane.setStyle("-fx-background-image: url(\"/rsc/create-customer-bg.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
-		Label l = new Label("Register");
-		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #305e00 , 4 , 1 , 0 , 0 )");
-		registerBut.setGraphic(l);
+
+		Label reg = new Label("Register");
+		Label can = new Label("Cancel");
+
+		reg.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #305e00 , 4 , 1 , 0 , 0 )");
+		can.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #305e00 , 4 , 1 , 0 , 0 )");
+
+		registerBut.setGraphic(reg);
+		cancelBut.setGraphic(can);
 
 		phoneCombo.getItems().setAll(E_Phone.values());
 	}
@@ -100,7 +112,7 @@ public class CreateCustomerScreenController {
 			if (Validation.validID(id)) {
 				if (!ViewLogic.controller.doesPersonExist(new Person(id))) {
 					if (pw != null && pw != "") {
-						if (pw.length() >= Consts.FOUR) { //TODO
+						if (pw.length() >= Consts.FOUR) {
 							if (pw.equals(pwc)) {
 								if (fname != null && !fname.equals("")) {
 									if (Validation.validName(fname)) {
@@ -151,7 +163,7 @@ public class CreateCustomerScreenController {
 							} else
 								errorLabel.setText("Passwords don't match.");
 						} else
-							errorLabel.setText("Password must contain at least " + Consts.FOUR + " characters."); //TODO
+							errorLabel.setText("Password must contain at least " + Consts.FOUR + " characters."); 
 					} else
 						errorLabel.setText("Please enter a password.");
 				} else
@@ -169,5 +181,31 @@ public class CreateCustomerScreenController {
 	private void onKeyReleased(KeyEvent e) {
 		if (e.getCode() == KeyCode.ENTER)
 			regOnAction();
+	}
+
+	@FXML
+	private void cancelOnAction() {
+		Alert alert = new Alert(AlertType.WARNING);
+
+		ButtonType buttonTypeYes;
+		ButtonType buttonTypeNo;
+
+		buttonTypeYes = new ButtonType("Yes", ButtonData.YES);
+		buttonTypeNo = new ButtonType("No", ButtonData.NO);
+
+		alert.setHeaderText("Are you sure you want to cancel registration?");
+
+		alert.setContentText("");
+
+		alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+		alert.setTitle("Cancel? :(");
+
+		Optional<ButtonType> answer = alert.showAndWait();
+
+		if (answer.get().getButtonData() == ButtonData.YES) {
+			closeWindow();
+			ViewLogic.newLoginWindow();
+		}
 	}
 }

@@ -119,7 +119,7 @@ public class RoomManagementScreenController {
 									room.setBedsAmount(Integer.parseInt(Double.toString((bedsSlider.getValue()))));
 									room.setRoomType(rtype);
 									room.setPrice(rprice);
-									//if () TODO CHECK MAX NUM OF PEOPLE{
+									if (ViewLogic.controller.canAddRoomToShip(room)) {
 									if (update) {
 										ViewLogic.controller.updateRoom(room);
 										errorLabel.setText("Room updated successfully.");
@@ -130,8 +130,8 @@ public class RoomManagementScreenController {
 									else if (!update)
 										errorLabel.setText("Room already exists.");
 									ViewLogic.adminShipsRoomsScreenController.setRoomTable();
-									//	} else
-									//	errorLabel.setText("."); FULL SHIP? TODO
+									} else
+										errorLabel.setText("The room's beds amount exceeds the allowed number of people.");
 								} catch(Exception e) {
 									errorLabel.setText("Error occured.");
 								}
