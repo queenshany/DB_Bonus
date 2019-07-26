@@ -79,8 +79,11 @@ public class CruiseManagementScreenController {
 			returnTimePicker.setValue(returndt.toLocalTime());
 			update = true;
 		}
-		else
+		else{
 			setAutoID();
+			cruise = new CruiseSailing(IDTextField.getText());
+		}
+
 
 	}
 
@@ -124,6 +127,7 @@ public class CruiseManagementScreenController {
 										}
 										else
 											errorLabel.setText("Error occurred.");
+											ViewLogic.adminCruisesScreenController.setCruiseTable();
 										} else 
 											errorLabel.setText("Ship is already in use during these dates. Please Choose Different dates.");
 									} else

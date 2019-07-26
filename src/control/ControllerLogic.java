@@ -893,6 +893,11 @@ public class ControllerLogic {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
+        if (toReturn == 0){
+            return 1;
+        }
+
 		return toReturn;
 	}
 

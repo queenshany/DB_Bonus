@@ -68,8 +68,11 @@ public class ShipManagementScreenController {
 			maxPeopleTextField.setText(Integer.toString(ship.getMaxNumberOfPeople()));
 			update = true;
 		}
-		else
+		else{
 			setAutoID();
+			ship = new CruiseShip(IDTextField.getText());
+		}
+
 	}
 
 	private void setAutoID() {
@@ -99,7 +102,7 @@ public class ShipManagementScreenController {
 										ship.setShipName(nameTextField.getText());
 										ship.setManufacturingDate(mdate);
 										ship.setMaxCapacity(maxCap);
-										ship.setMaxCapacity(maxPpl);
+										ship.setMaxNumberOfPeople(maxPpl);
 										if (update) {
 											ViewLogic.controller.updateShip(ship);
 											errorLabel.setText("Ship updated successfully.");
