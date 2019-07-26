@@ -54,7 +54,12 @@
             		</VBox>
                </children>
             </StackPane>
-      		<JFXButton fx:id="registerBut" alignment="CENTER" onAction="#regOnAction" prefHeight="25.0" prefWidth="136.0" ripplerFill="#ffffff98" textFill="WHITE" />
+            <HBox alignment="CENTER" spacing="11.0">
+               <children>
+                  <JFXButton fx:id="cancelBut" alignment="CENTER" layoutX="10.0" layoutY="10.0" onAction="#cancelOnAction" prefHeight="25.0" prefWidth="98.0" ripplerFill="#ffffff98" textFill="WHITE" />
+            		<JFXButton fx:id="registerBut" alignment="CENTER" onAction="#regOnAction" prefHeight="25.0" prefWidth="98.0" ripplerFill="#ffffff98" textFill="WHITE" />
+               </children>
+            </HBox>
       	</children>
       	<opaqueInsets>
       		<Insets />

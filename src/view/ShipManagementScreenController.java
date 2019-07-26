@@ -70,7 +70,6 @@ public class ShipManagementScreenController {
 		}
 		else
 			setAutoID();
-
 	}
 
 	private void setAutoID() {
@@ -105,8 +104,8 @@ public class ShipManagementScreenController {
 											ViewLogic.controller.updateShip(ship);
 											errorLabel.setText("Ship updated successfully.");
 										}
-										else if (!update ) {//&& ViewLogic.controller.insertShip(ship)) {
-											ViewLogic.controller.insertShip(ship); //TODO
+										else if (!update) {//&& ViewLogic.controller.insertShip(ship)) {
+											ViewLogic.controller.insertShip(ship);
 											errorLabel.setText("Ship added successfully. Add another?");
 											setAutoID();
 											nameTextField.setText("");
