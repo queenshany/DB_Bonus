@@ -1,53 +1,61 @@
 package model;
 
 import java.util.Objects;
-
+/**
+ * Class OneAQuery ~ represent the 1A query in the DB
+ * 
+ * @author Shany Klein
+ * @author Guy Levy
+ */
 public class OneAQuery {
+	// ------------------------------- Class Members ------------------------------
+	private int cruiseID;
+	private int cruiseShipID;
+	private String shipName;
+	
+	// -------------------------------- Constructors ------------------------------
+	public OneAQuery(int cruiseID, int cruiseShipID, String shipName) {
+		this.cruiseID = cruiseID;
+		this.cruiseShipID = cruiseShipID;
+		this.shipName = shipName;
+	}
 
-    private int cruiseID;
-    private int cruiseShipID;
-    private String shipName;
+	// ----------------------------- Getters & Setters ----------------------------
+	public int getCruiseID() {
+		return cruiseID;
+	}
 
-    public OneAQuery(int cruiseID, int cruiseShipID, String shipName) {
-        this.cruiseID = cruiseID;
-        this.cruiseShipID = cruiseShipID;
-        this.shipName = shipName;
-    }
+	public void setCruiseID(int cruiseID) {
+		this.cruiseID = cruiseID;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        OneAQuery oneAQuery = (OneAQuery) o;
-        return cruiseID == oneAQuery.cruiseID;
-    }
+	public int getCruiseShipID() {
+		return cruiseShipID;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(cruiseID);
-    }
+	public void setCruiseShipID(int cruiseShipID) {
+		this.cruiseShipID = cruiseShipID;
+	}
 
-    public int getCruiseID() {
-        return cruiseID;
-    }
+	public String getShipName() {
+		return shipName;
+	}
 
-    public void setCruiseID(int cruiseID) {
-        this.cruiseID = cruiseID;
-    }
+	public void setShipName(String shipName) {
+		this.shipName = shipName;
+	}
 
-    public int getCruiseShipID() {
-        return cruiseShipID;
-    }
+	// ----------------------------- HashCode & Equals ----------------------------
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		OneAQuery oneAQuery = (OneAQuery) o;
+		return cruiseID == oneAQuery.cruiseID;
+	}
 
-    public void setCruiseShipID(int cruiseShipID) {
-        this.cruiseShipID = cruiseShipID;
-    }
-
-    public String getShipName() {
-        return shipName;
-    }
-
-    public void setShipName(String shipName) {
-        this.shipName = shipName;
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(cruiseID);
+	}
 }
