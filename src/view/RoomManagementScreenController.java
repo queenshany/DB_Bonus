@@ -116,7 +116,8 @@ public class RoomManagementScreenController {
 								try {
 									room.setCruiseShipID(IDTextField.getText());
 									room.setRoomNumber(rnum);
-									room.setBedsAmount(Integer.parseInt(Double.toString((bedsSlider.getValue()))));
+									Double d = bedsSlider.getValue();
+									room.setBedsAmount(d.intValue());
 									room.setRoomType(rtype);
 									room.setPrice(rprice);
 									if (ViewLogic.controller.canAddRoomToShip(room)) {
@@ -133,6 +134,7 @@ public class RoomManagementScreenController {
 									} else
 										errorLabel.setText("The room's beds amount exceeds the allowed number of people.");
 								} catch(Exception e) {
+									e.printStackTrace();
 									errorLabel.setText("Error occured.");
 								}
 							} else

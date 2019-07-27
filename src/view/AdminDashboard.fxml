@@ -198,7 +198,27 @@
 								<VBox alignment="TOP_CENTER" layoutX="350.0" layoutY="10.0" maxWidth="395.0" minWidth="395.0" prefWidth="395.0" spacing="10.0">
 									<children>
 										<Label text="Ship usage in cruises :" />
-										<PieChart fx:id="shipUsageChart" />
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                                 <children>
+      										<PieChart fx:id="shipUsageChart" maxHeight="150.0" maxWidth="180.0" minHeight="150.0" minWidth="180.0" prefHeight="150.0" prefWidth="180.0" />
+                                    <VBox alignment="CENTER_LEFT" maxHeight="150.0" maxWidth="150.0" minHeight="150.0" minWidth="150.0" prefHeight="150.0" prefWidth="150.0" spacing="10.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                             <children>
+                                                <Label text="ID:" />
+                                                <Label fx:id="IDLabelShip" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                             <children>
+                                                <Label text="Usage:" />
+                                                <Label fx:id="usageLabelShip" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
 									</children>
 								</VBox>
 							</children>

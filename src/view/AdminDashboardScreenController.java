@@ -3,6 +3,7 @@ package view;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Map.Entry;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -12,12 +13,14 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Side;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -89,6 +92,12 @@ public class AdminDashboardScreenController {
 	private PieChart shipUsageChart;
 
 	@FXML
+	Label IDLabelShip;
+
+	@FXML
+	Label usageLabelShip;
+
+	@FXML
 	private JFXComboBox<Country> countryCombo;
 
 	@FXML
@@ -123,9 +132,6 @@ public class AdminDashboardScreenController {
 	public void initialize() {
 		pane.setStyle("-fx-background-image: url(\"/rsc/dashboard-bg1.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
-		//		Label l = new Label("Login");
-		//		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
-		//		loginBut.setGraphic(l);
 
 		// set combo
 		customerCombo.getItems().setAll(ViewLogic.controller.getAllCustomers());
@@ -137,6 +143,30 @@ public class AdminDashboardScreenController {
 		cruiseIDColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseID")); // According to variable name
 		shipIDColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseShipID")); // Same here
 		shipNameColumn.setCellValueFactory(new PropertyValueFactory<>("shipName")); // Same here
+
+		// set pie chart
+		setPieChart();
+	}
+
+	@FXML
+	private void setPieChart() {
+		
+		ObservableList<PieChart.Data> shipDetails = FXCollections.observableArrayList();
+		for (Entry<Integer, Integer> e : ViewLogic.controller.getListOfAllTimeShipOrders().entrySet()) {
+			shipDetails.addAll(new PieChart.Data(e.getKey().toString(), e.getValue()));
+		}
+		
+		shipUsageChart.setData(shipDetails);
+		shipUsageChart.setClockwise(false);
+		shipUsageChart.setStartAngle(90);
+		
+		int allShipsAmount = ViewLogic.controller.getAllShips().size() <= 0 ? 1 : ViewLogic.controller.getAllShips().size();
+		shipUsageChart.getData().stream().forEach(data -> {
+			data.getNode().addEventHandler(MouseEvent.ANY, e -> {
+				IDLabelShip.setText(data.getName());
+				usageLabelShip.setText(String.format("%.2f", data.getPieValue()/allShipsAmount*100) + " %");
+			});
+		});
 	}
 
 	@FXML

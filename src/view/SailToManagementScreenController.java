@@ -86,10 +86,10 @@ public class SailToManagementScreenController {
 		Port p = portCombo.getValue();
 		if (p != null) {
 			if (arrivalDatePicker.getValue() != null) {
-				if (arrivalDatePicker.getValue().isAfter(LocalDate.now())) {
+				if (arrivalDatePicker.getValue().isAfter(LocalDate.now()) || arrivalDatePicker.getValue().equals(LocalDate.now())) {
 					Date arr = Date.valueOf(arrivalDatePicker.getValue());
 					if (leavingDatePicker.getValue() != null) {
-						if (leavingDatePicker.getValue().isAfter(LocalDate.now())) {
+						if (leavingDatePicker.getValue().isAfter(LocalDate.now()) || leavingDatePicker.getValue().equals(LocalDate.now())) {
 							if (leavingDatePicker.getValue().isAfter(arrivalDatePicker.getValue())) {
 								Date leave = Date.valueOf(leavingDatePicker.getValue());
 								if (!ViewLogic.controller.isOverlapDates(arr, leave, IDTextField.getText())) {

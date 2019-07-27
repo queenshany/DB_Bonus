@@ -32,7 +32,7 @@ public final class Consts {
     public static final String getListOfAllTimeShipOrders = "exec GetListOfAllTimeShipOrders";
     public static final String getNumberOfCustomersByDestination = "exec GetNumberOfCustomersByDestination";
     public static final String getPercentageOfOccupiedRooms = "exec GetPercentageOfOccupiedRooms";
-    public static final String getVacantRoomsByCruiseID = "exec GetVacantRoomsByCruiseID";
+    public static final String getVacantRoomsByCruiseID = "exec GetVacantRoomsByCruiseID ?";
     public static final String insertPerson = "exec InsertPerson ?,?,?,?,?,?,?";
     public static final String insertCountry = "exec InsertCountry ?";
     public static final String insertCruise = "exec InsertCruise ?,?,?,?";
