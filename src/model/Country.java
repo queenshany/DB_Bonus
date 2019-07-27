@@ -23,9 +23,6 @@ public class Country {
 		this.countryName = countryName;
 	}
 
-	// ------------------------------- More Methods -------------------------------
-	//TODO
-
 	// ----------------------------- HashCode & Equals ----------------------------
 	@Override
 	public int hashCode() {

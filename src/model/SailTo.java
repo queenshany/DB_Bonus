@@ -75,9 +75,6 @@ public class SailTo {
 		this.leavingTime = leavingTime;
 	}
 
-	// ------------------------------- More Methods -------------------------------
-	//TODO
-
 	// ----------------------------- HashCode & Equals ----------------------------
 	@Override
 	public int hashCode() {

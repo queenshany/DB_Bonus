@@ -59,9 +59,6 @@ public class CruiseSailing {
 		this.returnTime = returnTime;
 	}
 
-	// ------------------------------- More Methods -------------------------------
-	//TODO
-
 	// ----------------------------- HashCode & Equals ----------------------------
 	@Override
 	public int hashCode() {

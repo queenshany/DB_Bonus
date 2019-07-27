@@ -1023,17 +1023,17 @@ public class ControllerLogic {
 
 	// TODO Queries
 	// ------------------------------- Query Methods ------------------------------
-	/** TODO
+	/** 
 	 * @return all OneAQuery's in the db
 	 */
-	public ArrayList<OneAQuery> getOneAQuery(CruiseSailing cs, int year){
+	public ArrayList<OneAQuery> getOneAQuery(Country c, int year){
 		ArrayList<OneAQuery> toReturn = new ArrayList<>();
 		try {
 			ResultSet rs;
 			PreparedStatement ps;
 			ps = conn.prepareStatement(Consts.getOneAQuery);
-			ps.setString(1, cs.getCruiseID());
-			ps.setInt(2, year);
+			ps.setInt(1, year);
+			ps.setString(2, c.getCountryName());
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -1096,7 +1096,6 @@ public class ControllerLogic {
 	}
 
 	/**
-	 * TODO
 	 * @return the Cruise Profit of a certain Date Range in the db
 	 */
 	public double getCruiseProfitByDateRange(Date startDate, Date endDate){
@@ -1105,6 +1104,8 @@ public class ControllerLogic {
 			ResultSet rs;
 			PreparedStatement ps;
 			ps = conn.prepareStatement(Consts.getCruiseProfitByDateRange);
+			ps.setDate(1, startDate);
+			ps.setDate(2, endDate);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {

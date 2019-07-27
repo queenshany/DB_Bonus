@@ -33,9 +33,6 @@ public class Port {
 		this.portName = portName;
 	}
 
-	// ------------------------------- More Methods -------------------------------
-	//TODO
-
 	// ----------------------------- HashCode & Equals ----------------------------
 	@Override
 	public int hashCode() {

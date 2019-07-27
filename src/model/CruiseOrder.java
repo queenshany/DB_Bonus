@@ -59,9 +59,6 @@ public class CruiseOrder {
 		this.personID = personID;
 	}
 
-	// ------------------------------- More Methods -------------------------------
-	//TODO
-
 	// ----------------------------- HashCode & Equals ----------------------------
 	@Override
 	public int hashCode() {

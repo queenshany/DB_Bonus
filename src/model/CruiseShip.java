@@ -69,9 +69,6 @@ public class CruiseShip {
 		this.maxNumberOfPeople = maxNumberOfPeople;
 	}
 
-	// ------------------------------- More Methods -------------------------------
-	//TODO
-
 	// ----------------------------- HashCode & Equals ----------------------------
 	@Override
 	public int hashCode() {
