@@ -1221,7 +1221,7 @@ public class ControllerLogic {
 	 * @return is a person is a vip customer or not (Query 10)
 	 */
 	public String checkVIPcustomer(String personID){
-		String toReturn = "";
+		int toReturn = 0;
 		try {
 			ResultSet rs;
 			PreparedStatement ps;
@@ -1231,13 +1231,14 @@ public class ControllerLogic {
 
 			while (rs.next()) {
 				int i = 1;
-				toReturn = rs.getString(i++);
+				toReturn = rs.getInt(i++);
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return toReturn;
+
+		return toReturn == 1 ? "VIP" : "not VIP";
 	}
 
 	/**
