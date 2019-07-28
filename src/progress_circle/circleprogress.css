@@ -1,5 +1,5 @@
 .circleindicator-container  {	
-	circleindicator-color: #101d3d;
+	circleindicator-color: /*#0043e8;*/ linear-gradient(to bottom, #008094, #0039c4);
 	/*-fx-padding: 5.0;*/
 	-fx-background-color: /*-fx-background;*/ transparent;
 }

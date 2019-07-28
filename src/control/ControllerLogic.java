@@ -1048,7 +1048,6 @@ public class ControllerLogic {
 	}
 
 	/**
-	 * TODO
 	 * @return all FiveQuery's in the db
 	 */
 	public ArrayList<FiveQuery> getFiveQuery(Date startDate, Date endDate){
@@ -1137,21 +1136,21 @@ public class ControllerLogic {
 	}
 
 	/**
-	 * TODO
 	 * @return the free cheapest room in a cruise in the db
 	 */
-	public ArrayList<Room> getFreeCheapestRoom(int cruiseID){
-		ArrayList<Room> toReturn = new ArrayList<>();
+	public Room getFreeCheapestRoom(String cruiseID){
+		Room toReturn = null;
 		try {
 			ResultSet rs;
 			PreparedStatement ps;
 			ps = conn.prepareStatement(Consts.getFreeCheapestRoom);
-			ps.setInt(1, cruiseID);
+			ps.setString(1, cruiseID);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
 				int i = 1;
-				toReturn.add(new Room(rs.getString(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getInt(i++)));
+				toReturn = new Room(rs.getString(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getInt(i++));
+				break;
 			}
 
 		} catch (SQLException e) {
@@ -1269,7 +1268,6 @@ public class ControllerLogic {
 	}
 
 	/**
-	 * TODO
 	 * @return the amount of orders a person made per year
 	 */
 	public HashMap<Integer, Integer> getCustomerOrderByYear(Person p){
@@ -1279,6 +1277,7 @@ public class ControllerLogic {
 			ResultSet rs;
 			PreparedStatement ps;
 			ps = conn.prepareStatement(Consts.customerOrderByYear);
+			ps.setString(1, p.getPersonID());
 			rs = ps.executeQuery();
 
 			while (rs.next()) {

@@ -191,7 +191,7 @@ public class AdminDashboardScreenController {
 		shipUsageChart.setStartAngle(90);
 		shipUsageChart.setLabelsVisible(false);
 
-		int allShipsAmount = ViewLogic.controller.getAllShips().size() <= 0 ? 1 : ViewLogic.controller.getAllShips().size();
+		int allShipsAmount = shipDetails.size();
 		shipUsageChart.getData().stream().forEach(data -> {
 			data.getNode().addEventHandler(MouseEvent.ANY, e -> {
 				IDLabelShip.setText(data.getName());
@@ -244,13 +244,10 @@ public class AdminDashboardScreenController {
 					}
 					popularChart.getXAxis().setTickLabelGap(0);
 					popularChart.getYAxis().setTickLabelGap(0);
-					//popularChart.getXAxis().setTickLabelRotation(-45);
 					popularChart.getData().setAll(xyFQ);
 					System.out.println(xyFQ);
 					popularChart.setLegendVisible(false);
-					popularChart.setBarGap(-50);
 					popularChart.setAnimated(false);
-
 				}
 			}
 		}
