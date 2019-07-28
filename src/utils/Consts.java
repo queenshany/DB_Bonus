@@ -41,7 +41,7 @@ public final class Consts {
     public static final String insertRoom = "exec InsertRoom ?,?,?,?,?";
     public static final String insertSailTo = "exec InsertSailTo ?,?,?,?,?";
     public static final String insertShip = "exec InsertShip ?,?,?,?,?";
-    public static final String updateCruise = "exec UpdateCruise ?";
+    public static final String updateCruise = "exec UpdateCruise ?, ?, ?, ?";
     public static final String updateCruiseShip = "exec UpdateCruiseShip ?";
     public static final String updatePerson = "exec UpdatePerson ?,?,?,?,?,?,?";
     public static final String updateRoom = "exec UpdateRoom ?,?,?,?,?";

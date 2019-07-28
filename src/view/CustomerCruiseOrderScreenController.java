@@ -148,7 +148,7 @@ public class CustomerCruiseOrderScreenController {
 		}
 		else {
 			roomCombo.setDisable(false);
-			roomCombo.getItems().setAll(ViewLogic.controller.getVacantRoomsByCruiseID(Integer.parseInt(cs.getCruiseShipID())));
+			roomCombo.getItems().setAll(ViewLogic.controller.getVacantRoomsByCruiseID(Integer.parseInt(cs.getCruiseID())));
 		}
 	}
 

@@ -117,7 +117,7 @@ public class CruiseOrderManagementScreenController {
 	protected void setRoomTable() {
 		CruiseSailing s = cruiseCombo.getSelectionModel().getSelectedItem();
 		if (s != null) {
-			ArrayList<Room> rooms = ViewLogic.controller.getVacantRoomsByCruiseID(Integer.parseInt(s.getCruiseShipID()));
+			ArrayList<Room> rooms = ViewLogic.controller.getVacantRoomsByCruiseID(Integer.parseInt(s.getCruiseID()));
 			ObservableList<Room> rs = FXCollections.observableArrayList(rooms);
 			roomsTable.setItems(rs);
 		}

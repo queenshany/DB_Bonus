@@ -155,21 +155,14 @@
 						</Label>
 						<HBox alignment="CENTER_LEFT" spacing="10.0">
 							<children>
-								<JFXComboBox fx:id="customerCombo" focusColor="WHITE" onAction="#setVIPLabel" promptText="Choose Customer" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
-								<Label fx:id="vipLabel" />
-							</children>
-							<padding>
-								<Insets left="20.0" right="20.0" />
-							</padding>
-						</HBox>
-						<HBox alignment="CENTER" layoutX="10.0" layoutY="283.0" spacing="10.0">
-							<children>
-								<Label text="Total cruise profit during" />
-								<JFXDatePicker fx:id="startDatePickerProfit" defaultColor="#101d3d" maxWidth="115.0" minWidth="115.0" onAction="#setProfitText" overLay="true" prefHeight="25.0" prefWidth="115.0" promptText="Start Date" />
-								<Label layoutX="230.0" layoutY="52.0" text="—" />
-								<JFXDatePicker fx:id="endDatePickerProfit" defaultColor="#101d3d" layoutX="371.0" layoutY="48.0" maxWidth="115.0" minWidth="115.0" onAction="#setProfitText" overLay="true" prefHeight="25.0" prefWidth="115.0" promptText="End Date" />
-								<Label layoutX="465.0" layoutY="52.0" text=":" />
-								<JFXTextField fx:id="profitTextField" alignment="CENTER" editable="false" focusColor="WHITE" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
+								<JFXComboBox fx:id="customerCombo" focusColor="WHITE" onAction="#setVIPLabel" prefWidth="200.0" promptText="Choose Customer" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
+								<Label fx:id="vipLabel" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+								<Label text="Profit during" />
+								<JFXDatePicker fx:id="startDatePickerProfit" defaultColor="#101d3d" maxWidth="105.0" minWidth="105.0" onAction="#setProfitText" overLay="true" prefHeight="25.0" prefWidth="105.0" promptText="Start Date" />
+								<Label text="—" />
+								<JFXDatePicker fx:id="endDatePickerProfit" defaultColor="#101d3d" maxWidth="105.0" minWidth="105.0" onAction="#setProfitText" overLay="true" prefHeight="25.0" prefWidth="105.0" promptText="End Date" />
+								<Label text=":" />
+								<JFXTextField fx:id="profitTextField" alignment="CENTER" editable="false" focusColor="WHITE" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
 							</children>
 						</HBox>
 						<HBox alignment="CENTER" layoutX="10.0" layoutY="338.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">

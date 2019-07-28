@@ -9,8 +9,7 @@ public enum E_Phone {
 	c052("052"),
 	c053("053"),
 	c054("054"),
-	c055("055"),
-	c057("057");
+	c055("055");
 	
 	private String text;
 	

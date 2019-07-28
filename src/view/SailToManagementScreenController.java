@@ -92,7 +92,7 @@ public class SailToManagementScreenController {
 						if (leavingDatePicker.getValue().isAfter(LocalDate.now()) || leavingDatePicker.getValue().equals(LocalDate.now())) {
 							if (leavingDatePicker.getValue().isAfter(arrivalDatePicker.getValue())) {
 								Date leave = Date.valueOf(leavingDatePicker.getValue());
-								if (!ViewLogic.controller.isOverlapDates(arr, leave, IDTextField.getText())) {
+								if (ViewLogic.controller.isOverlapDates(arr, leave, IDTextField.getText())) {
 									sailto.setSailingID(IDTextField.getText());
 									sailto.setPortName(p.getPortName());
 									sailto.setCountryName(p.getCountryName());

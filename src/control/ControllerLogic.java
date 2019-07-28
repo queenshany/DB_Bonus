@@ -927,12 +927,16 @@ public class ControllerLogic {
 		if (!areValidSailToDates(startDate, endDate, cruiseID)){
 			return false;
 		}
-
-		for (SailTo st: destinations){
-			if ((st.getArrivalTime().before(endDate) || st.getArrivalTime().equals(endDate)) && (st.getLeavingTime().after(startDate) || st.getLeavingTime().equals(startDate))){
+		
+		if (destinations.isEmpty())
+			return true;
+		
+		for (SailTo st: destinations) {
+			if (!(st.getArrivalTime().before(endDate) && startDate.before(st.getLeavingTime()))) {
 				return true;
 			}
 		}
+		
 		return false;
 	}
 
@@ -956,8 +960,7 @@ public class ControllerLogic {
 		Date leaving = new Date(cruise.getLeavingTime().getTime());
 		Date returning = new Date(cruise.getReturnTime().getTime());
 
-		if ((leaving.before(startDate) || leaving.equals(startDate)) &&
-				(returning.after(endDate) || returning.equals(endDate))){
+		if (leaving.before(endDate) && startDate.before(returning)) {
 			return true;
 		}
 		return false;
@@ -972,10 +975,8 @@ public class ControllerLogic {
 		ArrayList<CruiseSailing> cruises = getAllCruise();
 		for (CruiseSailing cs : cruises) {
 			if (cs.getCruiseShipID().equals(sailing.getCruiseShipID())) {
-				if ((cs.getLeavingTime().before(sailing.getLeavingTime()) || cs.getLeavingTime().equals(sailing.getLeavingTime())) &&
-						(cs.getReturnTime().after(sailing.getReturnTime()) || cs.getReturnTime().equals(sailing.getReturnTime()))){
+				if (cs.getLeavingTime().before(sailing.getReturnTime()) && sailing.getLeavingTime().before(cs.getReturnTime()))
 					return true;
-				}
 			}
 		}
 		return false;

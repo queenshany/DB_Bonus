@@ -191,7 +191,7 @@ public class AdminDashboardScreenController {
 		shipUsageChart.setStartAngle(90);
 		shipUsageChart.setLabelsVisible(false);
 
-		int allShipsAmount = shipDetails.size();
+		int allShipsAmount = ViewLogic.controller.getAllCruise().size();//shipDetails.size();
 		shipUsageChart.getData().stream().forEach(data -> {
 			data.getNode().addEventHandler(MouseEvent.ANY, e -> {
 				IDLabelShip.setText(data.getName());
@@ -239,7 +239,7 @@ public class AdminDashboardScreenController {
 					for (FiveQuery fq : ViewLogic.controller.getFiveQuery(start, end)) {
 						Series <String, Integer> destination = new Series<>();
 						destination.setName(fq.getYear() + " | " + fq.getPortName() + ", " + fq.getCountryName());
-						destination.getData().add(new XYChart.Data<String, Integer>((fq.getPortName() + ", " + fq.getCountryName() + "\n" + fq.getYear()), fq.getNumOfPersons()));
+						destination.getData().add(new XYChart.Data<String, Integer>((fq.getPortName() + "\n" + fq.getCountryName() + "\n" + fq.getYear()), fq.getNumOfPersons()));
 						xyFQ.add(destination);
 					}
 					popularChart.getXAxis().setTickLabelGap(0);
