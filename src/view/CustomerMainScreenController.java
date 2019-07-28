@@ -32,7 +32,7 @@ public class CustomerMainScreenController {
 	public void initialize() {
 		pane.setStyle("-fx-background-image: url(\"/rsc/customer-bg.png\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
-		System.out.println("Welcome "+ ViewLogic.currentUser);
+		System.out.println(ViewLogic.currentUser);
 		//		Label l = new Label("Login");
 		//		l.setStyle("-fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #014a74 , 4 , 0.5 , 0 , 0 )");
 		//		loginBut.setGraphic(l);

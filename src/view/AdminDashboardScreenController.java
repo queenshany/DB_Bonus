@@ -2,6 +2,7 @@ package view;
 
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map.Entry;
 
@@ -13,9 +14,12 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.Side;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,8 +30,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Country;
-import model.CruiseOrder;
 import model.CruiseSailing;
+import model.FiveQuery;
 import model.OneAQuery;
 import model.Person;
 public class AdminDashboardScreenController {
@@ -86,7 +90,13 @@ public class AdminDashboardScreenController {
 	private JFXDatePicker endDatePickerPopular;
 
 	@FXML
-	private BarChart<?, ?> popularChart; //TODO
+	private BarChart<String, Integer> popularChart;
+
+	@FXML
+	CategoryAxis xAxisPopular;
+
+	@FXML
+	NumberAxis yAxisPopular;
 
 	@FXML
 	private PieChart shipUsageChart;
@@ -133,6 +143,9 @@ public class AdminDashboardScreenController {
 		pane.setStyle("-fx-background-image: url(\"/rsc/dashboard-bg1.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 
+		LocalDate ld = LocalDate.now();
+		LocalDate ld5 = (LocalDate.now()).plusYears(5);
+
 		// set combo
 		customerCombo.getItems().setAll(ViewLogic.controller.getAllCustomers());
 		countryCombo.getItems().setAll(ViewLogic.controller.getAllCountries());
@@ -146,19 +159,30 @@ public class AdminDashboardScreenController {
 
 		// set pie chart
 		setPieChart();
+
+		// set bar chart
+		startDatePickerPopular.setValue(ld);
+		endDatePickerPopular.setValue(ld5);
+		setPopularChart();
+
+		// set profit
+		startDatePickerProfit.setValue(ld);
+		endDatePickerProfit.setValue(ld5);
+		setProfitText();
 	}
 
 	@FXML
 	private void setPieChart() {
-		
+
 		ObservableList<PieChart.Data> shipDetails = FXCollections.observableArrayList();
 		for (Entry<Integer, Integer> e : ViewLogic.controller.getListOfAllTimeShipOrders().entrySet()) {
 			shipDetails.addAll(new PieChart.Data(e.getKey().toString(), e.getValue()));
 		}
-		
+
 		shipUsageChart.setData(shipDetails);
 		shipUsageChart.setClockwise(false);
 		shipUsageChart.setStartAngle(90);
+		shipUsageChart.setLabelsVisible(false);
 		
 		int allShipsAmount = ViewLogic.controller.getAllShips().size() <= 0 ? 1 : ViewLogic.controller.getAllShips().size();
 		shipUsageChart.getData().stream().forEach(data -> {
@@ -181,7 +205,31 @@ public class AdminDashboardScreenController {
 
 	@FXML
 	private void setPopularChart() {
+		if (startDatePickerPopular.getValue() != null) {
+			if (endDatePickerPopular.getValue() != null) {
+				Date start = Date.valueOf(startDatePickerPopular.getValue());
+				Date end = Date.valueOf(endDatePickerPopular.getValue());
+				if (start.before(end) || start.equals(end)) {
+					ObservableList<XYChart.Series<String, Integer>> xyFQ = FXCollections.observableArrayList();
 
+					for (FiveQuery fq : ViewLogic.controller.getFiveQuery(start, end)) {
+						Series <String, Integer> destination = new Series<>();
+						destination.setName(fq.getYear() + " | " + fq.getPortName() + ", " + fq.getCountryName());
+						destination.getData().add(new XYChart.Data<String, Integer>((fq.getPortName() + ", " + fq.getCountryName() + "\n" + fq.getYear()), fq.getNumOfPersons()));
+						xyFQ.add(destination);
+					}
+					popularChart.getXAxis().setTickLabelGap(0);
+					popularChart.getYAxis().setTickLabelGap(0);
+					//popularChart.getXAxis().setTickLabelRotation(-45);
+					popularChart.getData().setAll(xyFQ);
+					System.out.println(xyFQ);
+					popularChart.setLegendVisible(false);
+					popularChart.setBarGap(-50);
+					popularChart.setAnimated(false);
+
+				}
+			}
+		}
 	}
 
 	@FXML
@@ -190,7 +238,7 @@ public class AdminDashboardScreenController {
 			if (endDatePickerProfit.getValue() != null) {
 				Date start = Date.valueOf(startDatePickerProfit.getValue());
 				Date end = Date.valueOf(endDatePickerProfit.getValue());
-				if (start.before(end)) {
+				if (start.before(end) || start.equals(end)) {
 					profitTextField.setText(ViewLogic.controller.getCruiseProfitByDateRange(start, end)+"");
 				}
 			}
@@ -203,14 +251,15 @@ public class AdminDashboardScreenController {
 		if (c != null) {
 			try {
 				int year = Integer.parseInt(yearTextFieldQuery1A.getText());
-				if (year >= 1000 && year < 3000) {
+				System.out.println(year);
+				if (year >= 1000 && year <= 3000) {
 					ArrayList<OneAQuery> oneArr = ViewLogic.controller.getOneAQuery(c, year);
 					ObservableList<OneAQuery> oneList = FXCollections.observableArrayList(oneArr);
 					query1ATable.setItems(oneList);
 					query1ATable.refresh();
 				}
 			} catch (NumberFormatException e) {
-				System.out.println("a non year was captured");
+				System.out.println("A non year was captured");
 			}
 		}
 	}
@@ -219,7 +268,7 @@ public class AdminDashboardScreenController {
 	private void setVIPLabel() {
 		Person p = customerCombo.getSelectionModel().getSelectedItem();
 		if (p != null) {
-			vipLabel.setText(ViewLogic.controller.checkVIPcustomer(p.getPersonID()));
+			vipLabel.setText("is " + ViewLogic.controller.checkVIPcustomer(p.getPersonID()) + ".");
 		}
 		else
 			vipLabel.setText("");

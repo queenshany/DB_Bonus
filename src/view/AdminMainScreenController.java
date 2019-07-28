@@ -33,7 +33,7 @@ public class AdminMainScreenController {
 	// =============================== Methods ==============================
 
 	public void initialize() {
-		System.out.println("Welcome " + (ViewLogic.currentUser == null ? "Admin" : ViewLogic.currentUser));
+		System.out.println(ViewLogic.currentUser == null ? "Admin" : ViewLogic.currentUser);
 		pane.setStyle("-fx-background-image: url(\"/rsc/admin-bg.png\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
 	}

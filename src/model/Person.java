@@ -118,7 +118,8 @@ public class Person {
 	// ---------------------------------- toString --------------------------------
 	@Override
 	public String toString() {
+		// System.out.println("ID: " + personID + " | PW: " + pass);
 		return "ID: " + personID + " | Name: " + firstName + " " + surName + " | Birthdate: "
-				+ dateOfBirth + " | Phone: " + phone + " | Email: " + email + " | PW: " + pass;
+				+ dateOfBirth + " | Phone: " + phone + " | Email: " + email;
 	}
 }

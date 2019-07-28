@@ -107,26 +107,26 @@ public class CruiseManagementScreenController {
 						if (returnTimePicker.getValue() != null) {
 							Timestamp leaving = Timestamp.valueOf(LocalDateTime.of(leavingDatePicker.getValue(), leavingTimePicker.getValue()));
 							Timestamp returning = Timestamp.valueOf(LocalDateTime.of(returnDatePicker.getValue(), returnTimePicker.getValue()));
-							if (leaving.after(new Timestamp(System.currentTimeMillis()))) {
+							if (leaving.after(new Timestamp(System.currentTimeMillis())) || leaving.equals(new Timestamp(System.currentTimeMillis()))) {
 								if (returning.after(new Timestamp(System.currentTimeMillis()))) {
-									if (leaving.before(returning)) {
+									if (leaving.before(returning) || leaving.equals(returning)) {
 										CruiseSailing cs = new CruiseSailing(IDTextField.getText(), s.getCruiseShipID(), leaving, returning);
 										if (!ViewLogic.controller.cruiseSailOverlappingDates(cs)) {
-										if (update) {
-											ViewLogic.controller.updateCruise(cs);
-											errorLabel.setText("Cruise updated successfully.");
-										}
-										else if (!update && ViewLogic.controller.insertCruise(cs)) {
-											errorLabel.setText("Cruise added successfully. Add Another?");
-											setAutoID();
-											shipCombo.getSelectionModel().clearSelection();
-											leavingDatePicker.setValue(null);
-											leavingTimePicker.setValue(null);
-											returnDatePicker.setValue(null);
-											returnTimePicker.setValue(null);
-										}
-										else
-											errorLabel.setText("Error occurred.");
+											if (update) {
+												ViewLogic.controller.updateCruise(cs);
+												errorLabel.setText("Cruise updated successfully.");
+											}
+											else if (!update && ViewLogic.controller.insertCruise(cs)) {
+												errorLabel.setText("Cruise added successfully. Add Another?");
+												setAutoID();
+												shipCombo.getSelectionModel().clearSelection();
+												leavingDatePicker.setValue(null);
+												leavingTimePicker.setValue(null);
+												returnDatePicker.setValue(null);
+												returnTimePicker.setValue(null);
+											}
+											else
+												errorLabel.setText("Error occurred.");
 											ViewLogic.adminCruisesScreenController.setCruiseTable();
 										} else 
 											errorLabel.setText("Ship is already in use during these dates. Please Choose Different dates.");

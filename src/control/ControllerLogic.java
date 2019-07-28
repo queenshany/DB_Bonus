@@ -1144,7 +1144,6 @@ public class ControllerLogic {
 	}
 
 	/**
-	 * TODO
 	 * @return the List Of All Time Ship Orders in the db - how many times a ship has been used in a cruise order
 	 */
 	public HashMap<Integer, Integer> getListOfAllTimeShipOrders(){
@@ -1217,7 +1216,6 @@ public class ControllerLogic {
 	}
 
 	/**
-	 * TODO
 	 * @return is a person is a vip customer or not (Query 10)
 	 */
 	public String checkVIPcustomer(String personID){
@@ -1238,7 +1236,7 @@ public class ControllerLogic {
 			e.printStackTrace();
 		}
 
-		return toReturn == 1 ? "VIP" : "not VIP";
+		return (toReturn == 1 ? "" : "not ") + "a VIP customer";
 	}
 
 	/**
