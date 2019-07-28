@@ -1073,10 +1073,19 @@ public class ControllerLogic {
 	}
 
 	/**
-	 * TODO
 	 * @return all SixQuery's in the db
 	 */
-	public ArrayList<SixQuery> getSixQuery(){
+	public double getSixQuery(CruiseSailing c) {
+		// -------- for percent calculation
+		int allSuitesInShip = 0;
+		if (c != null) {
+			for (Room r : getAllRooms(c.getCruiseShipID())) {
+				if (r.getRoomType().equalsIgnoreCase((Consts.SUITE)))
+					allSuitesInShip++;
+			}
+		}
+		// -----------------------------------
+
 		ArrayList<SixQuery> toReturn = new ArrayList<>();
 		try {
 			ResultSet rs;
@@ -1092,7 +1101,15 @@ public class ControllerLogic {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return toReturn;
+
+		if (c != null) {
+			SixQuery sq = new SixQuery(c.getCruiseID());
+			if (toReturn.contains(sq)) {
+				sq = toReturn.get(toReturn.indexOf(sq));
+				return allSuitesInShip == 0 ? 0 : (double)sq.getNumOfSuits()/allSuitesInShip;
+			}
+		}
+		return 0;
 	}
 
 	/**
@@ -1192,10 +1209,14 @@ public class ControllerLogic {
 	}
 
 	/**
-	 * TODO
 	 * @return the Percentage Of Occupied Rooms in a cruise
 	 */
-	public HashMap<Integer, Integer> getPercentageOfOccupiedRooms(){
+	public double getPercentageOfOccupiedRooms(CruiseSailing c){
+
+		// -------- for percent calculation
+		int allRoomsInShip = c == null ? 0 : getAllRooms(c.getCruiseShipID()).size();
+		// -----------------------------------
+
 		//key is cruiseID, Value is the count of num of empty rooms
 		HashMap<Integer, Integer> toReturn = new HashMap<Integer, Integer>();
 		try {
@@ -1212,7 +1233,15 @@ public class ControllerLogic {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return toReturn;
+
+		if (c != null) {
+			if (toReturn.containsKey(new Integer(c.getCruiseID()))) {
+				int roomNum = toReturn.get(new Integer(c.getCruiseID()));
+				return allRoomsInShip == 0 ? 0 : (double) roomNum/allRoomsInShip;
+			}
+		}
+
+		return 0;
 	}
 
 	/**

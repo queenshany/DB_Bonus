@@ -34,6 +34,8 @@ import model.CruiseSailing;
 import model.FiveQuery;
 import model.OneAQuery;
 import model.Person;
+import progress_circle.ProgressThread;
+import progress_circle.RingProgressIndicator;
 public class AdminDashboardScreenController {
 
 	// ============================== Variables =============================
@@ -142,6 +144,7 @@ public class AdminDashboardScreenController {
 	public void initialize() {
 		pane.setStyle("-fx-background-image: url(\"/rsc/dashboard-bg1.jpg\");"
 				+ "-fx-background-repeat: no-repeat; -fx-background-size: stretch;");
+		emptySuitesSP.setStyle("-fx-fill: transparent");
 
 		LocalDate ld = LocalDate.now();
 		LocalDate ld5 = (LocalDate.now()).plusYears(5);
@@ -169,6 +172,10 @@ public class AdminDashboardScreenController {
 		startDatePickerProfit.setValue(ld);
 		endDatePickerProfit.setValue(ld5);
 		setProfitText();
+
+		// set progress circles
+		setEmptySuitesProgress();
+		setRoomsProgress();
 	}
 
 	@FXML
@@ -183,7 +190,7 @@ public class AdminDashboardScreenController {
 		shipUsageChart.setClockwise(false);
 		shipUsageChart.setStartAngle(90);
 		shipUsageChart.setLabelsVisible(false);
-		
+
 		int allShipsAmount = ViewLogic.controller.getAllShips().size() <= 0 ? 1 : ViewLogic.controller.getAllShips().size();
 		shipUsageChart.getData().stream().forEach(data -> {
 			data.getNode().addEventHandler(MouseEvent.ANY, e -> {
@@ -195,12 +202,29 @@ public class AdminDashboardScreenController {
 
 	@FXML
 	private void setEmptySuitesProgress() {
-
+		emptySuitesSP.getChildren().clear();
+		RingProgressIndicator rpi = new RingProgressIndicator();
+		rpi.setRingWidth(123);
+		emptySuitesSP.getChildren().add(rpi);
+		CruiseSailing c = cruiseComboSuites.getSelectionModel().getSelectedItem();
+		if (c != null) {
+			ProgressThread pt = new ProgressThread(rpi, ViewLogic.controller.getSixQuery(c));
+			pt.start();
+		}
 	}
 
 	@FXML
 	private void setRoomsProgress() {
+		occupiedRoomsSP.getChildren().clear();
+		RingProgressIndicator rpi = new RingProgressIndicator();
+		rpi.setRingWidth(123);
+		occupiedRoomsSP.getChildren().add(rpi);
+		CruiseSailing c = cruiseComboRooms.getSelectionModel().getSelectedItem();
 
+		if (c != null) {
+			ProgressThread pt = new ProgressThread(rpi, ViewLogic.controller.getPercentageOfOccupiedRooms(c));
+			pt.start();
+		}
 	}
 
 	@FXML
