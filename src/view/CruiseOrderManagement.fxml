@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -13,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="500.0" maxWidth="750.0" minHeight="500.0" minWidth="750.0" prefHeight="500.0" prefWidth="750.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CruiseOrderManagementScreenController">
+<AnchorPane fx:id="mainPane" maxHeight="500.0" maxWidth="750.0" minHeight="500.0" minWidth="750.0" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CruiseOrderManagementScreenController">
 	<children>
 		<VBox alignment="CENTER" layoutX="-49.0" maxHeight="500.0" maxWidth="750.0" minHeight="500.0" minWidth="750.0" prefHeight="500.0" prefWidth="750.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<children>
-				<Label text="Cruise Order Management" textAlignment="CENTER" textFill="WHITE">
+				<Label style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" text="Cruise Order Management" textAlignment="CENTER" textFill="WHITE">
 					<font>
 						<Font name="System Bold" size="14.0" />
 					</font>
@@ -25,7 +26,7 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
 				</Label>
-            <Label alignment="CENTER" layoutX="385.0" layoutY="382.0" text="Choose Customer" textAlignment="CENTER" textFill="#e00000" />
+            <Label alignment="CENTER" layoutX="385.0" layoutY="382.0" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" text="Choose Customer" textAlignment="CENTER" textFill="#e00000" />
             <TableView fx:id="customersTable" maxWidth="700.0" minWidth="700.0" prefHeight="120.0" prefWidth="700.0">
               <columns>
                   <TableColumn fx:id="IDColumn" maxWidth="115.6" minWidth="115.6" prefWidth="115.6" text="ID" />
@@ -40,7 +41,7 @@
                </VBox.margin>
             </TableView>
             <JFXComboBox fx:id="cruiseCombo" focusColor="WHITE" labelFloat="true" maxWidth="600.0" minWidth="600.0" onAction="#setRoomTable" prefWidth="600.0" promptText="Choose Cruise" style="-fx-prompt-text-fill: white; -fx-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" unFocusColor="WHITE" />
-            <Label alignment="CENTER" layoutX="338.0" layoutY="60.0" text="Choose Room" textAlignment="CENTER" textFill="#e00000" />
+            <Label alignment="CENTER" layoutX="338.0" layoutY="60.0" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" text="Choose Room" textAlignment="CENTER" textFill="#e00000" />
             <TableView fx:id="roomsTable" maxWidth="700.0" minWidth="700.0" prefHeight="120.0" prefWidth="700.0">
                <columns>
                   <TableColumn fx:id="shipColumn" maxWidth="139.0" minWidth="139.0" prefWidth="139.0" text="Ship ID" />
@@ -50,7 +51,7 @@
                   <TableColumn fx:id="priceColumn" maxWidth="139.0" minWidth="139.0" prefWidth="139.0" text="Price Per Night" />
                </columns>
             </TableView>
-            <Label fx:id="errorLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+            <Label fx:id="errorLabel" alignment="CENTER" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" textAlignment="CENTER" textFill="#e00000" />
             <HBox alignment="CENTER" spacing="20.0">
                <children>
                   <JFXButton fx:id="saveCruiseOrderBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#saveCruiseOrder" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
@@ -73,4 +74,8 @@
          </padding>
 		</VBox>
 	</children>
+   <stylesheets>
+      <URL value="@AdminMain.css" />
+      <URL value="@Design.css" />
+   </stylesheets>
 </AnchorPane>

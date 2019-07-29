@@ -91,6 +91,7 @@ public class CustomerManagementScreenController {
 			LocalDate bday = customer.getDateOfBirth().toLocalDate();
 			birthDatePicker.setValue(bday);
 			phoneCombo.getSelectionModel().select(E_Phone.getPhone(customer.getPhone().substring(0, 3)));
+			phoneCombo.setStyle("-fx-text-fill: white; -fx-prompt-text-fill: white; -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );");
 			phoneTextField.setText(customer.getPhone().substring(3));
 			update = true;
 		}

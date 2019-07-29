@@ -97,7 +97,7 @@ public class ShipManagementScreenController {
 							try {
 								int maxPpl = Integer.parseInt(maxPeopleTextField.getText());
 								if (maxPpl > 0) {
-									if (maxPpl >= ViewLogic.controller.roomsAmountInShip(ship)) {
+									if (maxPpl >= ViewLogic.controller.roomsAmountInShip(ship, null, false)) {
 										ship.setCruiseShipID(IDTextField.getText());
 										ship.setShipName(nameTextField.getText());
 										ship.setManufacturingDate(mdate);
@@ -120,7 +120,7 @@ public class ShipManagementScreenController {
 										ViewLogic.adminShipsRoomsScreenController.setShipTable();
 
 									} else
-										errorLabel.setText("Max number of people must be bigger than the ship's beds amount.");
+										errorLabel.setText("Max number of people must be\nbigger than the ship's beds amount.");
 								} else
 									errorLabel.setText("Max number of people must be a positive integer.");
 							} catch (NumberFormatException e) {
@@ -132,7 +132,7 @@ public class ShipManagementScreenController {
 						errorLabel.setText("Max capacity must be an integer.");
 					}
 				} else
-					errorLabel.setText("Leaving date must be before today.");
+					errorLabel.setText("Date must be before today.");
 			} else
 				errorLabel.setText("Please select a manufacturing date.");
 		} else

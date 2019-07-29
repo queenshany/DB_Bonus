@@ -144,7 +144,7 @@
                <children>
                   <VBox alignment="CENTER" spacing="10.0">
                      <children>
-                        <Label text="Cruises" textAlignment="CENTER" textFill="WHITE">
+                        <Label style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" text="Cruises" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -157,7 +157,7 @@
                               <TableColumn fx:id="returnTmeColumnC" maxWidth="161.5" minWidth="161.5" prefWidth="161.5" text="Return Time" />
                           </columns>
                         </TableView>
-                        <Label fx:id="errorCruiseLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+                        <Label fx:id="errorCruiseLabel" alignment="CENTER" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" textAlignment="CENTER" textFill="#e00000" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -210,7 +210,7 @@
                <children>
                   <VBox alignment="CENTER" spacing="10.0">
                      <children>
-                        <Label text="Sail To" textAlignment="CENTER" textFill="WHITE">
+                        <Label style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" text="Sail To" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -224,7 +224,7 @@
                               <TableColumn fx:id="leavingTimeColumnST" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Leaving Time" />
                            </columns>
                         </TableView>
-                        <Label fx:id="errorSTLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+                        <Label fx:id="errorSTLabel" alignment="CENTER" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" textAlignment="CENTER" textFill="#e00000" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

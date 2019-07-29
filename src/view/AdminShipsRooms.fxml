@@ -144,7 +144,7 @@
                <children>
                   <VBox alignment="CENTER" spacing="10.0">
                      <children>
-                        <Label text="Ships" textAlignment="CENTER" textFill="WHITE">
+                        <Label style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" text="Ships" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -158,7 +158,7 @@
                               <TableColumn fx:id="maxPeopleColumnS" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Max Num of People" />
                           </columns>
                         </TableView>
-                        <Label fx:id="errorShipLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+                        <Label fx:id="errorShipLabel" alignment="CENTER" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" textAlignment="CENTER" textFill="#e00000" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -211,7 +211,7 @@
                <children>
                   <VBox alignment="CENTER" spacing="10.0">
                      <children>
-                        <Label text="Rooms" textAlignment="CENTER" textFill="WHITE">
+                        <Label style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" text="Rooms" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -225,7 +225,7 @@
                               <TableColumn fx:id="priceColumnR" maxWidth="129.0" minWidth="129.0" prefWidth="129.0" text="Price Per Night" />
                            </columns>
                         </TableView>
-                        <Label fx:id="errorRoomLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+                        <Label fx:id="errorRoomLabel" alignment="CENTER" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" textAlignment="CENTER" textFill="#e00000" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

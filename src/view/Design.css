@@ -25,3 +25,214 @@
 	-fx-background-color: #6074c3;
 	-fx-text-fill: white;
 }
+
+/************************** Setting date-picker & time-picker design **************************/
+.jfx-date-picker > .jfx-text-field, .jfx-time-picker > .jfx-text-field {
+    -jfx-label-float: true;
+    -jfx-unfocus-color: white;
+    -jfx-focus-color: white;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+    -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );
+}
+
+.jfx-date-picker > .arrow-button > .jfx-svg-glyph{
+    -fx-background-color: white;
+    -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );
+}
+
+.jfx-time-picker > .arrow-button > .jfx-svg-glyph{
+    -fx-background-color: white;
+    -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );
+}
+
+/************************** Setting combo-box design **************************/
+.choice-box .list-cell:filled:selected .text,
+.combo-box .list-cell:filled:selected .text {
+    -fx-text-fill: white;
+    /*-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );*/
+}
+
+.combo-box .arrow,
+.choice-box .arrow {
+    -fx-background-color: white;   
+}
+
+/************************** Setting table-view design **************************/
+.table-view {
+	-fx-opacity: 0.8;
+}
+
+/* Canceling blue annoying lines */
+.table-view {
+	-fx-focus-traversable: false;
+}
+
+.table-view:focused {
+	-fx-focus-color: #101d3d;
+}
+
+/* Setting the header field label */
+.table-view .column-header .label {
+	-fx-effect: null;
+	-fx-text-fill: white;
+	-fx-background-color: transparent;
+	-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );
+}
+
+/* Setting the header field background */
+.table-view .column-header-background {
+	-fx-effect: null;
+	-fx-text-fill: white;
+	-fx-background-color: linear-gradient(#00517b, #101d3d);
+}
+
+/* Setting the header field background (in the left side, where there's no text) */
+.table-view .filler {
+	-fx-effect: null;
+	-fx-text-fill: white;
+	-fx-background-color: linear-gradient(#00517b, #101d3d);
+	/*-fx-background-insets: 0, 0 0 0 0;*/
+	-fx-border-color: #101d3d;
+	-fx-border-width: 0.2px;
+}
+
+
+/* Setting a field label */
+.table-view .label {
+	-fx-effect: null;
+	-fx-text-fill: navy;
+	-fx-text-inner-color: navy;
+}
+
+/* Setting the column borders */
+.table-view .column-header {
+    -fx-background-color: transparent;
+	-fx-border-color: #101d3d;
+	-fx-border-width: 0.2px;
+}
+
+/* Setting background color when an item is selected */
+.table-row-cell:selected {
+	/*-fx-background-color: #003e5e;*/
+	-fx-text-fill: white;
+	-fx-text-alignment: center;
+}
+
+.table-row-cell .text {
+       -fx-fill: navy ;
+}
+
+/* Setting text color when an item is selected */
+.table-row-cell:selected .text {
+	-fx-fill: white;
+}
+
+/* Setting border color when an item is selected */
+.table-row-cell:odd:selected .table-cell {
+	/*-fx-border-color: #101d3d;*/
+	-fx-border-width: 0.2px;
+}
+
+.table-row-cell:even:selected .table-cell {
+	/*-fx-border-color: #101d3d;*/
+	-fx-border-width: 0.2px;
+}
+
+
+/* Setting arrow color */
+.table-view .arrow {  
+	-fx-mark-color: white;  
+}
+/* Setting header background color when an item is selected */
+.table-view .column-header-background:selected {
+	-fx-effect: null;
+	-fx-text-fill: white;
+	-fx-background-color: linear-gradient(#00517b, #101d3d);
+
+}
+
+
+ /* trying to change drag table colours */
+
+.table-view > .column-header-background > .column-drag-header {
+	-fx-background-color: #6074c3;
+}
+
+.table-view > .column-header-background > .column-drag-header > .label {
+	-fx-text-fill: white;
+	 -fx-font-weight: bold;
+}
+
+.table-view > .column-header-background > .column-drag-header {
+    -fx-background-color: linear-gradient(#00517b, #101d3d);
+}
+
+.table-view > .column-resize-line {
+    -fx-background-color: #101d3d;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:odd:filled {
+    -fx-background-color: #eaeeff;
+    -fx-text-inner-color: navy;
+}
+
+.table-row-cell:even:filled {
+    -fx-background-color: white;
+   -fx-text-inner-color: navy;
+}
+
+/* Selected row */
+.table-view:focused .table-row-cell:filled:selected {
+    -fx-background-color: #6074c3;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+    -fx-text-fill: white;
+    -fx-border-width: 0.2px;
+}
+
+/* Selected row when table not focused */
+.table-row-cell:filled:focused:selected {
+    -fx-background-color: #6074c3;/* #008ccc;8*/
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-border-width: 0.2px;
+}
+
+.table-row-cell:selected .text {
+       -fx-fill: white ;
+}
+
+/* Row hovered */
+/* .table-view:row-selection .table-row-cell:filled:hover {
+    -fx-background-color: #6074c3;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-text-fill: white;
+    -fx-border-width: 0.2px;
+}*/
+
+/*.table-row-cell:hover .text {
+       -fx-fill: white ;
+}*/
+
+/* Selected row hovered */
+/*.table-view:focused .table-row-cell:filled:focused:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: yellow;
+    -fx-background-insets: 0, 1, 2;
+    -fx-text-fill: white;
+    -fx-border-width: 0.2px;
+}
+*/
+/* Selected row hovered when table not focused */
+/*.table-view:row-selection .table-row-cell:filled:focused:hover {
+    -fx-background-color: #6074c3;
+    -fx-background-insets: 0, 0 0 1 0, 1 1 2 1, 2 2 3 2, 3 3 4 3;
+    -fx-text-fill: white;
+    -fx-border-width: 0.2px;
+}*/

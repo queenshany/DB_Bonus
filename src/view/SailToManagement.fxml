@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -16,13 +17,13 @@
 
 <StackPane fx:id="pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SailToManagementScreenController">
    <children>
-      <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0" stylesheets="@AdminMain.css">
+      <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0">
       	<children>
             <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
             		<VBox alignment="CENTER" maxWidth="399.0" minWidth="399.0" prefWidth="400.0" spacing="30.0">
             			<children>
-            				<Label text="Sail To Management" textAlignment="CENTER" textFill="WHITE">
+            				<Label style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" text="Sail To Management" textAlignment="CENTER" textFill="WHITE">
             					<font>
             						<Font name="System Bold" size="14.0" />
             					</font>
@@ -49,7 +50,7 @@
                               <JFXDatePicker fx:id="leavingDatePicker" defaultColor="#101d3d" maxWidth="200.0" minWidth="200.0" onKeyReleased="#onKeyReleased" overLay="true" prefHeight="25.0" prefWidth="200.0" promptText="Leaving Date" />
                            </children>
                         </StackPane>
-                        <Label fx:id="errorLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+                        <Label fx:id="errorLabel" alignment="CENTER" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" textAlignment="CENTER" textFill="#e00000" />
                         <HBox alignment="CENTER" spacing="20.0">
                            <children>
                               <JFXButton fx:id="saveSailToBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#saveSailTo" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
@@ -74,6 +75,10 @@
                </children>
             </StackPane>
       	</children>
+         <stylesheets>
+            <URL value="@AdminMain.css" />
+            <URL value="@Design.css" />
+         </stylesheets>
       </AnchorPane>
    </children>
 </StackPane>

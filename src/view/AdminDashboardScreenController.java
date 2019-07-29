@@ -245,7 +245,7 @@ public class AdminDashboardScreenController {
 					popularChart.getXAxis().setTickLabelGap(0);
 					popularChart.getYAxis().setTickLabelGap(0);
 					popularChart.getData().setAll(xyFQ);
-					System.out.println(xyFQ);
+					// System.out.println(xyFQ);
 					popularChart.setLegendVisible(false);
 					popularChart.setAnimated(false);
 				}

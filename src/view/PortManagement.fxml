@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -12,11 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="315.0" stylesheets="@AdminMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PortManagementScreenController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PortManagementScreenController">
 	<children>
 		<VBox alignment="CENTER" maxWidth="399.0" minWidth="399.0" prefWidth="400.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<children>
-				<Label text="Port Management" textAlignment="CENTER" textFill="WHITE">
+				<Label style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" text="Port Management" textAlignment="CENTER" textFill="WHITE">
 					<font>
 						<Font name="System Bold" size="14.0" />
 					</font>
@@ -30,7 +31,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </JFXTextField>
-            <Label fx:id="errorLabel" alignment="CENTER" textAlignment="CENTER" textFill="#e00000" />
+            <Label fx:id="errorLabel" alignment="CENTER" style="-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );" textAlignment="CENTER" textFill="#e00000" />
             <HBox alignment="CENTER" spacing="20.0">
                <children>
                   <JFXButton fx:id="savePortBut" alignment="CENTER" blendMode="HARD_LIGHT" buttonType="RAISED" contentDisplay="CENTER" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" onAction="#savePort" prefHeight="35.0" prefWidth="35.0" ripplerFill="#ffffff66" text=" " textAlignment="CENTER" textFill="WHITE">
@@ -53,4 +54,8 @@
          </padding>
 		</VBox>
 	</children>
+   <stylesheets>
+      <URL value="@AdminMain.css" />
+      <URL value="@Design.css" />
+   </stylesheets>
 </AnchorPane>

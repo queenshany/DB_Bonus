@@ -129,7 +129,7 @@ public class CruiseManagementScreenController {
 												errorLabel.setText("Error occurred.");
 											ViewLogic.adminCruisesScreenController.setCruiseTable();
 										} else 
-											errorLabel.setText("Ship is already in use during these dates. Please Choose Different dates.");
+											errorLabel.setText("Ship is already in use during these dates.");
 									} else
 										errorLabel.setText("Leaving date must be before return date.");
 								} else

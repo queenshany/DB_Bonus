@@ -43,12 +43,6 @@ public class ViewLogic {
 	 */
 	public static void initUI() {
 		newLoginWindow();
-		
-		//TODO
-		//newAdminPortCountryWindow();
-				
-		//newAdminCruisesSTWindow();
-		//newCruiseManagementWindow();
 	}
 
 	/**

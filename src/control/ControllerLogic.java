@@ -927,16 +927,16 @@ public class ControllerLogic {
 		if (!areValidSailToDates(startDate, endDate, cruiseID)){
 			return false;
 		}
-		
+
 		if (destinations.isEmpty())
 			return true;
-		
+
 		for (SailTo st: destinations) {
 			if (!(st.getArrivalTime().before(endDate) && startDate.before(st.getLeavingTime()))) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -987,7 +987,7 @@ public class ControllerLogic {
 	 * @param room
 	 * @return true if possible
 	 */
-	public boolean canAddRoomToShip(Room room){
+	public boolean canAddRoomToShip(Room room, boolean update){
 		ArrayList<CruiseShip> ships = getAllShips();
 		CruiseShip ship = null;
 
@@ -998,11 +998,12 @@ public class ControllerLogic {
 			}
 		}
 
-		int currentNumOfBeds = roomsAmountInShip(ship);
+		int currentNumOfBeds = roomsAmountInShip(ship, room, update);
 
 		if (room.getBedsAmount() + currentNumOfBeds > ship.getMaxNumberOfPeople()) {
 			return false;
 		}
+		
 		return true;
 	}
 
@@ -1011,12 +1012,13 @@ public class ControllerLogic {
 	 * @param ship
 	 * @return the bed amount
 	 */
-	public int roomsAmountInShip(CruiseShip ship) {
+	public int roomsAmountInShip(CruiseShip ship, Room room, boolean update) {
 		int currentNumOfBeds = 0;
 		if (ship != null) {
 			ArrayList<Room> rooms = getAllRooms(ship.getCruiseShipID());
 			for (Room r : rooms) {
-				currentNumOfBeds += r.getBedsAmount();
+				if (!update || (update && !r.equals(room)))
+					currentNumOfBeds += r.getBedsAmount();
 			}
 		}
 		return currentNumOfBeds;

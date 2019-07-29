@@ -111,7 +111,7 @@ public class SailToManagementScreenController {
 										errorLabel.setText("Sail to destination already exists.");
 									ViewLogic.adminCruisesScreenController.setSTtable();
 								} else
-									errorLabel.setText("Dates overlap in the cruise. Please select different dates.");
+									errorLabel.setText("Dates overlap in the cruise.");
 							} else
 								errorLabel.setText("Leaving date must be after arrival date.");
 						} else 
