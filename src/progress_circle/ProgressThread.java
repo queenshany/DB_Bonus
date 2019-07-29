@@ -16,7 +16,7 @@ public class ProgressThread extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

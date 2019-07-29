@@ -147,8 +147,12 @@ public class CustomerCruiseOrderScreenController {
 			roomCombo.setDisable(true);
 		}
 		else {
+			ArrayList<Room> rooms = ViewLogic.controller.getVacantRoomsByCruiseID(Integer.parseInt(cs.getCruiseID()));
 			roomCombo.setDisable(false);
-			roomCombo.getItems().setAll(ViewLogic.controller.getVacantRoomsByCruiseID(Integer.parseInt(cs.getCruiseID())));
+			roomCombo.getItems().setAll(rooms);
+			if (rooms.isEmpty()) {
+				roomCombo.setDisable(true);
+			}
 		}
 	}
 

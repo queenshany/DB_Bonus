@@ -1106,7 +1106,7 @@ public class ControllerLogic {
 			SixQuery sq = new SixQuery(c.getCruiseID());
 			if (toReturn.contains(sq)) {
 				sq = toReturn.get(toReturn.indexOf(sq));
-				return allSuitesInShip == 0 ? 0 : (double)sq.getNumOfSuits()/allSuitesInShip;
+				return allSuitesInShip == 0 ? 0 : 100.0*sq.getNumOfSuits()/allSuitesInShip;
 			}
 		}
 		return 0;
@@ -1237,7 +1237,7 @@ public class ControllerLogic {
 		if (c != null) {
 			if (toReturn.containsKey(new Integer(c.getCruiseID()))) {
 				int roomNum = toReturn.get(new Integer(c.getCruiseID()));
-				return allRoomsInShip == 0 ? 0 : (double) roomNum/allRoomsInShip;
+				return allRoomsInShip == 0 ? 0 : 100.0*roomNum/allRoomsInShip;
 			}
 		}
 

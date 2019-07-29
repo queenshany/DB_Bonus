@@ -98,7 +98,7 @@ public class CustomerDashboardScreenController {
 
 		// set bar chart
 		LocalDate ld = LocalDate.now();
-		LocalDate ld5 = (LocalDate.now()).plusYears(5);
+		LocalDate ld5 = LocalDate.of(2020, 12, 31);
 		startDatePickerPopular.setValue(ld);
 		endDatePickerPopular.setValue(ld5);
 		setPopularChart();

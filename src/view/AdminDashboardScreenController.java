@@ -147,13 +147,13 @@ public class AdminDashboardScreenController {
 		emptySuitesSP.setStyle("-fx-fill: transparent");
 
 		LocalDate ld = LocalDate.now();
-		LocalDate ld5 = (LocalDate.now()).plusYears(5);
+		LocalDate ld5 = LocalDate.of(2020, 12, 31);
 
 		// set combo
 		customerCombo.getItems().setAll(ViewLogic.controller.getAllCustomers());
 		countryCombo.getItems().setAll(ViewLogic.controller.getAllCountries());
-		cruiseComboRooms.getItems().setAll(ViewLogic.controller.getAllCruise());
-		cruiseComboSuites.getItems().setAll(ViewLogic.controller.getAllCruise());
+		cruiseComboRooms.getItems().setAll(ViewLogic.controller.getAllFutureCruiseSailing());
+		cruiseComboSuites.getItems().setAll(ViewLogic.controller.getAllFutureCruiseSailing());
 
 		// set table
 		cruiseIDColumn.setCellValueFactory(new PropertyValueFactory<>("cruiseID")); // According to variable name
@@ -239,7 +239,7 @@ public class AdminDashboardScreenController {
 					for (FiveQuery fq : ViewLogic.controller.getFiveQuery(start, end)) {
 						Series <String, Integer> destination = new Series<>();
 						destination.setName(fq.getYear() + " | " + fq.getPortName() + ", " + fq.getCountryName());
-						destination.getData().add(new XYChart.Data<String, Integer>((fq.getPortName() + "\n" + fq.getCountryName() + "\n" + fq.getYear()), fq.getNumOfPersons()));
+						destination.getData().add(new XYChart.Data<String, Integer>((fq.getPortName() + ", " + fq.getCountryName() + "\n" + fq.getYear()), fq.getNumOfPersons()));
 						xyFQ.add(destination);
 					}
 					popularChart.getXAxis().setTickLabelGap(0);
@@ -272,7 +272,7 @@ public class AdminDashboardScreenController {
 		if (c != null) {
 			try {
 				int year = Integer.parseInt(yearTextFieldQuery1A.getText());
-				System.out.println(year);
+				// System.out.println(year);
 				if (year >= 1000 && year <= 3000) {
 					ArrayList<OneAQuery> oneArr = ViewLogic.controller.getOneAQuery(c, year);
 					ObservableList<OneAQuery> oneList = FXCollections.observableArrayList(oneArr);
