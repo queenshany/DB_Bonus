@@ -39,7 +39,7 @@ import progress_circle.RingProgressIndicator;
 public class AdminDashboardScreenController {
 
 	// ============================== Variables =============================
-
+	
 	@FXML
 	private AnchorPane mainPane;
 

@@ -128,7 +128,7 @@
       </VBox>
 	</children>
    <stylesheets>
-      <URL value="@AdminMain.css" />
       <URL value="@Design.css" />
+      <URL value="@CustomerMain.css" />
    </stylesheets>
 </AnchorPane>

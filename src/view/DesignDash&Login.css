@@ -1,3 +1,34 @@
+/************************** Setting text-field design **************************/
+
+.jfx-text-field
+{
+    -jfx-focus-color: #014a74;
+    -jfx-unfocus-color: #305e00;
+}
+
+.text-input:focused
+{
+    -fx-prompt-text-fill: #014a74;
+    -fx-text-fill: #014a74;
+    -fx-highlight-fill: #014a74;
+}
+
+.text-input:unfocused {
+    -fx-prompt-text-fill: #305e00;
+    -fx-text-fill: #305e00; 
+    -fx-highlight-fill: #305e00;
+}
+
+.text-field .input-line:focused
+{
+    -fx-background-color: #014a74; 
+}
+
+.text-field .input-line:unfocused
+{
+    -fx-background-color: #305e00;
+}
+
 /************************** Setting list-view design **************************/
 
 /* no annoying blue :D */
@@ -29,29 +60,26 @@
 /************************** Setting date-picker & time-picker design **************************/
 .jfx-date-picker > .jfx-text-field, .jfx-time-picker > .jfx-text-field {
     -jfx-label-float: true;
-    -jfx-unfocus-color: white;
-    -jfx-focus-color: white;
-    -fx-text-fill: white;
-    -fx-prompt-text-fill: white;
-    -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );
+    -jfx-unfocus-color: #305e00;
+    -jfx-focus-color: #014a74;
+    -fx-text-fill: #305e00;
+    -fx-prompt-text-fill: #305e00;
 }
 
-.jfx-date-picker > .arrow-button > .jfx-svg-glyph{
-    -fx-background-color: white;
-    -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );
+.jfx-date-picker > .arrow-button > .jfx-svg-glyph {
+    -fx-background-color: #305e00;
 }
 
-.jfx-time-picker > .arrow-button > .jfx-svg-glyph{
-    -fx-background-color: white;
-    -fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );
+.jfx-time-picker > .arrow-button > .jfx-svg-glyph {
+    -fx-background-color: #305e00;
 }
 
 /************************** Setting combo-box design **************************/
 .combo-box-base .text {
-    -fx-fill: white ;
+    -fx-fill: #305e00 ;
 }
 .combo-box-base:focused .text {
-    -fx-fill: white ;
+    -fx-fill: #014a74 ;
 }
 .combo-box .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected .text {
     -fx-fill: white;
@@ -63,7 +91,7 @@
 
 .combo-box .arrow,
 .choice-box .arrow {
-    -fx-background-color: white;   
+    -fx-background-color: #305e00;   
 }
 
 /************************** Setting table-view design **************************/
