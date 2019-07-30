@@ -230,7 +230,7 @@ public class ControllerLogic {
 	 * removes a country from the db
 	 * @param c
 	 */
-	public void removeCountry(Country c) {
+	public void removeCountry(Country c) throws CantRemoveException {
 		PreparedStatement ps;
 		try {
 			int i = 1;
@@ -238,7 +238,7 @@ public class ControllerLogic {
 			ps.setString(i++, c.getCountryName());
 			ps.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CantRemoveException(e.getMessage());
 		}
 	}
 
@@ -246,7 +246,7 @@ public class ControllerLogic {
 	 * removes a cruise from the db
 	 * @param cs
 	 */
-	public void removeCruise(CruiseSailing cs) {
+	public void removeCruise(CruiseSailing cs) throws CantRemoveException {
 		PreparedStatement ps;
 		try {
 			int i = 1;
@@ -254,7 +254,7 @@ public class ControllerLogic {
 			ps.setInt(i++, Integer.parseInt(cs.getCruiseID()));
 			ps.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CantRemoveException(e.getMessage());
 		}
 	}
 
@@ -262,7 +262,7 @@ public class ControllerLogic {
 	 * removes a cruise order from the db
 	 * @param co
 	 */
-	public void removeCruiseOrder(CruiseOrder co) {
+	public void removeCruiseOrder(CruiseOrder co) throws CantRemoveException {
 		PreparedStatement ps;
 		try {
 			int i = 1;
@@ -272,7 +272,7 @@ public class ControllerLogic {
 			ps.setInt(i++, Integer.parseInt(co.getRoomNumber()));
 			ps.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CantRemoveException(e.getMessage());
 		}
 	}
 
@@ -280,7 +280,7 @@ public class ControllerLogic {
 	 * removes a port from the db
 	 * @param p
 	 */
-	public void removePort(Port p) {
+	public void removePort(Port p) throws CantRemoveException {
 		PreparedStatement ps;
 		try {
 			int i = 1;
@@ -289,7 +289,7 @@ public class ControllerLogic {
 			ps.setString(i++, p.getPortName());
 			ps.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CantRemoveException(e.getMessage());
 		}
 	}
 
@@ -297,7 +297,7 @@ public class ControllerLogic {
 	 * removes a room from the db
 	 * @param r
 	 */
-	public void removeRoom(Room r) {
+	public void removeRoom(Room r) throws CantRemoveException {
 		PreparedStatement ps;
 		try {
 			int i = 1;
@@ -306,7 +306,7 @@ public class ControllerLogic {
 			ps.setInt(i++, r.getRoomNumber());
 			ps.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CantRemoveException(e.getMessage());
 		}
 	}
 
@@ -314,7 +314,7 @@ public class ControllerLogic {
 	 * removes a sail to destination from the db
 	 * @param st
 	 */
-	public void removeSailTo(SailTo st) {
+	public void removeSailTo(SailTo st) throws CantRemoveException {
 		PreparedStatement ps;
 		try {
 			int i = 1;
@@ -324,7 +324,7 @@ public class ControllerLogic {
 			ps.setInt(i++, Integer.parseInt(st.getSailingID()));
 			ps.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CantRemoveException(e.getMessage());
 		}
 	}
 
@@ -332,7 +332,7 @@ public class ControllerLogic {
 	 * removes a ship from the db
 	 * @param csh
 	 */
-	public void removeShip(CruiseShip csh) {
+	public void removeShip(CruiseShip csh) throws CantRemoveException {
 		PreparedStatement ps;
 		try {
 			int i = 1;
@@ -340,7 +340,7 @@ public class ControllerLogic {
 			ps.setInt(i++, Integer.parseInt(csh.getCruiseShipID()));
 			ps.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CantRemoveException(e.getMessage());
 		}
 	}
 
@@ -348,7 +348,7 @@ public class ControllerLogic {
 	 * removes a person from the db
 	 * @param p
 	 */
-	public void removePerson(Person p) {
+	public void removePerson(Person p) throws CantRemoveException {
 		PreparedStatement ps;
 		try {
 			int i = 1;
@@ -356,7 +356,7 @@ public class ControllerLogic {
 			ps.setString(i++, p.getPersonID());
 			ps.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new CantRemoveException(e.getMessage());
 		}
 	}
 
