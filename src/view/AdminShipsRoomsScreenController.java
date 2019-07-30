@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
 
+import control.CantRemoveException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -182,10 +183,14 @@ public class AdminShipsRoomsScreenController {
 		if (s == null)
 			errorShipLabel.setText("Please select a ship to delete.");
 		else {
-			ViewLogic.controller.removeShip(s);
-			setShipTable();
-			setRoomTable();
-			errorShipLabel.setText("Ship deleted successfully.");
+			try {
+				ViewLogic.controller.removeShip(s);
+				setShipTable();
+				setRoomTable();
+				errorShipLabel.setText("Ship deleted successfully.");
+			} catch (CantRemoveException e) {
+				errorShipLabel.setText("Ship cannot be deleted.");
+			}
 		}
 	}
 
@@ -215,9 +220,13 @@ public class AdminShipsRoomsScreenController {
 		if (r == null)
 			errorRoomLabel.setText("Please select a room to delete.");
 		else {
-			ViewLogic.controller.removeRoom(r);
-			setRoomTable();
-			errorRoomLabel.setText("Room deleted successfully.");
+			try {
+				ViewLogic.controller.removeRoom(r);
+				setRoomTable();
+				errorRoomLabel.setText("Room deleted successfully.");
+			} catch (CantRemoveException e) {
+				errorRoomLabel.setText("Room cannot be deleted.");
+			}
 		}
 	}
 

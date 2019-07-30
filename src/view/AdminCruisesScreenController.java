@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.jfoenix.controls.JFXButton;
 import com.sun.jmx.snmp.Timestamp;
 
+import control.CantRemoveException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -178,10 +179,14 @@ public class AdminCruisesScreenController {
 		if (cs == null)
 			errorCruiseLabel.setText("Please select a cruise to delete.");
 		else {
-			ViewLogic.controller.removeCruise(cs);
-			setCruiseTable();
-			setSTtable();
-			errorCruiseLabel.setText("Cruise deleted successfully.");
+			try {
+				ViewLogic.controller.removeCruise(cs);
+				setCruiseTable();
+				setSTtable();
+				errorCruiseLabel.setText("Cruise deleted successfully.");
+			} catch (CantRemoveException e) {
+				errorCruiseLabel.setText("Cruise cannot be deleted.");
+			}
 		}
 	}
 
@@ -211,9 +216,13 @@ public class AdminCruisesScreenController {
 		if (st == null)
 			errorSTLabel.setText("Please select a sail to destination to delete.");
 		else {
-			ViewLogic.controller.removeSailTo(st);
-			setSTtable();
-			errorSTLabel.setText("Sail to destination deleted successfully.");
+			try {
+				ViewLogic.controller.removeSailTo(st);
+				setSTtable();
+				errorSTLabel.setText("Sail to destination deleted successfully.");
+			} catch (CantRemoveException e) {
+				errorSTLabel.setText("Sail to destination cannot be deleted.");
+			}
 		}
 	}
 

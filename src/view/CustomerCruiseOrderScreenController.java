@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
+import control.CantRemoveException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -126,9 +127,13 @@ public class CustomerCruiseOrderScreenController {
 		if (co == null)
 			errorDelOrderLabel.setText("Please select an order to delete.");
 		else {
+			try {
 			ViewLogic.controller.removeCruiseOrder(co);
 			setFutureOrdersTable();
 			errorDelOrderLabel.setText("Order deleted successfully.");
+			} catch (CantRemoveException e) {
+				errorDelOrderLabel.setText("Order cannot be deleted.");
+			}
 		}
 	}
 

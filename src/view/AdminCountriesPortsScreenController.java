@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
+
+import control.CantRemoveException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -123,10 +125,14 @@ public class AdminCountriesPortsScreenController {
 		if (c == null)
 			errorCounLabel.setText("Please select a country to delete.");
 		else {
-			ViewLogic.controller.removeCountry(c);
-			setCountryList();
-			setPortTable();
-			errorCounLabel.setText("Country deleted successfully.");
+			try {
+				ViewLogic.controller.removeCountry(c);
+				setCountryList();
+				setPortTable();
+				errorCounLabel.setText("Country deleted successfully.");
+			} catch (CantRemoveException e) {
+				errorCounLabel.setText("Country cannot be deleted.");
+			}
 		}
 	}
 
@@ -141,9 +147,13 @@ public class AdminCountriesPortsScreenController {
 		if (p == null)
 			errorPortLabel.setText("Please select a port to delete.");
 		else {
-			ViewLogic.controller.removePort(p);
-			setPortTable();
-			errorPortLabel.setText("Port deleted successfully.");
+			try {
+				ViewLogic.controller.removePort(p);
+				setPortTable();
+				errorPortLabel.setText("Port deleted successfully.");
+			} catch (CantRemoveException e) {
+				errorPortLabel.setText("Port cannot be deleted.");
+			}
 		}
 	}
 

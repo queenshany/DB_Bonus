@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
 
+import control.CantRemoveException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -131,9 +132,13 @@ public class AdminCustomersScreenController {
 		if (c == null)
 			errorLabel.setText("Please select a customer to delete.");
 		else {
-			ViewLogic.controller.removePerson(c);
-			setPersonTable();
-			errorLabel.setText("Customer deleted successfully.");
+			try {
+				ViewLogic.controller.removePerson(c);
+				setPersonTable();
+				errorLabel.setText("Customer deleted successfully.");
+			}  catch (CantRemoveException e) {
+				errorLabel.setText("Customer cannot be deleted.");
+			}
 		}
 	}
 
