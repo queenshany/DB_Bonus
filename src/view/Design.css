@@ -47,10 +47,18 @@
 }
 
 /************************** Setting combo-box design **************************/
-.choice-box .list-cell:filled:selected .text,
-.combo-box .list-cell:filled:selected .text {
-    -fx-text-fill: white;
-    /*-fx-effect: dropshadow( one-pass-box , #101d3d , 4 , 1 , 0 , 0 );*/
+.combo-box-base .text {
+    -fx-fill: white ;
+}
+.combo-box-base:focused .text {
+    -fx-fill: white ;
+}
+.combo-box .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected .text {
+    -fx-fill: white;
+}
+
+.combo-box .list-view .list-cell:filled .text {
+    -fx-fill: navy;
 }
 
 .combo-box .arrow,
@@ -120,7 +128,7 @@
 }
 
 .table-row-cell .text {
-       -fx-fill: navy ;
+    -fx-fill: navy ;
 }
 
 /* Setting text color when an item is selected */
@@ -139,7 +147,6 @@
 	-fx-border-width: 0.2px;
 }
 
-
 /* Setting arrow color */
 .table-view .arrow {  
 	-fx-mark-color: white;  
@@ -152,16 +159,13 @@
 
 }
 
-
- /* trying to change drag table colours */
-
 .table-view > .column-header-background > .column-drag-header {
 	-fx-background-color: #6074c3;
 }
 
 .table-view > .column-header-background > .column-drag-header > .label {
 	-fx-text-fill: white;
-	 -fx-font-weight: bold;
+	-fx-font-weight: bold;
 }
 
 .table-view > .column-header-background > .column-drag-header {
@@ -182,8 +186,8 @@
 }
 
 .table-row-cell:even:filled {
-    -fx-background-color: white;
-   -fx-text-inner-color: navy;
+	-fx-background-color: white;
+	-fx-text-inner-color: navy;
 }
 
 /* Selected row */
@@ -197,7 +201,7 @@
 
 /* Selected row when table not focused */
 .table-row-cell:filled:focused:selected {
-    -fx-background-color: #6074c3;/* #008ccc;8*/
+    -fx-background-color: #6074c3;/* #008ccc;*/
     -fx-background-insets: 0, 1, 2;
     -fx-background: -fx-accent;
     -fx-text-fill: -fx-text-inner-color;
@@ -205,7 +209,7 @@
 }
 
 .table-row-cell:selected .text {
-       -fx-fill: white ;
+	-fx-fill: white ;
 }
 
 /* Row hovered */
@@ -236,3 +240,63 @@
     -fx-text-fill: white;
     -fx-border-width: 0.2px;
 }*/
+
+/************************** Setting scrollbar design **************************/
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color: white;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: linear-gradient(to bottom, #00517b, #101d3d);
+    /*-fx-background-color: green;*/
+    -fx-background-radius: 5em;
+}
+
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: linear-gradient(to left, #00517b, #101d3d);
+    /*-fx-background-color: green;*/
+    -fx-background-radius: 5em;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+
+.scroll-bar:horizontal .thumb:hover{
+    -fx-background-color: linear-gradient(to bottom, #006aa1, #203a78); 
+    -fx-background-radius: 5em;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: linear-gradient(to left, #006aa1, #203a78); 
+    -fx-background-radius: 5em;
+}
+.scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: linear-gradient(to left, #006aa1, #203a78);
+    -fx-background-radius: 5em;
+}
+
+.scroll-bar:horizontal .thumb:pressed {
+    -fx-background-color: linear-gradient(to bottom, #006aa1, #203a78);
+    -fx-background-radius: 5em;
+}
+
+.scroll-bar > .increment-button > .increment-arrow:hover,
+.scroll-bar > .decrement-button > .decrement-arrow:hover {
+    -fx-background-color: linear-gradient(to left, #006aa1, #203a78);
+}
+
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: linear-gradient(to left, #006aa1, #203a78);
+}
