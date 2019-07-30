@@ -37,17 +37,13 @@ public class ViewLogic {
 	protected static AdminShipsRoomsScreenController adminShipsRoomsScreenController;
 	protected static AdminCustomersScreenController adminCustomersScreenController;
 	protected static AdminCruiseOrdersScreenController adminCruiseOrdersScreenController;
-	
+
 	// ------------------------------ Methods ------------------------------
 	/**
 	 * this method starts the windows in the system
 	 */
 	public static void initUI() {
-		//newLoginWindow();
-		
-		//TODO
-		createAccountWindow();
-		newAdminDashWindow();
+		newLoginWindow();
 	}
 
 	/**
@@ -72,7 +68,6 @@ public class ViewLogic {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				try {
 					FXMLLoader loader = new FXMLLoader(fxmlLocation);
 					Parent root = loader.load();
